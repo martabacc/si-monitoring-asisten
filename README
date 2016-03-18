@@ -1,0 +1,4 @@
+tutor instalasi :
+- composer dump-autoload
+- composer install 
+- php artisan key:generate
