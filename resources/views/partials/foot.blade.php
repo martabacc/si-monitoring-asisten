@@ -1,16 +1,16 @@
 
 <script type="text/javascript" src="{{ URL::to('assets/js/jquery-ui.min.js') }}"></script>
 <!-- Bootstrap 3.3.5 -->
-<script src="{{ url('bootstrap/js/bootstrap.min.js') }}"></script>
+<script src="{{ url('assets/adminlte/bootstrap/js/bootstrap.min.js') }}"></script>
 <!-- SlimScroll -->
-<script src="{{ url('plugins/slimScroll/jquery.slimscroll.min.js') }}"></script>
+<script src="{{ url('assets/adminlte/plugins/slimScroll/jquery.slimscroll.min.js') }}"></script>
 <!-- FastClick -->
-<script src="{{ url('plugins/fastclick/fastclick.min.js') }}"></script>
+<script src="{{ url('assets/adminlte/plugins/fastclick/fastclick.min.js') }}"></script>
 <!-- AdminLTE App -->
-<script src="{{ url('adminlte-2.3.0/js/app.min.js') }}"></script>
+<script src="{{ url('assets/adminlte/dist/js/app.min.js') }}"></script>
 
 <script>
-$(function(){   
+$(function(){
 	// datatable initialization. script load dynamically (foot section) from caller pages
     table = $('.datatable').DataTable({
         "paging": true,
