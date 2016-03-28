@@ -1,14 +1,14 @@
 @extends('layouts.boxed')
 
 @section('title')
-    Tambah Laporan Aktivitas
+    Tambah Asisten
 @stop
 
 @section('content')
     @include('partials.flash-overlay-modal')
 
     <section class="content-header">
-        <h1>Laporan Aktivitas</h1>
+        <h1>Asisten</h1>
     </section>
     <section class="content">
         <div class="row">
@@ -16,7 +16,7 @@
                 <!-- Horizontal Form -->
                 <div class="box box-info">
                     <div class="box-header with-border">
-                        <h3 class="box-title">Tambah Laporan Aktivitas</h3>
+                        <h3 class="box-title">Tambah Asisten</h3>
                     </div><!-- /.box-header -->
                     {{--todo hanya di tampilan desainer--}}
                             <!-- form start -->
@@ -25,7 +25,7 @@
                         <div class="box-body">
                             {{ csrf_field() }}
                             <div class="form-group">
-                                <label for="inputEmail3" class="col-sm-3 control-label">Nama Aktivitas</label>
+                                <label for="inputEmail3" class="col-sm-3 control-label">Nama</label>
                                 <div class="col-sm-8">
                                     {{--todo change it into authenticated user--}}
                                     <input type="text" name="name" class="form-control"
@@ -33,25 +33,30 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="inputEmail3" class="col-sm-3 control-label">Tanggal</label>
+                                <label for="inputEmail3" class="col-sm-3 control-label">Email</label>
                                 <div class="col-sm-8">
-                                    <input type="date" name="date" class="form-control" required>
+                                    <input type="text" name="email" class="form-control" required>
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="inputEmail3" class="col-sm-3 control-label">Durasi </label>
+                                <label for="inputEmail3" class="col-sm-3 control-label">Password</label>
                                 <div class="col-sm-8">
-                                    <textarea class="form-control" rows="3" name="duration" required></textarea>
+                                    <input type="password" name="password" class="form-control" required>
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="inputEmail3" class="col-sm-3 control-label">Keterangan</label>
+                                <label for="inputEmail3" class="col-sm-3 control-label">Role / Akun </label>
                                 <div class="col-sm-8">
-                                    <textarea class="form-control" name="description" rows="3" placeholder="Enter ..."></textarea>
-                                    <label> Centang jika sudah terverifikasi </label>
+                                    <select class="form-control">
+                                        {{--TODO sesuai di tabel--}}
+                                        <option>option 1</option>
+                                        <option>option 2</option>
+                                        <option>option 3</option>
+                                        <option>option 4</option>
+                                        <option>option 5</option>
+                                    </select>
                                 </div>
                             </div>
-
 
                         </div><!-- /.box-body -->
                         <div class="box-footer">
