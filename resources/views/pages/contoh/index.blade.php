@@ -1,31 +1,22 @@
 @extends('layouts.boxed')
 
 @section('title')
-    Desain
+    Laporan Aktivitas
 @stop
 
 @section('content')
-
     @include('partials.flash-overlay-modal')
+
     <section class="content-header">
-        <h1> Desain </h1>
+        <h1>Laporan Aktivitas</h1>
     </section>
     <section class="content">
         <div class="row">
             <div class="col-md-12">
-                <a href="" class="btn btn-primary" title="Tambah">
-                    <span class="glyphicon glyphicon-plus">
-                    </span>&nbsp;&nbsp;Tambah</a>
-            </div>
-        </div>
-        <div class="row">
-        </div>
-        <br>
-        <div class="row">
-            <div class="col-md-12">
-                <div class="box">
-                    <div class="box-header">
-                        <h3 class="box-title">List Desain</h3>
+                <!-- Horizontal Form -->
+                <div class="box box-info">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Lihat Laporan Aktivitas</h3>
                     </div>
                     <div class="box-body">
                         <table class="table table-striped table-hover table-bordered" id="table-event">
@@ -35,16 +26,16 @@
                                     #
                                 </th>
                                 <th class="col-md-3 text-center">
-                                    Nama Desain
-                                </th>
-                                <th class='col-md-1 text-center'>
-                                    Tipe Desain
+                                    Nama Aktivitas
                                 </th>
                                 <th class="col-md-2 text-center">
-                                    Desainer
+                                    Durasi
+                                </th>
+                                <th class='col-md-1 text-center'>
+                                    Tanggal Dilaporkan
                                 </th>
                                 <th class="col-md-1 text-center">
-                                    Verified
+                                    Dilaporkan Oleh
                                 </th>
                                 <th class="col-md-1 text-center">
                                     Menu
