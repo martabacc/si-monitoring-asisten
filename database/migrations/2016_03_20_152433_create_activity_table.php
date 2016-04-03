@@ -20,6 +20,7 @@ class CreateActivityTable extends Migration
             $table->integer('duration')->unsigned();
             $table->text('notes');
             $table->timestamps();
+            $table->softDeletes();
 
             $table->foreign('assistant_id')
                 ->references('user_id')
@@ -34,6 +35,7 @@ class CreateActivityTable extends Migration
             $table->integer('urgency')->unsigned();
             $table->text('solution')->nullable();
             $table->timestamps();
+            $table->softDeletes();
 
             $table->foreign('assistant_id')
                 ->references('user_id')
@@ -49,6 +51,7 @@ class CreateActivityTable extends Migration
             $table->integer('activity_id')->unsigned();
             $table->string('notes');
             $table->timestamps();
+            $table->softDeletes();
 
             $table->foreign('student_id')
                 ->references('user_id')

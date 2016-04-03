@@ -15,6 +15,7 @@ class CreateSpecializedUserTables extends Migration
         Schema::create('teachers', function (Blueprint $table) {
             $table->integer('user_id')->unsigned();
             $table->timestamps();
+            $table->softDeletes();
 
             $table->primary('user_id');
             $table->foreign('user_id')
@@ -25,6 +26,7 @@ class CreateSpecializedUserTables extends Migration
         Schema::create('assistants', function (Blueprint $table) {
             $table->integer('user_id')->unsigned();
             $table->timestamps();
+            $table->softDeletes();
 
             $table->primary('user_id');
             $table->foreign('user_id')
@@ -35,6 +37,7 @@ class CreateSpecializedUserTables extends Migration
         Schema::create('students', function (Blueprint $table) {
             $table->integer('user_id')->unsigned();
             $table->timestamps();
+            $table->softDeletes();
 
             $table->primary('user_id');
             $table->foreign('user_id')

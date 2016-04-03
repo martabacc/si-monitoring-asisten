@@ -16,6 +16,7 @@ class CreateUsersTable extends Migration
             $table->increments('id');
             $table->string('role');
             $table->timestamps();
+            $table->softDeletes();
         });
 
         Schema::create('users', function (Blueprint $table) {
@@ -26,6 +27,7 @@ class CreateUsersTable extends Migration
             $table->integer('privilege_id')->unsigned();
             $table->rememberToken();
             $table->timestamps();
+            $table->softDeletes();
 
             $table->foreign('privilege_id')
                 ->references('id')

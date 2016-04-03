@@ -16,6 +16,7 @@ class CreateQuestionerTables extends Migration
             $table->increments('id');
             $table->string('question');
             $table->timestamps();
+            $table->softDeletes();
         });
 
         Schema::create('options', function (Blueprint $table) {
@@ -23,6 +24,7 @@ class CreateQuestionerTables extends Migration
             $table->integer('question_id')->unsigned();
             $table->string('answer');
             $table->timestamps();
+            $table->softDeletes();
 
             $table->foreign('question_id')
                 ->references('id')
@@ -35,6 +37,7 @@ class CreateQuestionerTables extends Migration
             $table->string('title');
             $table->string('description');
             $table->timestamps();
+            $table->softDeletes();
 
             $table->foreign('assistant_id')
                 ->references('user_id')
@@ -48,6 +51,7 @@ class CreateQuestionerTables extends Migration
             $table->integer('student_id')->unsigned();
             $table->integer('option_id')->unsigned();
             $table->timestamps();
+            $table->softDeletes();
 
             $table->foreign('questionnaire_id')
                 ->references('id')

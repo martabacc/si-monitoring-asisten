@@ -1,28 +1,24 @@
 <!DOCTYPE html>
 <html>
-<head>
+    <head>
+          @include('includes.header')
+            <title>
+                @yield('custom-head')
+            </title>
 
-	  @include('includes.header')
-		<title>
-			@yield('custom-head')
-		</title>
+    </head>
+    <body id="top" class="scrollspy">
+        @include('includes.preloader')
+        @include('includes.navigation')
 
-</head>
-<body id="top" class="scrollspy">
+        @yield('page-content')
 
-	@include('includes.preloader')
-
-	@include('includes.navigation')
-
-		@yield('page-content')
-
-
-		@include('includes.footer')
+        @include('includes.footer')
     </body>
 
-	<!--  Scripts-->
-	<script src="{{ url('assets/material')}}/min/plugin-min.js"></script>
-	<script src="{{ url('assets/material')}}/min/custom-min.js"></script>
+    <!--  Scripts-->
+    <script src="{{ url('assets/material')}}/min/plugin-min.js"></script>
+    <script src="{{ url('assets/material')}}/min/custom-min.js"></script>
 
-	@yield('custom-scripts')
+    @yield('custom-scripts')
 </html>

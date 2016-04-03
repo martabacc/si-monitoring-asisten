@@ -26,4 +26,3 @@
     $.widget.bridge('uibutton', $.ui.button);
 </script>
 <script type="text/javascript" src="{{ URL::to('assets/adminlte/bootstrap/js/bootstrap.min.js') }}"></script>
-

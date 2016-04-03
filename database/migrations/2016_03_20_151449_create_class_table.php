@@ -17,6 +17,7 @@ class CreateClassTable extends Migration
             $table->string('name');
             $table->text('description');
             $table->timestamps();
+            $table->softDeletes();
         });
 
         Schema::create('classes', function (Blueprint $table) {
@@ -24,6 +25,7 @@ class CreateClassTable extends Migration
             $table->integer('subject_id')->unsigned();
             $table->char('class', 1);
             $table->timestamps();
+            $table->softDeletes();
 
             $table->foreign('subject_id')
                 ->references('id')
@@ -38,6 +40,7 @@ class CreateClassTable extends Migration
             $table->string('place');
             $table->time('schedule');
             $table->timestamps();
+            $table->softDeletes();
 
             $table->foreign('class_id')
                 ->references('id')
