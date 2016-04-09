@@ -1,14 +1,14 @@
 @extends('layouts.boxed')
 
 @section('title')
-    Tambah Laporan Aktivitas
+    Kelas
 @stop
 
 @section('content')
     @include('partials.flash-overlay-modal')
 
     <section class="content-header">
-        <h1>Laporan Aktivitas</h1>
+        <h1>Kelas</h1>
     </section>
     <section class="content">
         <div class="row">
@@ -16,7 +16,7 @@
                 <!-- Horizontal Form -->
                 <div class="box box-info">
                     <div class="box-header with-border">
-                        <h3 class="box-title">Tambah Laporan Aktivitas</h3>
+                        <h3 class="box-title">Tambah Kelas</h3>
                     </div><!-- /.box-header -->
                     {{--todo hanya di tampilan desainer--}}
                             <!-- form start -->
@@ -25,33 +25,24 @@
                         <div class="box-body">
                             {{ csrf_field() }}
                             <div class="form-group">
-                                <label for="inputEmail3" class="col-sm-3 control-label">Nama Aktivitas</label>
+                                <label for="inputEmail3" class="col-sm-3 control-label">Mata Kuliah</label>
+                                <div class="col-sm-8">
+                                    <select class="form-control select2" >
+                                        <option selected="selected">Alabama</option>
+                                        <option>Alaska</option>
+                                        <option>California</option>
+                                        <option>Delaware</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputEmail3" class="col-sm-3 control-label">Nama Kelas</label>
                                 <div class="col-sm-8">
                                     {{--todo change it into authenticated user--}}
-                                    <input type="text" name="name" class="form-control"
+                                    <input type="text" name="class" class="form-control"
                                            required>
                                 </div>
                             </div>
-                            <div class="form-group">
-                                <label for="inputEmail3" class="col-sm-3 control-label">Tanggal</label>
-                                <div class="col-sm-8">
-                                    <input type="date" name="date" class="form-control" required>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="inputEmail3" class="col-sm-3 control-label">Durasi </label>
-                                <div class="col-sm-8">
-                                    <textarea class="form-control" rows="3" name="duration" required></textarea>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="inputEmail3" class="col-sm-3 control-label">Keterangan</label>
-                                <div class="col-sm-8">
-                                    <textarea class="form-control" name="description" rows="3" placeholder="Enter ..."></textarea>
-                                    <label> Centang jika sudah terverifikasi </label>
-                                </div>
-                            </div>
-
 
                         </div><!-- /.box-body -->
                         <div class="box-footer">
@@ -70,8 +61,10 @@
 
 @stop
 @section('custom_foot')
+    <script src="{{ url('plugins/select2/select2.full.min.js') }}"></script>
     <script type="text/javascript">
-        $(function(){
+        $(document).ready(function(){
+            $(".select2").select2();
         });
     </script>
 @stop

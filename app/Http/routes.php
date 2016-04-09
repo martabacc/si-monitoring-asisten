@@ -11,27 +11,18 @@
 |
  */
 
-Route::get('/', function () {
-	return view('welcome');
-});
-
-Route::get('create', function () {
-	return view('pages.contoh.create');
-});
-Route::get('index', function () {
-	return view('pages.contoh.index');
-});
-
-/*
-|--------------------------------------------------------------------------
-| Application Routes
-|--------------------------------------------------------------------------
-|
-| This route group applies the "web" middleware group to every route
-| it contains. The "web" middleware group is defined in your HTTP
-| kernel and includes session state, CSRF protection, and more.
-|
- */
+Route::resource('activity', 'ActivityController');
+Route::resource('class', 'ClassController');
+Route::resource('issue', 'IssueController');
+Route::resource('presence', 'PresenceController');
+Route::resource('privilege', 'PrivilegeController');
+Route::resource('question', 'QuestionController');
+Route::resource('questionnaire', 'QuestionnaireController');
+Route::resource('schedule', 'ScheduleController');
+Route::resource('user', 'UserController');
+Route::resource('assistant', 'AssistantController');
+Route::resource('subject', 'SubjectController');
+Route::resource('teacher', 'TeacherController');
 
 Route::group(['middleware' => ['web']], function () {
 	//

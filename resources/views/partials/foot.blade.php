@@ -1,4 +1,7 @@
 
+
+<script src="{{ url('assets/adminlte/plugins/jQuery/jQuery-2.1.4.min.js') }}"></script>
+
 <script type="text/javascript" src="{{ URL::to('assets/js/jquery-ui.min.js') }}"></script>
 <!-- Bootstrap 3.3.5 -->
 <script src="{{ url('assets/adminlte/bootstrap/js/bootstrap.min.js') }}"></script>

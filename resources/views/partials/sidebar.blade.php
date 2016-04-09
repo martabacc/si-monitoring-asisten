@@ -29,57 +29,97 @@
             <li class="header">All Navigations</li>
             <li class="treeview">
                 <a href="#">
-                    <i class="fa fa-users"></i> <span>Menu 1</span> <i class="fa fa-angle-left pull-right"></i>
+                    <i class="fa fa-users"></i> <span>Praktikum dan Sesilab</span> <i class="fa fa-angle-left pull-right"></i>
                 </a>
                 <ul class="treeview-menu">
-                    <li><a href="{{ url('design') }}"><i class="fa fa-list"></i> List Desain </a></li>
-                    <li><a href="{{ url('design/create') }}"><i class="fa fa-plus"></i> Tambah Desain  </a></li>
-                    <li><a href="{{ url('design/my') }}"><i class="fa fa-plus"></i> Desain Saya </a></li>
+                    <li><a href="{{ url('schedule') }}"><i class="fa fa-list"></i> Lihat Jadwal </a></li>
+                    <li><a href="{{ url('schedule/add') }}"><i class="fa fa-plus"></i> Tambah Jadwal </a></li>
                 </ul>
             </li>
 
             <li class="treeview">
                 <a href="#">
-                    <i class="fa fa-users"></i> <span> Menu 2 </span> <i class="fa fa-angle-left pull-right"></i>
+                    <i class="fa fa-users"></i> <span>Kehadiran & Nilai </span> <i class="fa fa-angle-left pull-right"></i>
                 </a>
                 <ul class="treeview-menu">
-                    <li><a href="{{ url('designer') }}"><i class="fa fa-list"></i> List Desainer</a></li>
-                    <li><a href="{{ url('designer/add') }}"><i class="fa fa-plus"></i> Tambah Designer </a></li>
+                    <li><a href="{{ url('presence') }}"><i class="fa fa-list"></i> Lihat Kehadiran </a></li>
+                    <li><a href="{{ url('presence/create') }}"><i class="fa fa-plus"></i> Tambah Data Kehadiran </a></li>
+                    <li><a href="{{ url('mark') }}"><i class="fa fa-plus"></i> Lihat Nilai </a></li>
+                    <li><a href="{{ url('mark/create') }}"><i class="fa fa-plus"></i> Tambah Data Nilai </a></li>
                 </ul>
             </li>
 
             <li class="treeview">
                 <a href="#">
-                    <i class="fa fa-users"></i> <span> Menu 3 </span> <i class="fa fa-angle-left pull-right"></i>
+                    <i class="fa fa-users"></i> <span> Kuisioner </span> <i class="fa fa-angle-left pull-right"></i>
                 </a>
                 <ul class="treeview-menu">
-                    <li><a href="{{ url('order') }}"><i class="fa fa-list"></i> Daftar Pesanan</a></li>
-                    <li><a href="{{ url('order/recaps') }}"><i class="fa fa-plus"></i> Rekapitulasi</a></li>
-                </ul>
-            </li>
-
-
-            <li class="treeview">
-                <a href="#">
-                    <i class="fa fa-users"></i> <span> Menu 4 </span> <i class="fa fa-angle-left pull-right"></i>
-                </a>
-                <ul class="treeview-menu">
-                    <li><a href="{{ url('customer') }}"><i class="fa fa-list"></i> List Customer</a></li>
-                    <li><a href="{{ url('customer/add') }}"><i class="fa fa-plus"></i> Tambah Customer </a></li>
+                    <li><a href="{{ url('questionnaire') }}"><i class="fa fa-list"></i> Lihat Kuisioner </a></li>
+                    <li><a href="{{ url('questionnaire/result') }}"><i class="fa fa-list"></i> Hasil Kuisioner </a></li>
+                    <li><a href="{{ url('questionnaire/create') }}"><i class="fa fa-plus"></i> Tambah Kuisioner </a></li>
                 </ul>
             </li>
 
 
             <li class="treeview">
                 <a href="#">
-                    <i class="fa fa-users"></i> <span> Menu 5 </span> <i class="fa fa-angle-left pull-right"></i>
+                    <i class="fa fa-users"></i> <span> Kelas </span> <i class="fa fa-angle-left pull-right"></i>
                 </a>
                 <ul class="treeview-menu">
-                    <li><a href="{{ url('founder') }}"><i class="fa fa-list"></i> List Founder</a></li>
-                    <li><a href="{{ url('founder/create') }}"><i class="fa fa-plus"></i> Tambah</a></li>
+                    <li><a href="{{ url('class') }}"><i class="fa fa-list"></i> Lihat Kelas </a></li>
+                    <li><a href="{{ url('class/create') }}"><i class="fa fa-plus"></i> Tambah Kelas </a></li>
                 </ul>
             </li>
 
+            <li class="treeview">
+                <a href="#">
+                    <i class="fa fa-users"></i> <span> Mata Kuliah </span> <i class="fa fa-angle-left pull-right"></i>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href="{{ url('subject') }}">
+                        <i class="fa fa-list"></i> Lihat Mata Kuliah </a>
+                    </li>
+                    <li><a href="{{ url('subject/create') }}">
+                        <i class="fa fa-plus"></i> Tambah Mata Kuliah </a>
+                    </li>
+                </ul>
+            </li>
+
+            <li class="treeview">
+                <a href="#">
+                    <i class="fa fa-users"></i> <span> Laporan Kegiatan </span> <i class="fa fa-angle-left pull-right"></i>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href="{{ url('report') }}">
+                        <i class="fa fa-list"></i> Lihat Laporan </a>
+                    </li>
+                    <li><a href="{{ url('report/create') }}">
+                        <i class="fa fa-plus"></i> Tambah Laporan </a>
+                    </li>
+                </ul>
+            </li>
+
+            
+            <li class="treeview">
+                <a href="#">
+                    <i class="fa fa-users"></i> <span> Laporan Kendala </span> <i class="fa fa-angle-left pull-right"></i>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href="{{ url('issue') }}"><i class="fa fa-list"></i> Lihat Laporan </a></li>
+                    <li><a href="{{ url('issue/create') }}"><i class="fa fa-plus"></i> Tambah Laporan</a></li>
+                </ul>
+            </li>
+
+
+            <li class="treeview">
+                <a href="#">
+                    <i class="fa fa-users"></i> <span> User </span> <i class="fa fa-angle-left pull-right"></i>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href="{{ url('user') }}"><i class="fa fa-list"></i> Lihat User </a></li>
+                    <li><a href="{{ url('user/create') }}"><i class="fa fa-plus"></i> Tambah User</a></li>
+                </ul>
+            </li>
         </ul>
     </section>
     <!-- /.sidebar -->

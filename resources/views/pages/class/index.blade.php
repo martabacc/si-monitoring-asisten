@@ -1,52 +1,35 @@
 @extends('layouts.boxed')
 
 @section('title')
-    Desain
+    Kelas
 @stop
 
 @section('content')
 
     @include('partials.flash-overlay-modal')
     <section class="content-header">
-        <h1> Desain </h1>
+        <h1> Kelas </h1>
     </section>
     <section class="content">
-        <div class="row">
-            <div class="col-md-12">
-                <a href="" class="btn btn-primary" title="Tambah">
-                    <span class="glyphicon glyphicon-plus">
-                    </span>&nbsp;&nbsp;Tambah</a>
-            </div>
-        </div>
         <div class="row">
         </div>
         <br>
         <div class="row">
-            <div class="col-md-12">
-                <div class="box">
+            <div class="col-md-10">
+                <div class="box ">
                     <div class="box-header">
-                        <h3 class="box-title">List Desain</h3>
+                        <h3 class="box-title">Daftar Kelas</h3>
                     </div>
-                    <div class="box-body">
-                        <table class="table table-striped table-hover table-bordered" id="table-event">
+                        <table class="table table-striped table-hover table-bordered " id="table-event">
                             <thead>
                             <tr>
-                                <th class="col-md-1 text-center">
+                                <th class='col-md-1 text-center'>
                                     #
                                 </th>
+                                <th class="col-md-5 text-center">
+                                    Mata Kuliah & Kelas
+                                </th>
                                 <th class="col-md-3 text-center">
-                                    Nama Desain
-                                </th>
-                                <th class='col-md-1 text-center'>
-                                    Tipe Desain
-                                </th>
-                                <th class="col-md-2 text-center">
-                                    Desainer
-                                </th>
-                                <th class="col-md-1 text-center">
-                                    Verified
-                                </th>
-                                <th class="col-md-1 text-center">
                                     Menu
                                 </th>
                             </tr>
@@ -55,26 +38,8 @@
                             <?php $i = 1;?>
                             <tr>
                                 <td class="text-center">{{ $i++ }}</td>
-
-                                <td><a href=""
-                                       title="">Lala
-                                    </a>
-                                </td>
-
-                                <td class="text-center">
-                                    Lala 2
-                                </td>
-
-                                <td class="text-center">
-                                    <a href="">
-                                        Lala 3
-                                    </a>
-                                </td>
-
-                                <td class="text-center">
-                                    <span class="label label-warning">Pending</span>
-                                    <span class="label label-danger">Denied</span>
-                                    <span class="label label-success">Approved</span>
+                                <td>
+                                    Struktur Data A
                                 </td>
 
                                 <td class="text-center">
@@ -105,7 +70,6 @@
                             </tbody>
                         </table>
                     </div>
-                </div>
             </div>
         </div>
     </section>
