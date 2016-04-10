@@ -1,45 +1,38 @@
 @extends('layouts.boxed')
 
 @section('title')
-    Laporan Aktivitas
+    Kuisioner
 @stop
 
 @section('content')
-
     @include('partials.flash-overlay-modal')
+
     <section class="content-header">
-        <h1> Laporan Aktivitas </h1>
+        <h1>Kuisioner</h1>
     </section>
     <section class="content">
         <div class="row">
-        </div>
-        <br>
-        <div class="row">
             <div class="col-md-12">
-                <div class="box">
-                    <div class="box-header">
-                        <h3 class="box-title">Daftar Laporan Aktivitas</h3>
-                    </div>
+                <!-- Horizontal Form -->
+                <div class="box box-info">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">List Kuisioner</h3>
+                    </div><!-- /.box-header -->
+                    <div class="box-body">
                         <table class="table table-striped table-hover table-bordered" id="table-event">
                             <thead>
                             <tr>
-                                <th class='text-center'>
+                                <th class="col-md-1 text-center">
                                     #
                                 </th>
-                                <th class="col-md-1 text-center">
-                                    Kelas
+                                <th class="col-md-3 text-center">
+                                    Judul Kuisioner
                                 </th>
                                 <th class="col-md-1 text-center">
-                                    Kehadiran
+                                    Tanggal Pengisian
                                 </th>
-                                <th class='text-center'>
-                                    Judul Laporan
-                                </th>
-                                <th class="col-md-2 text-center">
-                                    Dilaporkan Oleh
-                                </th>
-                                <th class="col-md-2 text-center">
-                                    Dilaporkan Tanggal
+                                <th class="col-md-1 text-center">
+                                    Dibuat oleh
                                 </th>
                                 <th class="col-md-1 text-center">
                                     Menu
@@ -51,24 +44,17 @@
                             <tr>
                                 <td class="text-center">{{ $i++ }}</td>
 
+                                <td><a href=""
+                                       title="">Apakah kamu baik?
+                                    </a>
+                                </td>
+
                                 <td class="text-center">
-                                    Lala
+                                    20 Desember - Januari 1900
                                 </td>
 
-                                <td>
-                                    Lala
-                                </td>
-
-                                <th class="col-md-1 text-center">
-                                    30
-                                </th>
-
-                                <th class="col-md-2 text-center">
+                                <td class="text-center">
                                     John Doe
-                                </th>
-
-                                <td>
-                                    Januari 1900
                                 </td>
 
                                 <td class="text-center">

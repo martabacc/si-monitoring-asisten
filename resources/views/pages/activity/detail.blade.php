@@ -34,6 +34,14 @@
                                     </td>
                                 </tr>
                                 <tr>
+                                    <td class='col-md-1 text-center'>
+                                        <strong>Kehadiran </strong>
+                                    </td>
+                                    <td>
+                                        30 orang
+                                    </td>
+                                </tr>
+                                <tr>
                                     <td class='col-md-2 text-center'>
                                         <strong>Dilaporkan Oleh </strong>
                                     </td>

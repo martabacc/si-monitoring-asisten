@@ -1,14 +1,14 @@
 @extends('layouts.boxed')
 
 @section('title')
-    Laporan Aktivitas
+    Pertanyaan
 @stop
 
 @section('content')
 
     @include('partials.flash-overlay-modal')
     <section class="content-header">
-        <h1> Laporan Aktivitas </h1>
+        <h1> Pertanyaan </h1>
     </section>
     <section class="content">
         <div class="row">
@@ -18,28 +18,19 @@
             <div class="col-md-12">
                 <div class="box">
                     <div class="box-header">
-                        <h3 class="box-title">Daftar Laporan Aktivitas</h3>
+                        <h3 class="box-title">Daftar Pertanyaan</h3>
                     </div>
                         <table class="table table-striped table-hover table-bordered" id="table-event">
                             <thead>
                             <tr>
-                                <th class='text-center'>
+                                <th class='col-md-1 text-center'>
                                     #
                                 </th>
-                                <th class="col-md-1 text-center">
-                                    Kelas
+                                <th class=" text-center">
+                                    Pertanyaan
                                 </th>
-                                <th class="col-md-1 text-center">
-                                    Kehadiran
-                                </th>
-                                <th class='text-center'>
-                                    Judul Laporan
-                                </th>
-                                <th class="col-md-2 text-center">
-                                    Dilaporkan Oleh
-                                </th>
-                                <th class="col-md-2 text-center">
-                                    Dilaporkan Tanggal
+                                <th class="col-md-2">
+                                    Dibuat tanggal
                                 </th>
                                 <th class="col-md-1 text-center">
                                     Menu
@@ -52,20 +43,8 @@
                                 <td class="text-center">{{ $i++ }}</td>
 
                                 <td class="text-center">
-                                    Lala
+                                    Apakah kamu sehat?
                                 </td>
-
-                                <td>
-                                    Lala
-                                </td>
-
-                                <th class="col-md-1 text-center">
-                                    30
-                                </th>
-
-                                <th class="col-md-2 text-center">
-                                    John Doe
-                                </th>
 
                                 <td>
                                     Januari 1900

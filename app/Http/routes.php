@@ -24,6 +24,10 @@ Route::resource('assistant', 'AssistantController');
 Route::resource('subject', 'SubjectController');
 Route::resource('teacher', 'TeacherController');
 
+Route::get('auth/login', function(){
+    return view('pages.auth.login');
+});
+
 Route::group(['middleware' => ['web']], function () {
 	//
 });
