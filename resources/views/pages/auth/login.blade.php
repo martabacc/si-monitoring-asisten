@@ -199,7 +199,7 @@
             </span>
         </button>
     </form>
-    <footer>Repository can be found here <a target="blank" href="https://github.com/ronayumik/si-monitoring-staff/"><strong>here</strong></a></footer>
+    <footer>Repository can be found here <a target="blank" href="https://github.com/ronayumik/si-monitoring-asisten/"><strong>here</strong></a></footer>
     </p>
 </div>
 <script type="text/javascript" src="{{ url('assets/js/jquery-1.11.2.min.js') }}"></script>
