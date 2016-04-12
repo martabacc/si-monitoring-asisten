@@ -173,7 +173,7 @@
     </style>
 
 
-    <script src="{{url('js/prefixfree.min.js')}}"></script>
+    <!-- <script src="{{url('js/prefixfree.min.js')}}"></script> -->
 
 
 </head>
@@ -181,15 +181,25 @@
 <body>
 
 <div class="wrapper">
-    <form class="login">
+    <form class="login" action="{{ route('auth.login') }}" method="POST">
+        @if (count($errors))
+            <div class="col-md-12 alert alert-danger">
+                <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+                </ul>
+            </div>
+        @endif
+        <input type="hidden" name="_token" value="{{ csrf_token() }}">
         <h2 class="title">Log in</h2>
         <h4>NRP/Username</h4>
-        <input type="text" placeholder="NRP / Username" autofocus/>
+        <input name="username" type="text" placeholder="NRP / Username" autofocus/>
 
         <i class="fa fa-user"></i>
 
         <h4> Password </h4>
-        <input type="password" placeholder="Password" />
+        <input name="password" type="password" placeholder="Password" />
         <i class="fa fa-key"></i>
         <a href="#">Forgot your password?</a>
         <button type="submit">
@@ -204,7 +214,7 @@
 </div>
 <script type="text/javascript" src="{{ url('assets/js/jquery-1.11.2.min.js') }}"></script>
 
-<script src="{{url('js/index.js')}}"></script>
+<!-- <script src="{{url('js/index.js')}}"></script> -->
 
 
 
