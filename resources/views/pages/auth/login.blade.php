@@ -192,7 +192,7 @@
         <input type="password" placeholder="Password" />
         <i class="fa fa-key"></i>
         <a href="#">Forgot your password?</a>
-        <button>
+        <button type="submit">
             <i class="spinner"></i>
             <span class="state">
                 <strong>Log in</strong>
