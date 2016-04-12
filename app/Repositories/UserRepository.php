@@ -35,4 +35,14 @@ class UserRepository
     {
         return User::findorfail($id);
     }
+
+    /**
+     * Delete the specified instance
+     * @param  int $id user_id
+     */
+    public function delete($id)
+    {
+        $user = $this->find($id);
+        $user->delete();
+    }
 }

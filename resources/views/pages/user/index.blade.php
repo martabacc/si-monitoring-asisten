@@ -13,7 +13,7 @@
     <section class="content">
         <div class="row">
             <div class="col-md-12">
-                <a href="" class="btn btn-primary" title="Tambah">
+                <a href="{{ route('user.create') }}" class="btn btn-primary" title="Tambah">
                     <span class="glyphicon glyphicon-plus">
                     </span>&nbsp;&nbsp;Tambah</a>
             </div>
@@ -37,11 +37,11 @@
                                 <th class="col-md-3 text-center">
                                     Nama
                                 </th>
+                                <th class='col-md-2 text-center'>
+                                    Username
+                                </th>
                                 <th class='col-md-1 text-center'>
                                     Role
-                                </th>
-                                <th class='col-md-2 text-center'>
-                                    Email
                                 </th>
                                 <th class="col-md-1 text-center">
                                     Menu
@@ -49,27 +49,17 @@
                             </tr>
                             </thead>
                             <tbody>
-                            <?php $i = 1;?>
+                            @foreach($users as $user)
                             <tr>
-                                <td class="text-center">{{ $i++ }}</td>
-
-                                <td>
-                                    Nama
-                                </td>
-
+                                <td class="text-center">{{ $user->id }}</td>
+                                <td class="text-center">{{ $user->name }}</td>
+                                <td class="text-center">{{ $user->username }}</td>
+                                <td class="text-center">{{ $user->privilege->role }}</td>
                                 <td class="text-center">
-                                   Role
-                                </td>
-
-                                <td class="text-center">
-                                    Email
-                                </td>
-
-                                <td class="text-center">
-                                    <a href="" class="btn btn-primary btn-xs"title="Sunting"><span class="glyphicon glyphicon-pencil"></span></a>
-                                    <button type="button" class="btn btn-danger btn-xs" data-toggle="modal" data-target=""><span class="glyphicon glyphicon-remove"></span></button>
+                                    <a href="{{ route('user.edit', $user->id) }}" class="btn btn-primary btn-xs"title="Sunting"><span class="glyphicon glyphicon-pencil"></span></a>
+                                    <button type="button" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#delete_modal_{{ $user->id }}"><span class="glyphicon glyphicon-remove"></span></button>
                                     <!-- Modal -->
-                                    <div class="modal fade" id="" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                    <div class="modal modal-danger fade" id="delete_modal_{{ $user->id }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                                         <div class="modal-dialog">
                                             <div class="modal-content">
                                                 <div class="modal-header">
@@ -80,16 +70,19 @@
                                                     Apakah anda yakin menghapus ?
                                                 </div>
                                                 <div class="modal-footer">
-                                                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-                                                    <a href="">
-                                                        <button type="button" class="btn btn-primary">Ok!!</button>
-                                                    </a>
+                                                    <form action="{{ route('user.destroy', $user->id) }}" method="post">
+                                                        <input name="_method" type="hidden" value="delete">
+                                                        {{ csrf_field() }}
+                                                        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                                                        <button type="submit" class="btn btn-primary">Ok!!</button>
+                                                    </form>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </td>
                             </tr>
+                            @endforeach
                             </tbody>
                         </table>
                     </div>

@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 
 use App\Models\User;
 use App\Repositories\UserRepository;
+use App\Http\Requests\User\CreateUserRequest;
+use App\Http\Requests\User\UpdateUserRequest;
 
 class UserController extends Controller
 {
@@ -35,18 +37,11 @@ class UserController extends Controller
     protected function store(CreateUserRequest $request)
     {
         $data = $request->all();
+        $data['privilege_id'] = 2;
 
-        $userRepository->create($data);
-    }
+        $this->modelRepository->create($data);
 
-    /**
-     * Edit the specified user instance
-     * @param  int $id user_id
-     * @return view edit user form
-     */
-    protected function edit($id)
-    {
-        // TODO
+        return redirect()->back();
     }
 
     /**
@@ -56,7 +51,11 @@ class UserController extends Controller
      */
     protected function update(UpdateUserRequest $request, $id)
     {
-        // TODO
+        $data = $request->all();
+
+        $this->modelRepository->create($data);
+
+        return redirect()->back();
     }
 
     /**
@@ -65,6 +64,8 @@ class UserController extends Controller
      */
     protected function destroy($id)
     {
-        // TODO
+        $this->modelRepository->delete($id);
+
+        return redirect()->back();
     }
 }

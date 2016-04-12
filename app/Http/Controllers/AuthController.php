@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Auth;
+namespace App\Http\Controllers;
 
 use App\Models\User;
 use App\Http\Controllers\Controller;
@@ -16,7 +16,7 @@ class AuthController extends Controller
     /**
      * Set custom login path
      */
-    protected $loginPath = '/auth/login';
+    protected $loginPath = '/login';
 
     /**
      * Set custom view login

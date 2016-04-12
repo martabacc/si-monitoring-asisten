@@ -1,7 +1,7 @@
 @extends('layouts.boxed')
 
 @section('title')
-    Tambah User
+    Edit User
 @stop
 
 @section('content')
@@ -16,28 +16,29 @@
                 <!-- Horizontal Form -->
                 <div class="box box-info">
                     <div class="box-header with-border">
-                        <h3 class="box-title">Tambah User</h3>
+                        <h3 class="box-title">Edit User</h3>
                     </div><!-- /.box-header -->
                     <!-- form start -->
-                    <form action="{{ route('user.store') }}" method="post" class="form-horizontal"
-                        {{ csrf_field() }}>
+                    <form action="{{ route('user.update', $user->id) }}" method="post" class="form-horizontal">
+                        <input name="_method" type="hidden" value="put">
+                        {{ csrf_field() }}
                         <div class="box-body">
                             <div class="form-group">
                                 <label for="username" class="col-sm-3 control-label">Username</label>
                                 <div class="col-sm-8">
-                                    <input type="text" name="username" class="form-control" required>
+                                    <input type="text" name="username" class="form-control" value="{{ $user->username }}" required>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="name" class="col-sm-3 control-label">Nama</label>
                                 <div class="col-sm-8">
-                                    <input type="text" name="name" class="form-control" required>
+                                    <input type="text" name="name" class="form-control" value="{{ $user->name }}" required>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="password" class="col-sm-3 control-label">Password</label>
                                 <div class="col-sm-8">
-                                    <input type="password" name="password" class="form-control" required>
+                                    <input type="password" name="password" class="form-control" value="{{ $user->password }}" required>
                                 </div>
                             </div>
                         </div>

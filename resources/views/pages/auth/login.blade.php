@@ -181,7 +181,7 @@
 <body>
 
 <div class="wrapper">
-    <form class="login" action="{{ route('auth.login') }}" method="POST">
+    <form class="login" action="{{ route('login') }}" method="POST">
         @if (count($errors))
             <div class="col-md-12 alert alert-danger">
                 <ul>

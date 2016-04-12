@@ -53,10 +53,24 @@ abstract class Controller extends BaseController
      */
     protected function show($id)
     {
-        $stringView = 'pages.'.$this->modelName.'.details';
+        $stringView = 'pages.'.$this->modelName.'.detail';
 
-        $instance = $modelRepository->find($id);
+        $instance = $this->modelRepository->find($id);
         
-        return view($stringView)->with($modelName, $instance);
+        return view($stringView)->with($this->modelName, $instance);
+    }
+
+    /**
+     * Edit the specified user instance
+     * @param  int $id model_id
+     * @return view edit_form
+     */
+    protected function edit($id)
+    {
+        $stringView = 'pages.'.$this->modelName.'.edit';
+
+        $instance = $this->modelRepository->find($id);
+        
+        return view($stringView)->with($this->modelName, $instance);
     }
 }
