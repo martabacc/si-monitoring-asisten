@@ -1,14 +1,14 @@
 @extends('layouts.boxed')
 
 @section('title')
-    Laporan Kendala
+    Jadwal
 @stop
 
 @section('content')
     @include('partials.flash-overlay-modal')
 
     <section class="content-header">
-        <h1>Laporan Kendala</h1>
+        <h1>Jadwal</h1>
     </section>
     <section class="content">
         <div class="row">
@@ -16,7 +16,7 @@
                 <!-- Horizontal Form -->
                 <div class="box box-info">
                     <div class="box-header with-border">
-                        <h3 class="box-title">Detail Laporan Kendala</h3>
+                        <h3 class="box-title">Detail Kuisioner</h3>
                     </div><!-- /.box-header -->
                     {{--todo hanya di tampilan desainer--}}
                             <!-- form start -->
@@ -27,44 +27,41 @@
                             <tbody>
                             <tr>
                                 <td class='col-md-3 text-center'>
-                                    <strong> Kegiatan </strong>
+                                    <strong> Nama Jadwal </strong>
                                 </td>
                                 <td>
-                                    Asistensi kelas A
+                                    Sesilab Kelas A
                                 </td>
                             </tr>
                             <tr>
                                 <td class='col-md-2 text-center'>
-                                    <strong>Urgensitas</strong>
+                                    <strong>Kelas</strong>
                                 </td>
                                 <td>
-                                    <span class="label label-warning">Penting</span>
-                                    <span class="label label-danger">Biasa</span>
-                                    <span class="label label-success">Medium</span>
+                                    Struktur Data A
                                 </td>
                             </tr>
                             <tr>
                                 <td class='col-md-2 text-center'>
-                                    <strong>Deskripsi </strong>
+                                    <strong>Jadwal</strong>
                                 </td>
                                 <td>
-                                    Praktikannya kejebak macet semua pak, jadi libur deh
+                                    Setiap Hari Kamis
                                 </td>
                             </tr>
                             <tr>
                                 <td class='col-md-2 text-center'>
-                                    <strong>Solusi </strong>
+                                    <strong>Lokasi</strong>
                                 </td>
                                 <td>
-                                    Dihajar semua yang bikin macet pak
+                                    LP2
                                 </td>
                             </tr>
                             <tr>
                                 <td class='col-md-2 text-center'>
-                                    <strong>Detail Laporan </strong>
+                                    <strong> Dibuat pada </strong>
                                 </td>
                                 <td>
-                                    Dilaporkan oleh John Doe
                                     Pada Januari 1900
                                 </td>
                             </tr>

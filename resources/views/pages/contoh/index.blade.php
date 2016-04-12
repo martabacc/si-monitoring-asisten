@@ -47,7 +47,7 @@
                                 <tr>
                                     <td class="text-center">{{ $i++ }}</td>
 
-                                    <td><a href=""
+                                    <td><a href="" class="text-center"
                                            title="">Lala
                                         </a>
                                     </td>

@@ -37,8 +37,8 @@
                             <tbody>
                             <?php $i = 1;?>
                             <tr>
-                                <td class="text-center">{{ $i++ }}</td>
-                                <td>
+                                <td  class="text-center">{{ $i++ }}</td>
+                                <td class="text-center">
                                     Struktur Data A
                                 </td>
 

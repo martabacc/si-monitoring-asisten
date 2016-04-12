@@ -23,17 +23,17 @@
                         <table class="table table-striped table-hover table-bordered" id="table-event">
                             <thead>
                             <tr>
-                                <th class='text-center'>
+                                <th class='col-md-1 text-center'>
                                     #
                                 </th>
-                                <th class="col-md-1 text-center">
+                                <th class="col-md-2 text-center">
                                     Kelas
+                                </th>
+                                <th class="col-md-2 text-center">
+                                    Judul Laporan
                                 </th>
                                 <th class="col-md-1 text-center">
                                     Kehadiran
-                                </th>
-                                <th class='text-center'>
-                                    Judul Laporan
                                 </th>
                                 <th class="col-md-2 text-center">
                                     Dilaporkan Oleh
@@ -52,11 +52,11 @@
                                 <td class="text-center">{{ $i++ }}</td>
 
                                 <td class="text-center">
-                                    Lala
+                                    Struktur Data A
                                 </td>
 
-                                <td>
-                                    Lala
+                                <td class="text-center">
+                                    Asistensi Modul 1
                                 </td>
 
                                 <th class="col-md-1 text-center">
@@ -80,7 +80,7 @@
                                             <div class="modal-content">
                                                 <div class="modal-header">
                                                     <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                                                    <h4 class="modal-title" id="myModalLabel">Hapus Designer</h4>
+                                                    <h4 class="modal-title" id="myModalLabel">Hapus Laporan Aktivitas</h4>
                                                 </div>
                                                 <div class="modal-body">
                                                     Apakah anda yakin menghapus ?

@@ -1,14 +1,14 @@
 @extends('layouts.boxed')
 
 @section('title')
-    Kuisioner
+    Jadwal
 @stop
 
 @section('content')
     @include('partials.flash-overlay-modal')
 
     <section class="content-header">
-        <h1>Kuisioner</h1>
+        <h1>Jadwal</h1>
     </section>
     <section class="content">
         <div class="row">
@@ -16,7 +16,7 @@
                 <!-- Horizontal Form -->
                 <div class="box box-info">
                     <div class="box-header with-border">
-                        <h3 class="box-title">List Kuisioner</h3>
+                        <h3 class="box-title">List Jadwal</h3>
                     </div><!-- /.box-header -->
                     <div class="box-body">
                         <table class="table table-striped table-hover table-bordered" id="table-event">
@@ -25,14 +25,17 @@
                                 <th class="col-md-1 text-center">
                                     #
                                 </th>
+                                <th class="col-md-2 text-center">
+                                    Jadwal
+                                </th>
+                                <th class="col-md-2 text-center">
+                                    Kelas
+                                </th>
                                 <th class="col-md-3 text-center">
-                                    Judul Kuisioner
+                                    Waktu
                                 </th>
-                                <th class="col-md-1 text-center">
-                                    Tanggal Pengisian
-                                </th>
-                                <th class="col-md-1 text-center">
-                                    Dibuat oleh
+                                <th class="col-md-3 text-center">
+                                    Lokasi
                                 </th>
                                 <th class="col-md-1 text-center">
                                     Menu
@@ -45,16 +48,20 @@
                                 <td class="text-center">{{ $i++ }}</td>
 
                                 <td><a href="" class="text-center"
-                                       title="">Apakah kamu baik?
+                                       title="">Sesilab
                                     </a>
                                 </td>
 
                                 <td class="text-center">
-                                    20 Desember - Januari 1900
+                                    Struktur Data A
                                 </td>
 
                                 <td class="text-center">
-                                    John Doe
+                                    Setiap Kamis Jam 19.00
+                                </td>
+
+                                <td class="text-center">
+                                    Laboratorium Pemrograman 2
                                 </td>
 
                                 <td class="text-center">

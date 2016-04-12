@@ -46,7 +46,7 @@
                                     Apakah kamu sehat?
                                 </td>
 
-                                <td>
+                                <td class="text-center">
                                     Januari 1900
                                 </td>
 

@@ -1,14 +1,16 @@
 @extends('layouts.boxed')
 
 @section('title')
-    Kuisioner
+    Mata Kuliah
 @stop
 
 @section('content')
     @include('partials.flash-overlay-modal')
 
     <section class="content-header">
-        <h1>Kuisioner</h1>
+        <h1>
+            Mata Kuliah
+        </h1>
     </section>
     <section class="content">
         <div class="row">
@@ -16,7 +18,7 @@
                 <!-- Horizontal Form -->
                 <div class="box box-info">
                     <div class="box-header with-border">
-                        <h3 class="box-title">List Kuisioner</h3>
+                        <h3 class="box-title">Daftar Mata Kuliah</h3>
                     </div><!-- /.box-header -->
                     <div class="box-body">
                         <table class="table table-striped table-hover table-bordered" id="table-event">
@@ -26,13 +28,10 @@
                                     #
                                 </th>
                                 <th class="col-md-3 text-center">
-                                    Judul Kuisioner
+                                    Nama Mata Kuliah
                                 </th>
-                                <th class="col-md-1 text-center">
-                                    Tanggal Pengisian
-                                </th>
-                                <th class="col-md-1 text-center">
-                                    Dibuat oleh
+                                <th class="col-md-6 text-center">
+                                    Deskripsi
                                 </th>
                                 <th class="col-md-1 text-center">
                                     Menu
@@ -44,17 +43,12 @@
                             <tr>
                                 <td class="text-center">{{ $i++ }}</td>
 
-                                <td><a href="" class="text-center"
-                                       title="">Apakah kamu baik?
-                                    </a>
+                                <td class="text-center">
+                                    Strutur Data
                                 </td>
 
                                 <td class="text-center">
-                                    20 Desember - Januari 1900
-                                </td>
-
-                                <td class="text-center">
-                                    John Doe
+                                    Ya Belajar Struktur Data
                                 </td>
 
                                 <td class="text-center">
@@ -66,7 +60,7 @@
                                             <div class="modal-content">
                                                 <div class="modal-header">
                                                     <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                                                    <h4 class="modal-title" id="myModalLabel">Hapus Designer</h4>
+                                                    <h4 class="modal-title" id="myModalLabel">Hapus Mata Kuliah</h4>
                                                 </div>
                                                 <div class="modal-body">
                                                     Apakah anda yakin menghapus ?
