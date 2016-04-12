@@ -1,14 +1,14 @@
 @extends('layouts.boxed')
 
 @section('title')
-    Tambah Asisten
+    Tambah User
 @stop
 
 @section('content')
     @include('partials.flash-overlay-modal')
 
     <section class="content-header">
-        <h1>Asisten</h1>
+        <h1>User</h1>
     </section>
     <section class="content">
         <div class="row">
@@ -16,7 +16,7 @@
                 <!-- Horizontal Form -->
                 <div class="box box-info">
                     <div class="box-header with-border">
-                        <h3 class="box-title">Tambah Asisten</h3>
+                        <h3 class="box-title">Tambah User</h3>
                     </div><!-- /.box-header -->
                     {{--todo hanya di tampilan desainer--}}
                             <!-- form start -->
@@ -47,7 +47,7 @@
                             <div class="form-group">
                                 <label for="inputEmail3" class="col-sm-3 control-label">Role / Akun </label>
                                 <div class="col-sm-8">
-                                    <select class="form-control">
+                                    <select class="form-control" name="role">
                                         {{--TODO sesuai di tabel--}}
                                         <option>option 1</option>
                                         <option>option 2</option>
