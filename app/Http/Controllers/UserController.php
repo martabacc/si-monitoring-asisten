@@ -37,11 +37,12 @@ class UserController extends Controller
     protected function store(CreateUserRequest $request)
     {
         $data = $request->all();
+        $data['password'] = bcrypt($data['password']);
         $data['privilege_id'] = 2;
 
         $this->modelRepository->create($data);
 
-        return redirect()->back();
+        return redirect()->back()->withUserAdded('ok');
     }
 
     /**
@@ -51,9 +52,9 @@ class UserController extends Controller
      */
     protected function update(UpdateUserRequest $request, $id)
     {
-        $data = $request->all();
+        $data = $request->only('name', 'password');
 
-        $this->modelRepository->create($data);
+        $this->modelRepository->update($id, $data);
 
         return redirect()->back();
     }

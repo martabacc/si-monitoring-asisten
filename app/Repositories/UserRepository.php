@@ -43,6 +43,22 @@ class UserRepository
     public function delete($id)
     {
         $user = $this->find($id);
+        
         $user->delete();
+    }
+
+    
+    /**
+     * Update the specified instance
+     * @param  int $id user_id
+     * @param  array $data update_data
+     */
+    public function update($id, $data)
+    {
+        $user = $this->find($id);
+
+        $data['password'] = bcrypt($data['password']);
+
+        $user->update($data);
     }
 }

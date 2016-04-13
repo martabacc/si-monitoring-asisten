@@ -14,8 +14,8 @@
         <div class="row">
             <div class="col-md-12">
                 <a href="{{ route('user.create') }}" class="btn btn-primary" title="Tambah">
-                    <span class="glyphicon glyphicon-plus">
-                    </span>&nbsp;&nbsp;Tambah</a>
+                    <span class="glyphicon glyphicon-plus"></span>&nbsp;&nbsp;Tambah
+                </a>
             </div>
         </div>
         <div class="row">

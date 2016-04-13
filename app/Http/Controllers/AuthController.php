@@ -36,7 +36,7 @@ class AuthController extends Controller
     /**
      * Set custom redirection after logout
      */
-    protected $redirectAfterLogout = '/auth/login';
+    protected $redirectAfterLogout = '/login';
 
     /**
      * UserRepository dependency

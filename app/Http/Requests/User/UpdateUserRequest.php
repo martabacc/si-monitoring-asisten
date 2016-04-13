@@ -24,8 +24,24 @@ class UpdateUserRequest extends Request
     public function rules()
     {
         return [
-            'username'  => 'required|min:6',
+            'name'      => 'required|min:6',
             'password'  => 'required|min:6'
+        ];
+    }
+
+    /**
+     * Set custom error messages for predefined rules.
+     *
+     * @return array
+     */
+    public function messages()
+    {
+        return [
+            'name.required'     => 'Name harus diisi.',
+            'name.alphanum'     => 'Name hanya boleh menggunakan huruf dan angka.',
+
+            'password.required' => 'Password harus diisi.',
+            'password.min'      => 'Password minimal menggunakan :min karakter.',
         ];
     }
 }
