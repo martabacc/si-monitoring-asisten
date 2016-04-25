@@ -17,8 +17,8 @@
                 <div class="box box-info">
                     <div class="box-header with-border">
                         <h3 class="box-title">Tambah User</h3>
-                        @if(Session::has('userAdded'))
-                            <h3 class="box box-success">Ok</h3>
+                        @if(session('userAdded'))
+                            <div class="alert alert-success">User added!</div>
                         @endif
                     </div><!-- /.box-header -->
                     <!-- form start -->

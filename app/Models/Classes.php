@@ -19,4 +19,9 @@ class Classes extends Model
     {
         return $this->belongsTo('App\Models\Subject');
     }
+
+    public function activity()
+    {
+        return $this->hasMany('App\Models\Activity');
+    }
 }

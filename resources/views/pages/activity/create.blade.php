@@ -9,6 +9,14 @@
 
     <section class="content-header">
         <h1>Laporan Aktivitas</h1>
+        @if(session('activityAdded'))
+            <br>
+            <div class="alert alert-success">Activity added!</div>
+        @endif
+
+        @if($errors == null)
+            <h1>test</h1>
+        @endif
     </section>
     <section class="content">
         <div class="row">
@@ -18,47 +26,70 @@
                     <div class="box-header with-border">
                         <h3 class="box-title">Tambah Laporan Aktivitas</h3>
                     </div><!-- /.box-header -->
-                    {{--todo hanya di tampilan desainer--}}
-                            <!-- form start -->
-                    {{--Note : Assistant ID dapat dari authentikasi--}}
-                    <form action="" method="post" class="form-horizontal">
+                    <form action="{{ route('activity.store') }}" method="post" class="form-horizontal">
                         <div class="box-body">
                             {{ csrf_field() }}
-                            <div class="form-group">
-                                <label for="inputEmail3" class="col-sm-3 control-label">Judul Laporan</label>
+                            <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
+                                <label for="name" class="col-sm-3 control-label">Judul Laporan</label>
                                 <div class="col-sm-8">
-                                    {{--todo change it into authenticated user--}}
-                                    <input type="text" name="name" class="form-control"
-                                           required>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="inputEmail3" class="col-sm-3 control-label">Kelas</label>
-                                <div class="col-sm-8">
-                                    {{--todo change it into authenticated user--}}
-                                    <input type="text" name="class" class="form-control"
-                                           required>
+                                    <input type="text" name="name" class="form-control" value="{{ old('name') }}" required>
+                                    @if($errors->has('name'))
+                                        <span class="help-block">
+                                            <strong>{{ $errors->first('name') }}</strong>
+                                        </span>
+                                    @endif
                                 </div>
                             </div>
 
-                            <div class="form-group">
-                                <label for="inputEmail3" class="col-sm-3 control-label">Durasi</label>
+                            <div class="form-group{{ $errors->has('classes') ? ' has-error' : '' }}">
+                                <label for="classes" class="col-sm-3 control-label">Kelas</label>
                                 <div class="col-sm-8">
-                                    <input type="number" name="duration" class="form-control" required>
+                                    <select class="form-control" name="class_id">
+                                        @foreach($classes as $kelas)
+                                            <option value="{{ $kelas->id }}">{{ $kelas->subject->name.'-'.$kelas->class  }}</option>
+                                        @endforeach
+                                    </select>
+                                    @if($errors->has('classes'))
+                                        <span class="help-block">
+                                            <strong>{{ $errors->first('classes') }}</strong>
+                                        </span>
+                                    @endif
                                 </div>
                             </div>
 
-                            <div class="form-group">
-                                <label for="inputEmail3" class="col-sm-3 control-label">Tanggal</label>
+                            <div class="form-group{{ $errors->has('date') ? ' has-error' : '' }}">
+                                <label for="date" class="col-sm-3 control-label">Tanggal</label>
                                 <div class="col-sm-8">
-                                    <input type="date" name="date" class="form-control" required>
+                                    <input type="date" name="date" class="form-control" value="{{ old('date') }}" required>
+                                    @if($errors->has('date'))
+                                        <span class="help-block">
+                                            <strong>{{ $errors->first('date') }}</strong>
+                                        </span>
+                                    @endif
                                 </div>
                             </div>
 
-                            <div class="form-group">
-                                <label for="inputEmail3" class="col-sm-3 control-label">Catatan </label>
+                            <div class="form-group{{ $errors->has('duration') ? ' has-error' : '' }}">
+                                <label for="duration" class="col-sm-3 control-label">Durasi</label>
                                 <div class="col-sm-8">
-                                    <textarea class="form-control" rows="3" name="notes" required></textarea>
+                                    <input type="number" name="duration" class="form-control" value="{{ old('duration') }}" required>
+                                    @if($errors->has('duration'))
+                                        <span class="help-block">
+                                            <strong>{{ $errors->first('duration') }}</strong>
+                                        </span>
+                                    @endif
+                                </div>
+                            </div>
+
+                            <div class="form-group{{ $errors->has('notes') ? ' has-error' : '' }}">
+                                <label for="notes" class="col-sm-3 control-label">Catatan </label>
+                                <div class="col-sm-8">
+                                    <textarea class="form-control" rows="3" name="notes" required>{{ old('notes') }}</textarea>
+                                    @if($errors->has('notes'))
+                                        <span class="help-block">
+                                            <strong>{{ $errors->first('notes') }}</strong>
+                                        </span>
+                                    @endif
                                 </div>
                             </div>
 

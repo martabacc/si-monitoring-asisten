@@ -15,6 +15,7 @@ class CreateActivityTable extends Migration
         Schema::create('activities', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('assistant_id')->unsigned();
+            $table->integer('class_id')->unsigned();
             $table->string('name');
             $table->date('date');
             $table->integer('duration')->unsigned();
@@ -25,6 +26,10 @@ class CreateActivityTable extends Migration
             $table->foreign('assistant_id')
                 ->references('user_id')
                 ->on('assistants');
+
+            $table->foreign('class_id')
+                ->references('id')
+                ->on('classes');
         });
 
         Schema::create('issues', function (Blueprint $table) {

@@ -24,6 +24,7 @@ abstract class Controller extends BaseController
     
     /**
      * Default index view
+     * 
      * @return view
      */
     protected function index()
@@ -37,6 +38,7 @@ abstract class Controller extends BaseController
 
     /**
      * Default create form
+     * 
      * @return view
      */
     protected function create()
@@ -48,6 +50,7 @@ abstract class Controller extends BaseController
 
     /**
      * Find an intance of the model
+     * 
      * @param  int  $id model_id
      * @return view
      */
@@ -62,6 +65,7 @@ abstract class Controller extends BaseController
 
     /**
      * Edit the specified user instance
+     * 
      * @param  int $id model_id
      * @return view edit_form
      */

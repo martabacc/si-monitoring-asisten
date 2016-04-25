@@ -12,7 +12,7 @@ class Activity extends Model
     protected $dates = ['deleted_at'];
     
     protected $fillable = [
-        'assistant_id', 'name', 'date', 'duration', 'notes',
+        'assistant_id', 'class_id', 'name', 'date', 'duration', 'notes',
     ];
 
     public function assistant()
@@ -23,5 +23,10 @@ class Activity extends Model
     public function presence()
     {
         return $this->hasMany('App\Models\Presence');
+    }
+
+    public function classes()
+    {
+        return $this->belongsTo('App\Models\Classes', 'class_id', 'id');
     }
 }

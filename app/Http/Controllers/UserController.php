@@ -42,11 +42,12 @@ class UserController extends Controller
 
         $this->modelRepository->create($data);
 
-        return redirect()->back()->withUserAdded('ok');
+        return redirect()->back()->with('userAdded', 'ok');
     }
 
     /**
      * Update the specified user instance in database
+     * 
      * @param  UpdateUserRequest $request
      * @return view updatedUser
      */
@@ -61,12 +62,13 @@ class UserController extends Controller
 
     /**
      * Delete the spcified user instance from database
+     * 
      * @param  int $id user_id
      */
     protected function destroy($id)
     {
         $this->modelRepository->delete($id);
 
-        return redirect()->back();
+        return redirect()->back()->with('userDeleted', 'ok');
     }
 }

@@ -3,67 +3,60 @@
 namespace App\Repositories;
 
 use DB;
-use App\Models\User;
+use App\Models\Activity;
 
-class UserRepository
+class ActivityRepository
 {
     /**
      * Create new instance for given input
-     * 
      * @param  array $input
-     * @return User
+     * @return Activity
      */
     public function create($input)
     {
-        return User::create($input);
+        return Activity::create($input);
     }
 
     /**
      * Get all instances
-     * 
      * @return Collection
      */
     public function findAll()
     {
-        return User::all();
+        return Activity::all();
     }
 
     /**
      * Find the specified instance
-     * 
-     * @param  int $id user_id
-     * @return User
+     * @param  int $id activity_id
+     * @return Activity
      */
     public function find($id)
     {
-        return User::findorfail($id);
+        return Activity::findorfail($id);
     }
 
     /**
      * Delete the specified instance
-     * 
-     * @param  int $id user_id
+     * @param  int $id activity_id
      */
     public function delete($id)
     {
-        $user = $this->find($id);
+        $activity = $this->find($id);
         
-        $user->delete();
+        $activity->delete();
     }
 
     
     /**
      * Update the specified instance
-     * 
-     * @param  int $id user_id
+     * @param  int $id activity_id
      * @param  array $data update_data
      */
     public function update($id, $data)
     {
-        $user = $this->find($id);
+        $activity = $this->find($id);
 
-        $data['password'] = bcrypt($data['password']);
-
-        $user->update($data);
+        $activity->update($data);
     }
 }
