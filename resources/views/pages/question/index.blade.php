@@ -12,6 +12,11 @@
     </section>
     <section class="content">
         <div class="row">
+            <div class="col-md-12">
+                <a href="{{ route('question.create') }}" class="btn btn-primary" title="Tambah">
+                    <span class="glyphicon glyphicon-plus"></span>&nbsp;&nbsp;Tambah
+                </a>
+            </div>
         </div>
         <br>
         <div class="row">

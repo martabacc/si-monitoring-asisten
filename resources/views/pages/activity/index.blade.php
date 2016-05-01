@@ -61,7 +61,7 @@
                             </tr>
                             </thead>
                             <tbody>
-                            @foreach ($activitys as $activity)
+                            @foreach ($activities as $activity)
                                 <tr>
                                     <td class="text-center">{{ $activity->id }}</td>
                                     <td class="text-center">{{ $activity->name }}</td>

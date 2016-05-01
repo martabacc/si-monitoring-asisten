@@ -10,4 +10,5 @@ class AssistantController extends Controller
 {
     public $modelName = 'assistant';
 
+
 }

@@ -38,6 +38,16 @@ class ActivityController extends Controller
         $this->classRepository = $classRepository;
     }
 
+
+    protected function index()
+    {
+        $data['activities'] = $this->classRepository->findAll();
+
+        $stringView = 'pages.'.$this->modelName.'.index';
+
+        return view($stringView, $data);
+    }
+
     protected function create()
     {
         $classes = $this->classRepository->findAll();
@@ -47,11 +57,6 @@ class ActivityController extends Controller
         return view($stringView, compact('classes'));
     }
 
-    /**
-     * Create a new activity instance
-     *
-     * @param  CreateActivityRequest  $request
-     */
     protected function store(CreateActivityRequest $request)
     {
         $data = $request->all();
@@ -62,12 +67,6 @@ class ActivityController extends Controller
         return redirect()->back()->with('activityAdded', 'ok');
     }
 
-    /**
-     * Update the specified user instance in database
-     * 
-     * @param  UpdateActivityRequest $request
-     * @return view updatedActivity
-     */
     protected function update(UpdateActivityRequest $request, $id)
     {
         $data = $request->only('class_id', 'name', 'date', 'duration', 'notes');
