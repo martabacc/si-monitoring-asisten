@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="dataSourceStorageLocal">
+    <data-source name="MySQL - sima@localhost" uuid="e88ec0d0-bd06-4d4b-a54a-38528f1f2a53">
+      <secret-storage>master_key</secret-storage>
+      <user-name>root</user-name>
+      <schema-pattern>sima.*</schema-pattern>
+      <default-schemas>sima.*</default-schemas>
+    </data-source>
+  </component>
+</project>

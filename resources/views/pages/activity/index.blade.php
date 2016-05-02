@@ -74,9 +74,9 @@
 
                                     <td class="text-center">
                                         <a href="{{ route('activity.edit', $activity->id) }}" class="btn btn-primary btn-xs"title="Sunting"><span class="glyphicon glyphicon-pencil"></span></a>
-                                        <button type="button" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#delete_activity_{{ $activity->id }}"><span class="glyphicon glyphicon-remove"></span></button>
+                                        <button type="button" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#modal{{$activity->id}}"><span class="glyphicon glyphicon-remove"></span></button>
                                         <!-- Modal -->
-                                        <div class="modal fade" id="delete_activity_{{ $activity->id }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                        <div class="modal fade" id="modal{{$activity->id}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                                             <div class="modal-dialog">
                                                 <div class="modal-content">
                                                     <div class="modal-header">
@@ -106,20 +106,20 @@
                     </div>
                 </div>
             </div>
-        </div>
     </section>
 @stop
 
 @section('foot')
 
-    <script src="{{ url('plugins/datatables/jquery.dataTables.min.js') }}"></script>
-    <script src="{{ url('plugins/datatables/dataTables.bootstrap.min.js') }}"></script>
+
+    <script src="{{ url('assets/adminlte/plugins/datatables/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ url('assets/adminlte/plugins/datatables/dataTables.bootstrap.min.js') }}"></script>
     <script event="text/javascript">
         $(document).ready(function(){
 //              pagination
             $('#table-event').DataTable({
                 "paging": true,
-                "searching": true
+                "searching": true,
             });
             $('#flash-overlay-modal').modal();
         });

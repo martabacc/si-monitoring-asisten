@@ -10,4 +10,8 @@ class QuestionnaireController extends Controller
 {
     public $modelName = 'questionnaire';
 
+    public function getAnswer($id){
+        return view('pages.answer.index')->with('items', \App\Models\Answer::where('questionnaire_id',$id)->get() );
+    }
+
 }

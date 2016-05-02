@@ -22,7 +22,6 @@ Route::group(['middleware' => ['web']], function() {
 
     Route::group(['middleware' => 'auth'], function() {
     	Route::resource('activity', 'ActivityController');
-        Route::resource('class', 'ClassController');
         Route::resource('issue', 'IssueController');
         Route::resource('presence', 'PresenceController');
         Route::resource('privilege', 'PrivilegeController');
@@ -31,7 +30,17 @@ Route::group(['middleware' => ['web']], function() {
         Route::resource('schedule', 'ScheduleController');
         Route::resource('user', 'UserController');
         Route::resource('assistant', 'AssistantController');
-        Route::resource('subject', 'SubjectController');
+        Route::resource('class', 'ClassController');
         Route::resource('teacher', 'TeacherController');
+        Route::get('questionnaire/answer/{id}', 'QuestionnaireController@getAnswer');
+
+        Route::group(['prefix'=>'subject'], function(){
+            Route::get('/', 'SubjectController@index');
+            Route::get('create', 'SubjectController@create');
+            Route::post('create', 'SubjectController@store');
+            Route::get('edit/{$id}', 'SubjectController@edit');
+            Route::post('edit/{$id}', 'SubjectController@update');
+            Route::get('delete/{$id}', 'SubjectController@destroy');
+        });
     });
 });

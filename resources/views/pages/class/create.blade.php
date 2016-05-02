@@ -21,17 +21,16 @@
                     {{--todo hanya di tampilan desainer--}}
                             <!-- form start -->
                     {{--Note : Assistant ID dapat dari authentikasi--}}
-                    <form action="" method="post" class="form-horizontal">
+                    <form action="{{ route('class.store') }}" method="post" class="form-horizontal">
                         <div class="box-body">
                             {{ csrf_field() }}
                             <div class="form-group">
                                 <label for="inputEmail3" class="col-sm-3 control-label">Mata Kuliah</label>
                                 <div class="col-sm-8">
-                                    <select class="form-control select2" >
-                                        <option selected="selected">Alabama</option>
-                                        <option>Alaska</option>
-                                        <option>California</option>
-                                        <option>Delaware</option>
+                                    <select class="form-control select2" name="subject_id">
+                                        @foreach($subjects as $subject)
+                                        <option value="{{ $subject->id }}"> {{$subject->name}} </option>
+                                        @endforeach
                                     </select>
                                 </div>
                             </div>
@@ -61,7 +60,7 @@
 
 @stop
 @section('custom_foot')
-    <script src="{{ url('plugins/select2/select2.full.min.js') }}"></script>
+    <script src="{{ url('assets/adminlte/plugins/select2/select2.full.min.js') }}"></script>
     <script type="text/javascript">
         $(document).ready(function(){
             $(".select2").select2();

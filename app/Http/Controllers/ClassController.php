@@ -5,10 +5,13 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
+use App\Repositories\ActivityRepository;
+use App\Repositories\ClassRepository;
+
 
 class ClassController extends Controller
 {
-    public $modelName = 'class';;
+    public $modelName = 'class';
 
     /**
      * ClassRepository dependency
@@ -47,27 +50,28 @@ class ClassController extends Controller
     protected function create()
     {
         $classes = $this->classRepository->findAll();
+        $subject =  \App\Models\Subject::all();
 
         $stringView = 'pages.'.$this->modelName.'.create';
 
-        return view($stringView, compact('classes'));
+        return view($stringView, compact('classes'))->with('subjects', $subject);
     }
 
-    protected function store(CreateActivityRequest $request)
+    protected function store(Request $request)
     {
         $data = $request->all();
         $data['assistant_id'] = \Auth::user()->id;
 
-        $this->modelRepository->create($data);
+        \App\Models\Classes::create($data);
 
-        return redirect()->back()->with('activityAdded', 'ok');
+        return route('class.index')->with('activityAdded', 'ok');
     }
 
-    protected function update(UpdateActivityRequest $request, $id)
+    protected function update(Request $request, $id)
     {
         $data = $request->only('class_id', 'name', 'date', 'duration', 'notes');
 
-        $this->modelRepository->update($id, $data);
+        \App\Models\Classes::update($id, $data);
 
         return redirect()->back()->with('activityUpdated', 'ok');
     }
@@ -79,9 +83,9 @@ class ClassController extends Controller
      */
     protected function destroy($id)
     {
-        $this->modelRepository->delete($id);
+        \App\Models\Classes::delete($id);
 
-        return redirect()->back()->with('activityDeleted', 'ok');
+        return route('class.index')->with('activityDeleted', 'ok');
     }
 
     /**
