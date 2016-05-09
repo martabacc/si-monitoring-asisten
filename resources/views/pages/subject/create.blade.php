@@ -21,7 +21,7 @@
                     {{--todo hanya di tampilan desainer--}}
                             <!-- form start -->
                     {{--Note : Assistant ID dapat dari authentikasi--}}
-                    <form action="{{ url('subject/store') }}" method="post" class="form-horizontal">
+                    <form action="" method="post" class="form-horizontal">
                         <div class="box-body">
                             {{ csrf_field() }}
                             <div class="form-group">

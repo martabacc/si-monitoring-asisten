@@ -60,7 +60,7 @@
                             <div class="form-group{{ $errors->has('date') ? ' has-error' : '' }}">
                                 <label for="date" class="col-sm-3 control-label">Tanggal</label>
                                 <div class="col-sm-8">
-                                    <input type="date" name="date" class="form-control" value="{{ old('date') }}" required>
+                                    <input type="date" id='datepicker' name="date" class="form-control" value="{{ old('date') }}" required>
                                     @if($errors->has('date'))
                                         <span class="help-block">
                                             <strong>{{ $errors->first('date') }}</strong>
@@ -110,8 +110,13 @@
 
 @stop
 @section('custom_foot')
+	<script type='text/javascript' src={{ url('assets/adminlte/plugins/datepicker/bootstrap-datepicker.js') }}></script>
+	
     <script type="text/javascript">
         $(function(){
+			$('#datepicker').datepicker({
+			  autoclose: true
+			});
         });
     </script>
 @stop
