@@ -77,9 +77,9 @@
 
 @stop
 @section('custom_foot')
-    <script src="{{ url('assets/adminlte/plugins/datatables/jquery.dataTables.min.js') }}"></script>
-    <script src="{{ url('assets/adminlte/plugins/datatables/dataTables.bootstrap.min.js') }}"></script>
-    <script src="{{ url('assets/adminlte/plugins/select2/select2.full.min.js') }}"></script>
+    <script src="{{ url('plugins/datatables/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ url('plugins/datatables/dataTables.bootstrap.min.js') }}"></script>
+    <script src="{{ url('plugins/select2/select2.full.min.js') }}"></script>
     <script type="text/javascript">
         $(function(){
 

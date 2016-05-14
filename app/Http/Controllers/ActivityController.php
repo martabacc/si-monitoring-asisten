@@ -41,7 +41,7 @@ class ActivityController extends Controller
 
     protected function index()
     {
-        $data['activities'] = $this->modelRepository->findAll();
+        $data['activities'] = $this->classRepository->findAll();
 
         $stringView = 'pages.'.$this->modelName.'.index';
 
@@ -67,12 +67,6 @@ class ActivityController extends Controller
         return redirect()->back()->with('activityAdded', 'ok');
     }
 
-    /**
-     * Update the specified user instance in database
-     *
-     * @param  UpdateActivityRequest $request
-     * @return view updatedActivity
-     */
     protected function update(UpdateActivityRequest $request, $id)
     {
         $data = $request->only('class_id', 'name', 'date', 'duration', 'notes');

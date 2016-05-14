@@ -60,18 +60,18 @@
                                 <td class="text-center">{{ $user->privilege->role }}</td>
                                 <td class="text-center">
                                     <a href="{{ route('user.edit', $user->id) }}" class="btn btn-primary btn-xs"title="Sunting"><span class="glyphicon glyphicon-pencil"></span></a>
-                                    <button type="button" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#modal{{$user->id}}"><span class="glyphicon glyphicon-remove"></span></button>
+                                    <button type="button" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#delete_modal_{{ $user->id }}"><span class="glyphicon glyphicon-remove"></span></button>
                                     <!-- Modal -->
-                                    <div class="modal fade" id="modal{{$user->id}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                    <div class="modal modal-danger fade" id="delete_modal_{{ $user->id }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                                         <div class="modal-dialog">
                                             <div class="modal-content">
                                                 <div class="modal-header">
                                                     <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                                                    <h4 class="modal-title" id="myModalLabel">Hapus User</h4>
+                                                    <h4 class="modal-title" id="myModalLabel">Hapus Designer</h4>
                                                 </div>
                                                 <div class="modal-body">
-                                                    Apakah anda yakin menghapus user <strong>{{ $user->name }} ?</strong>
-                                                </div><strong>
+                                                    Apakah anda yakin menghapus ?
+                                                </div>
                                                 <div class="modal-footer">
                                                     <form action="{{ route('user.destroy', $user->id) }}" method="post">
                                                         <input name="_method" type="hidden" value="delete">

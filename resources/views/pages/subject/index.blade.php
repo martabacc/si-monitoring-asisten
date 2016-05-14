@@ -15,22 +15,11 @@
     <section class="content">
         <div class="row">
             <div class="col-md-12">
-                <a href="{{ url('subject/create') }}" class="btn btn-primary" title="Tambah">
+                <a href="{{ route('subject.create') }}" class="btn btn-primary" title="Tambah">
                     <span class="glyphicon glyphicon-plus"></span>&nbsp;&nbsp;Tambah
                 </a>
             </div>
         </div>
-
-        @if(session('errors'))
-            <br>
-            <div class="alert alert-warning">{{ $session('errors') }}</div>
-        @elseif(session('success'))
-            <br>
-            <div class="alert alert-success">{{ $session('success') }}</div>
-        @endif
-        <br>
-
-
         <div class="row">
             <div class="col-md-12">
                 <!-- Horizontal Form -->
@@ -58,23 +47,22 @@
                             </thead>
                             <tbody>
                             <?php $i = 1;?>
-                            @foreach($items as $item)
                             <tr>
                                 <td class="text-center">{{ $i++ }}</td>
 
                                 <td class="text-center">
-                                    {{$item->name}}
+                                    Strutur Data
                                 </td>
 
                                 <td class="text-center">
-                                    {{$item->description}}
+                                    Ya Belajar Struktur Data
                                 </td>
 
                                 <td class="text-center">
-                                    <a href="{{ url('subject/update/'.$item->id) }}"class="btn btn-primary btn-xs"title="Sunting"><span class="glyphicon glyphicon-pencil"></span></a>
-                                    <button type="button" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#modal{{$item->id}}"><span class="glyphicon glyphicon-remove"></span></button>
+                                    <a href="" class="btn btn-primary btn-xs"title="Sunting"><span class="glyphicon glyphicon-pencil"></span></a>
+                                    <button type="button" class="btn btn-danger btn-xs" data-toggle="modal" data-target=""><span class="glyphicon glyphicon-remove"></span></button>
                                     <!-- Modal -->
-                                    <div class="modal fade" id="modal{{$item->id}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                    <div class="modal fade" id="" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                                         <div class="modal-dialog">
                                             <div class="modal-content">
                                                 <div class="modal-header">
@@ -86,8 +74,8 @@
                                                 </div>
                                                 <div class="modal-footer">
                                                     <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-                                                    <a href="{{ url('subject/delete', $item->id) }}">
-                                                        <button type="button" class="btn btn-primary">Hapus</button>
+                                                    <a href="">
+                                                        <button type="button" class="btn btn-primary">Ok!!</button>
                                                     </a>
                                                 </div>
                                             </div>
@@ -95,7 +83,6 @@
                                     </div>
                                 </td>
                             </tr>
-                            @endforeach
                             </tbody>
                         </table>
                     </div>
@@ -107,8 +94,8 @@
 
 @section('foot')
 
-    <script src="{{ url('assets/adminlte/plugins/datatables/jquery.dataTables.min.js') }}"></script>
-    <script src="{{ url('assets/adminlte/plugins/datatables/dataTables.bootstrap.min.js') }}"></script>
+    <script src="{{ url('plugins/datatables/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ url('plugins/datatables/dataTables.bootstrap.min.js') }}"></script>
     <script event="text/javascript">
         $(document).ready(function(){
 //              pagination

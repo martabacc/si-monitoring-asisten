@@ -20,7 +20,7 @@
         </div>
         <br>
         <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-10">
                 <div class="box ">
                     <div class="box-header">
                         <h3 class="box-title">Daftar Kelas</h3>
@@ -41,30 +41,29 @@
                             </thead>
                             <tbody>
                             <?php $i = 1;?>
-                            @foreach($items as $item)
                             <tr>
                                 <td  class="text-center">{{ $i++ }}</td>
                                 <td class="text-center">
-                                    {{$item->subject->name . ' ' . $item->class}}
+                                    Struktur Data A
                                 </td>
 
                                 <td class="text-center">
-                                    <a href="{{ url('class/update', $item->id) }}" class="btn btn-primary btn-xs"title="Sunting"><span class="glyphicon glyphicon-pencil"></span></a>
-                                        <button type="button" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#modal{{$item->id}}"><span class="glyphicon glyphicon-remove"></span></button>
-                                        <!-- Modal -->
-                                        <div class="modal fade" id="modal{{$item->id}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                                            <div class="modal-dialog">
+                                    <a href="" class="btn btn-primary btn-xs"title="Sunting"><span class="glyphicon glyphicon-pencil"></span></a>
+                                    <button type="button" class="btn btn-danger btn-xs" data-toggle="modal" data-target=""><span class="glyphicon glyphicon-remove"></span></button>
+                                    <!-- Modal -->
+                                    <div class="modal fade" id="" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                        <div class="modal-dialog">
                                             <div class="modal-content">
                                                 <div class="modal-header">
                                                     <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                                                    <h4 class="modal-title" id="myModalLabel">Hapus Kelas</h4>
+                                                    <h4 class="modal-title" id="myModalLabel">Hapus Designer</h4>
                                                 </div>
                                                 <div class="modal-body">
                                                     Apakah anda yakin menghapus ?
                                                 </div>
                                                 <div class="modal-footer">
                                                     <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-                                                    <a href="{{ route('class.destroy', $item->id) }}">
+                                                    <a href="">
                                                         <button type="button" class="btn btn-primary">Ok!!</button>
                                                     </a>
                                                 </div>
@@ -73,7 +72,6 @@
                                     </div>
                                 </td>
                             </tr>
-                            @endforeach
                             </tbody>
                         </table>
                     </div>
@@ -84,13 +82,14 @@
 
 @section('foot')
 
-    <script src="{{ url('assets/adminlte/plugins/datatables/jquery.dataTables.min.js') }}"></script>
-    <script src="{{ url('assets/adminlte/plugins/datatables/dataTables.bootstrap.min.js') }}"></script>
+    <script src="{{ url('plugins/datatables/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ url('plugins/datatables/dataTables.bootstrap.min.js') }}"></script>
     <script event="text/javascript">
         $(document).ready(function(){
 //              pagination
             $('#table-event').DataTable({
-                "paging": true
+                "paging": true,
+                "searching": true
             });
             $('#flash-overlay-modal').modal();
         });

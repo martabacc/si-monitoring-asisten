@@ -29,11 +29,6 @@ class UserController extends Controller
         $this->modelRepository = $userRepository;
     }
 
-    protected function index()
-    {
-        return view('pages.user.index')->with('users', \App\Models\User::all());
-    }
-
     /**
      * Create a new user instance after a valid registration.
      *
@@ -75,16 +70,5 @@ class UserController extends Controller
         $this->modelRepository->delete($id);
 
         return redirect()->back()->with('userDeleted', 'ok');
-    }
-
-    protected function edit($id)
-    {
-        $stringView = 'pages.'.$this->modelName.'.edit';
-
-
-        $instance = $this->modelRepository->find($id);
-
-        return view($stringView)
-            ->with($this->modelName, $instance);
     }
 }

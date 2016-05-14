@@ -12,6 +12,9 @@ abstract class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
+    /**
+     * Controller's model name
+     */
     protected $modelName;
 
     /**
@@ -62,6 +65,12 @@ abstract class Controller extends BaseController
 //            ->with($this->modelName, $instance);
     }
 
+    /**
+     * Edit the specified user instance
+     * 
+     * @param  int $id model_id
+     * @return view edit_form
+     */
     protected function edit($id)
     {
         $stringView = 'pages.'.$this->modelName.'.edit';
@@ -71,9 +80,4 @@ abstract class Controller extends BaseController
         return view($stringView);
 //            ->with($this->modelName, $instance);
     }
-
-    protected function findTheInstance( $model , $id ){
-        return $model->findOrFail($id);
-    }
-
 }
