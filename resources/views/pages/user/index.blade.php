@@ -18,8 +18,6 @@
                 </a>
             </div>
         </div>
-        <div class="row">
-        </div>
         <br>
         @if (session('userDeleted'))
             <div class="alert alert-danger">User deleted!</div>

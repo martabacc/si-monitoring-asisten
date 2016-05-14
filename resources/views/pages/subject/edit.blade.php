@@ -1,17 +1,17 @@
 @extends('layouts.boxed')
 
 @section('title')
-    Kelas
+    Mata Kuliah
 @stop
 
 @section('content')
     @include('partials.flash-overlay-modal')
 
     <section class="content-header">
-        <h1>Kelas</h1>
-        @if(session('classAdded'))
+        <h1>Mata Kuliah</h1>
+        @if(session('subjectUpdated'))
             <br>
-            <div class="alert alert-success">Class added!</div>
+            <div class="alert alert-success">Subject updated!</div>
         @endif
     </section>
     <section class="content">
@@ -20,36 +20,37 @@
                 <!-- Horizontal Form -->
                 <div class="box box-info">
                     <div class="box-header with-border">
-                    <h3 class="box-title">Tambah Kelas</h3>
-                    <form action="{{ route('class.store') }}" method="post" class="form-horizontal">
+                        <h3 class="box-title">Edit Mata Kuliah</h3>
+                    </div><!-- /.box-header -->
+                    <form action="{{ route('subject.update', $subject->id) }}" method="post" class="form-horizontal">
                         <div class="box-body">
+                            <input type="hidden" name="_method" value="put">
                             {{ csrf_field() }}
                             <div class="form-group">
-                                <label for="inputEmail3" class="col-sm-3 control-label">Mata Kuliah</label>
+                                <label for="inputEmail3" class="col-sm-3 control-label">Nama</label>
                                 <div class="col-sm-8">
-                                    <select class="form-control select2" name="subject_id">
-                                        @foreach($subjects as $subject)
-                                            <option value="{{ $subject->id }}">{{ $subject->name  }}</option>
-                                        @endforeach
-                                    </select>
-                                    @if($errors->has('subject_id'))
+                                    <input type="text" name="name" class="form-control" value="{{ $subject->name }}" required>
+                                    @if($errors->has('name'))
                                         <span class="text-danger">
-                                            <strong>{{ $errors->first('subject_id') }}</strong>
+                                            <strong>{{ $errors->first('name') }}</strong>
                                         </span>
                                     @endif
                                 </div>
+
                             </div>
+
                             <div class="form-group">
-                                <label for="inputEmail3" class="col-sm-3 control-label">Nama Kelas</label>
+                                <label for="inputEmail3" class="col-sm-3 control-label">Deskripsi </label>
                                 <div class="col-sm-8">
-                                    <input type="text" name="class" class="form-control" value="{{ old('class') }}" required>
-                                    @if($errors->has('class'))
+                                    <textarea class="form-control" rows="3" name="description" required>{{ $subject->description }}</textarea>
+                                    @if($errors->has('description'))
                                         <span class="text-danger">
-                                            <strong>{{ $errors->first('class') }}</strong>
+                                            <strong>{{ $errors->first('description') }}</strong>
                                         </span>
                                     @endif
                                 </div>
                             </div>
+
                         </div><!-- /.box-body -->
                         <div class="box-footer">
                             <div class="col-sm-4">
@@ -67,9 +68,12 @@
 
 @stop
 @section('custom_foot')
+    <script src="{{ url('plugins/datatables/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ url('plugins/datatables/dataTables.bootstrap.min.js') }}"></script>
     <script src="{{ url('plugins/select2/select2.full.min.js') }}"></script>
     <script type="text/javascript">
-        $(document).ready(function(){
+        $(function(){
+
             $(".select2").select2();
         });
     </script>

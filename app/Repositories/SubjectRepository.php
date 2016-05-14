@@ -42,7 +42,7 @@ class SubjectRepository
      */
     public function delete($id)
     {
-        $subjecr = $this->find($id);
+        $subject = $this->find($id);
         
         $subject->delete();
     }

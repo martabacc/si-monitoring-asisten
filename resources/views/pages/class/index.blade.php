@@ -19,6 +19,9 @@
             </div>
         </div>
         <br>
+        @if (session('classDeleted'))
+            <div class="alert alert-danger">User deleted!</div>
+        @endif
         <div class="row">
             <div class="col-md-10">
                 <div class="box ">

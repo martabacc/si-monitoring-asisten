@@ -23,7 +23,7 @@ class ClassController extends Controller
     protected $modelRepository;
 
     /**
-     * Create a new Activity controller instance.
+     * Create a new Class controller instance.
      *
      * @param   ClassRepository Repository to access App\Models\Classes
      * @return  void
@@ -85,7 +85,7 @@ class ClassController extends Controller
     {
         $this->modelRepository->delete($id);
 
-        return redirect()->back()->with('activityDeleted', 'ok');
+        return redirect()->back()->with('classDeleted', 'ok');
     }
 
     /**
