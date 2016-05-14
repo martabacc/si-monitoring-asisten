@@ -9,9 +9,9 @@
 
     <section class="content-header">
         <h1>Kelas</h1>
-        @if(session('classAdded'))
+        @if(session('classUpdated'))
             <br>
-            <div class="alert alert-success">Class added!</div>
+            <div class="alert alert-success">Class updated!</div>
         @endif
     </section>
     <section class="content">
@@ -20,16 +20,17 @@
                 <!-- Horizontal Form -->
                 <div class="box box-info">
                     <div class="box-header with-border">
-                    <h3 class="box-title">Tambah Kelas</h3>
-                    <form action="{{ route('class.store') }}" method="post" class="form-horizontal">
+                    <h3 class="box-title">Edit Kelas</h3>
+                    <form action="{{ route('class.update', $class->id) }}" method="post" class="form-horizontal">
                         <div class="box-body">
                             {{ csrf_field() }}
+                            <input type="hidden" name="_method" value="put">
                             <div class="form-group">
                                 <label for="inputEmail3" class="col-sm-3 control-label">Mata Kuliah</label>
                                 <div class="col-sm-8">
                                     <select class="form-control select2" name="subject_id">
                                         @foreach($subjects as $subject)
-                                            <option value="{{ $subject->id }}">{{ $subject->name  }}</option>
+                                            <option value="{{ $subject->id }}" {{ $subject->id == $class->id ? 'selected' : ''}}>{{ $subject->name }}</option>
                                         @endforeach
                                     </select>
                                     @if($errors->has('name'))
@@ -42,7 +43,7 @@
                             <div class="form-group">
                                 <label for="inputEmail3" class="col-sm-3 control-label">Nama Kelas</label>
                                 <div class="col-sm-8">
-                                    <input type="text" name="class" class="form-control" value="{{ old('class') }}" required>
+                                    <input type="text" name="class" class="form-control" value="{{ $class->class }}" required>
                                     @if($errors->has('class'))
                                         <span class="text-danger">
                                             <strong>{{ $errors->first('class') }}</strong>

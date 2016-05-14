@@ -12,6 +12,11 @@
     </section>
     <section class="content">
         <div class="row">
+            <div class="col-md-12">
+                <a href="{{ route('class.create') }}" class="btn btn-primary" title="Tambah">
+                    <span class="glyphicon glyphicon-plus"></span>&nbsp;&nbsp;Tambah
+                </a>
+            </div>
         </div>
         <br>
         <div class="row">
@@ -35,18 +40,15 @@
                             </tr>
                             </thead>
                             <tbody>
-                            <?php $i = 1;?>
+                            @foreach ($classs as $class)
                             <tr>
-                                <td  class="text-center">{{ $i++ }}</td>
+                                <td class="text-center">{{ $class->id }}</td>
+                                <td class="text-center">{{ $class->subject->name.'-'.$class->class }}</td>
                                 <td class="text-center">
-                                    Struktur Data A
-                                </td>
-
-                                <td class="text-center">
-                                    <a href="" class="btn btn-primary btn-xs"title="Sunting"><span class="glyphicon glyphicon-pencil"></span></a>
-                                    <button type="button" class="btn btn-danger btn-xs" data-toggle="modal" data-target=""><span class="glyphicon glyphicon-remove"></span></button>
+                                    <a href="{{ route('class.edit', $class->id) }}" class="btn btn-primary btn-xs"title="Sunting"><span class="glyphicon glyphicon-pencil"></span></a>
+                                    <button type="button" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#delete_class_{{ $class->id }}"><span class="glyphicon glyphicon-remove"></span></button>
                                     <!-- Modal -->
-                                    <div class="modal fade" id="" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                    <div class="modal fade modal-danger" id="delete_class_{{ $class->id }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                                         <div class="modal-dialog">
                                             <div class="modal-content">
                                                 <div class="modal-header">
@@ -57,16 +59,19 @@
                                                     Apakah anda yakin menghapus ?
                                                 </div>
                                                 <div class="modal-footer">
-                                                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-                                                    <a href="">
-                                                        <button type="button" class="btn btn-primary">Ok!!</button>
-                                                    </a>
+                                                    <form action="{{ route('class.destroy', $class->id) }}", method="post">
+                                                        <input type="hidden" name="_method" value="delete">
+                                                        {{ csrf_field() }}
+                                                        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                                                        <button type="submit" class="btn btn-primary">Ok!!</button>
+                                                    </form>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </td>
                             </tr>
+                            @endforeach
                             </tbody>
                         </table>
                     </div>

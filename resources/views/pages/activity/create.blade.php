@@ -13,10 +13,6 @@
             <br>
             <div class="alert alert-success">Activity added!</div>
         @endif
-
-        @if($errors == null)
-            <h1>test</h1>
-        @endif
     </section>
     <section class="content">
         <div class="row">
@@ -34,7 +30,7 @@
                                 <div class="col-sm-8">
                                     <input type="text" name="name" class="form-control" value="{{ old('name') }}" required>
                                     @if($errors->has('name'))
-                                        <span class="help-block">
+                                        <span class="text-danger">
                                             <strong>{{ $errors->first('name') }}</strong>
                                         </span>
                                     @endif
@@ -50,7 +46,7 @@
                                         @endforeach
                                     </select>
                                     @if($errors->has('classes'))
-                                        <span class="help-block">
+                                        <span class="text-danger">
                                             <strong>{{ $errors->first('classes') }}</strong>
                                         </span>
                                     @endif
@@ -62,7 +58,7 @@
                                 <div class="col-sm-8">
                                     <input type="date" name="date" class="form-control" value="{{ old('date') }}" required>
                                     @if($errors->has('date'))
-                                        <span class="help-block">
+                                        <span class="text-danger">
                                             <strong>{{ $errors->first('date') }}</strong>
                                         </span>
                                     @endif
@@ -74,7 +70,7 @@
                                 <div class="col-sm-8">
                                     <input type="number" name="duration" class="form-control" value="{{ old('duration') }}" required>
                                     @if($errors->has('duration'))
-                                        <span class="help-block">
+                                        <span class="text-danger">
                                             <strong>{{ $errors->first('duration') }}</strong>
                                         </span>
                                     @endif
@@ -86,7 +82,7 @@
                                 <div class="col-sm-8">
                                     <textarea class="form-control" rows="3" name="notes" required>{{ old('notes') }}</textarea>
                                     @if($errors->has('notes'))
-                                        <span class="help-block">
+                                        <span class="text-danger">
                                             <strong>{{ $errors->first('notes') }}</strong>
                                         </span>
                                     @endif

@@ -76,7 +76,7 @@
                                         <a href="{{ route('activity.edit', $activity->id) }}" class="btn btn-primary btn-xs"title="Sunting"><span class="glyphicon glyphicon-pencil"></span></a>
                                         <button type="button" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#delete_activity_{{ $activity->id }}"><span class="glyphicon glyphicon-remove"></span></button>
                                         <!-- Modal -->
-                                        <div class="modal fade" id="delete_activity_{{ $activity->id }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                        <div class="modal fade modal-danger" id="delete_activity_{{ $activity->id }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                                             <div class="modal-dialog">
                                                 <div class="modal-content">
                                                     <div class="modal-header">

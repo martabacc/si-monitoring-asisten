@@ -38,6 +38,9 @@ class ActivityController extends Controller
         $this->classRepository = $classRepository;
     }
 
+    /**
+     * Show form to create a new instance
+     */
     protected function create()
     {
         $classes = $this->classRepository->findAll();

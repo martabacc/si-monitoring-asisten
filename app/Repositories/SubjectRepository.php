@@ -3,18 +3,18 @@
 namespace App\Repositories;
 
 use DB;
-use App\Models\Classes;
+use App\Models\Subject;
 
-class ClassRepository
+class SubjectRepository
 {
     /**
      * Create new instance for given input
      * @param  array $input
-     * @return Class
+     * @return Subject
      */
     public function create($input)
     {
-        return Classes::create($input);
+        return Subject::create($input);
     }
 
     /**
@@ -23,39 +23,39 @@ class ClassRepository
      */
     public function findAll()
     {
-        return Classes::all();
+        return Subject::all();
     }
 
     /**
      * Find the specified instance
      * @param  int $id class_id
-     * @return Classes
+     * @return Subjects
      */
     public function find($id)
     {
-        return Classes::findorfail($id);
+        return Subject::findorfail($id);
     }
 
     /**
      * Delete the specified instance
-     * @param  int $id class_id
+     * @param  int $id subject_id
      */
     public function delete($id)
     {
-        $class = $this->find($id);
+        $subjecr = $this->find($id);
         
-        $class->delete();
+        $subject->delete();
     }
     
     /**
      * Update the specified instance
-     * @param  int $id class_id
+     * @param  int $id subject_id
      * @param  array $data update_data
      */
     public function update($id, $data)
     {
-        $class = $this->find($id);
+        $subject = $this->find($id);
 
-        $class->update($data);
+        $subject->update($data);
     }
 }
