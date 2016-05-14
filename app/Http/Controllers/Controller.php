@@ -31,10 +31,9 @@ abstract class Controller extends BaseController
     {
         $stringView = 'pages.'.$this->modelName.'.index';
 
-//        $instances = $this->modelRepository->findAll();
+        $instances = $this->modelRepository->findAll();
 
-        return view($stringView);
-//            ->with($this->modelName.'s', $instances);
+        return view($stringView)->with($this->modelName.'s', $instances);
     }
 
     /**
@@ -59,10 +58,9 @@ abstract class Controller extends BaseController
     {
         $stringView = 'pages.'.$this->modelName.'.detail';
 
-//        $instance = $this->modelRepository->find($id);
+        $instance = $this->modelRepository->find($id);
         
-        return view($stringView);
-//            ->with($this->modelName, $instance);
+        return view($stringView)->with($this->modelName, $instance);
     }
 
     /**
@@ -75,9 +73,8 @@ abstract class Controller extends BaseController
     {
         $stringView = 'pages.'.$this->modelName.'.edit';
 
-//        $instance = $this->modelRepository->find($id);
+        $instance = $this->modelRepository->find($id);
         
-        return view($stringView);
-//            ->with($this->modelName, $instance);
+        return view($stringView)->with($this->modelName, $instance);
     }
 }
