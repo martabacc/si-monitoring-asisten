@@ -17,7 +17,8 @@
                 <!-- User Account: style can be found in dropdown.less -->
                 <li class="dropdown user user-menu">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                        <span class="hidden-xs"><strong>Logged in:</strong>  {{ Auth::user()->name }}</span>
+                        <img src="{{ url('assets/adminlte/dist/img/user2-160x160.jpg') }}" class="user-image" alt="User Image">
+                        <span class="hidden-xs">TODO Username Here</span>
                     </a>
                     <ul class="dropdown-menu">
                         <!-- User image -->

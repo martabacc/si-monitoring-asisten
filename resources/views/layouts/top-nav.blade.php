@@ -250,16 +250,16 @@
         </div><!-- ./wrapper -->
 
         <!-- jQuery 2.1.4 -->
-        <script src="{{ url('assets/adminlte/plugins/jQuery/jQuery-2.1.4.min.js') }}"></script>
+        <script src="{{ url('plugins/jQuery/jQuery-2.1.4.min.js') }}"></script>
         <!-- Bootstrap 3.3.5 -->
-        <script src="{{ url('assets/adminlte/bootstrap/js/bootstrap.min.js') }}"></script>
+        <script src="{{ url('bootstrap/js/bootstrap.min.js') }}"></script>
         <!-- SlimScroll -->
-        <script src="{{ url('assets/adminlte/plugins/slimScroll/jquery.slimscroll.min.js') }}"></script>
+        <script src="{{ url('plugins/slimScroll/jquery.slimscroll.min.js') }}"></script>
         <!-- FastClick -->
-        <script src="{{ url('assets/adminlte/plugins/fastclick/fastclick.min.js') }}"></script>
+        <script src="{{ url('plugins/fastclick/fastclick.min.js') }}"></script>
         <!-- AdminLTE App -->
-        <script src="{{ url('assets/adminlte/dist/js/app.min.js') }}"></script>
+        <script src="{{ url('adminlte-2.3.0/js/app.min.js') }}"></script>
         <!-- AdminLTE for demo purposes -->
-        <script src="{{ url('assets/adminlte/dist/js/demo.js') }}"></script>
+        <script src="{{ url('adminlte-2.3.0/js/demo.js') }}"></script>
     </body>
 </html>

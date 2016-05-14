@@ -13,20 +13,20 @@ class ClassController extends Controller
 {
     public $modelName = 'class';
 
-		/**
-		 * ClassRepository dependency
-		 */
-		protected $classRepository;
+    /**
+     * ClassRepository dependency
+     */
+    protected $classRepository;
 
-		/**
-		 * ActivityRepository dependency
-		 */
-		protected $modelRepository;
+    /**
+     * ActivityRepository dependency
+     */
+    protected $modelRepository;
 
-		/**
-		 * Create a new Activity controller instance.
-		 *
-		 * @param   ActivityRepository Repository to access App\Models\Activity
+    /**
+     * Create a new Activity controller instance.
+     *
+     * @param   ActivityRepository Repository to access App\Models\Activity
      * @param   ClassRepository Repository to access App\Models\Classes
      * @return  void
      */
@@ -64,7 +64,7 @@ class ClassController extends Controller
 
         \App\Models\Classes::create($data);
 
-        return route('class.index');
+        return route('class.index')->with('activityAdded', 'ok');
     }
 
     protected function update(Request $request, $id)
@@ -85,7 +85,7 @@ class ClassController extends Controller
     {
         \App\Models\Classes::delete($id);
 
-        return route('class.index');
+        return route('class.index')->with('activityDeleted', 'ok');
     }
 
     /**
