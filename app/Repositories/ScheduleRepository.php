@@ -3,18 +3,18 @@
 namespace App\Repositories;
 
 use DB;
-use App\Models\Subject;
+use App\Models\Schedule;
 
-class SubjectRepository
+class ScheduleRepository
 {
     /**
      * Create new instance for given input
      * @param  array $input
-     * @return Subject
+     * @return Schedule
      */
     public function create($input)
     {
-        return Subject::create($input);
+        return Schedule::create($input);
     }
 
     /**
@@ -23,39 +23,39 @@ class SubjectRepository
      */
     public function findAll()
     {
-        return Subject::all();
+        return Schedule::all();
     }
 
     /**
      * Find the specified instance
-     * @param  int $id subject_id
-     * @return Subjects
+     * @param  int $id schedule_id
+     * @return Schedules
      */
     public function find($id)
     {
-        return Subject::findorfail($id);
+        return Schedule::findorfail($id);
     }
 
     /**
      * Delete the specified instance
-     * @param  int $id subject_id
+     * @param  int $id schedule_id
      */
     public function delete($id)
     {
-        $subject = $this->find($id);
+        $schedule = $this->find($id);
         
-        $subject->delete();
+        $schedule->delete();
     }
     
     /**
      * Update the specified instance
-     * @param  int $id subject_id
+     * @param  int $id schedule_id
      * @param  array $data update_data
      */
     public function update($id, $data)
     {
-        $subject = $this->find($id);
+        $schedule = $this->find($id);
 
-        $subject->update($data);
+        $schedule->update($data);
     }
 }
