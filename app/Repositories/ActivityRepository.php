@@ -23,8 +23,7 @@ class ActivityRepository
      */
     public function findAll()
     {
-        $lala = new Activity();
-        return $lala->findAll();
+        return Activity::all();
     }
 
     /**
