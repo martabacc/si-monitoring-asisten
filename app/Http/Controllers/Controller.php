@@ -38,14 +38,12 @@ abstract class Controller extends BaseController
 
     /**
      * Default create form
-     * 
+     *
      * @return view
      */
     protected function create()
     {
-        $stringView = 'pages.'.$this->modelName.'.create';
 
-        return view($stringView);
     }
 
     /**

@@ -14,6 +14,7 @@
             <div class="alert alert-success">Activity added!</div>
         @endif
     </section>
+
     <section class="content">
         <div class="row">
             <div class="col-md-12">
@@ -69,6 +70,10 @@
                                 <label for="duration" class="col-sm-3 control-label">Durasi</label>
                                 <div class="col-sm-8">
                                     <input type="number" name="duration" class="form-control" value="{{ old('duration') }}" required>
+
+                                        <span class="text-info">
+                                            <strong>Dalam menit. Misal 120 ( 2 jam )</strong>
+                                        </span>
                                     @if($errors->has('duration'))
                                         <span class="text-danger">
                                             <strong>{{ $errors->first('duration') }}</strong>

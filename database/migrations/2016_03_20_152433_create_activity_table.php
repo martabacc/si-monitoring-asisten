@@ -18,6 +18,7 @@ class CreateActivityTable extends Migration
             $table->integer('class_id')->unsigned();
             $table->string('name');
             $table->date('date');
+            $table->string('path_file')->nullable();
             $table->integer('duration')->unsigned();
             $table->text('notes');
             $table->timestamps();
