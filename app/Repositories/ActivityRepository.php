@@ -26,6 +26,12 @@ class ActivityRepository
         return Activity::all();
     }
 
+
+    public function unsubmittedMark()
+    {
+        return Activity::where('path_files','=',null);
+    }
+
     /**
      * Find the specified instance
      * @param  int $id activity_id

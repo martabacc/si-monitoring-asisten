@@ -2,24 +2,112 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Activity;
 use Illuminate\Http\Request;
 
 use App\Http\Requests;
-use Illuminate\Support\Facades\DB;
+use App\Http\Requests\Activity\CreateActivityRequest;
+use App\Http\Requests\Activity\UpdateActivityRequest;
+use App\Repositories\ActivityRepository;
+use App\Repositories\ClassRepository;
 
 class MarkController extends Controller
 {
     public $modelName = 'mark';
 
-    public function index(){
-        $data['activity'] = DB::table('activities')
-                                ->leftJoin('marks' , 'activities.id','=','marks.activity_id');
-                                ->sel
-        return view('pages.mark.index');
+    /**
+     * ClassRepository dependency
+     */
+    protected $classRepository;
+
+    /**
+     * ActivityRepository dependency
+     */
+    protected $modelRepository;
+
+    /**
+     * Create a new Activity controller instance.
+     *
+     * @param   ActivityRepository Repository to access App\Models\Activity
+     * @param   ClassRepository Repository to access App\Models\Classes
+     * @return  void
+     */
+    public function __construct(ActivityRepository $activityRepository, ClassRepository $classRepository)
+    {
+        $this->modelRepository = $activityRepository;
+
+        $this->classRepository = $classRepository;
     }
 
-    public function create(){
-        return view('pages.mark.create');
+    /**
+     * Show form to create a new instance
+     */
+    protected function create()
+    {
+        $activities = $this->modelRepository->unsubmittedMark();
+
+        $stringView = 'pages.'.$this->modelName.'.create';
+
+        return view($stringView, compact('activities'));
+    }
+
+    /**
+     * Create a new activity instance
+     *
+     * @param  CreateActivityRequest  $request
+     */
+    protected function store(CreateActivityRequest $request)
+    {
+        $data = $request->all();
+        $data['assistant_id'] = \Auth::user()->id;
+
+        $this->modelRepository->create($data);
+
+        return redirect()->back()->with('activityAdded', 'ok');
+    }
+
+    /**
+     * Update the specified user instance in database
+     *
+     * @param  UpdateActivityRequest $request
+     * @return view updatedActivity
+     */
+    protected function update(UpdateActivityRequest $request, $id)
+    {
+        $data = $request->only('class_id', 'name', 'date', 'duration', 'notes');
+
+        $this->modelRepository->update($id, $data);
+
+        return redirect()->back()->with('activityUpdated', 'ok');
+    }
+
+    /**
+     * Delete the spcified user instance from database
+     *
+     * @param  int $id activity_id
+     */
+    protected function destroy($id)
+    {
+        $this->modelRepository->delete($id);
+
+        return redirect()->back()->with('activityDeleted', 'ok');
+    }
+
+    /**
+     * Edit the specified user instance
+     *
+     * @param  int $id model_id
+     * @return view edit_form
+     */
+    protected function edit($id)
+    {
+        $stringView = 'pages.'.$this->modelName.'.edit';
+
+        $classes = $this->classRepository->findAll();
+
+        $instance = $this->modelRepository->find($id);
+
+        return view($stringView)
+            ->with($this->modelName, $instance)
+            ->with('classes', $classes);
     }
 }

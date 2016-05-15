@@ -27,49 +27,29 @@
                             <div class="form-group">
                                 <label for="inputEmail3" class="col-sm-3 control-label">Aktivitas</label>
                                 <div class="col-sm-8">
-                                    <select class="form-control select2"
-                                            data-placeholder="Select a State" ">
-                                        <option>Alabama</option>
-                                        <option>Alaska</option>
-                                        <option>California</option>
-                                        <option>Washington</option>
-                                    </select>
-                                </div>
-                            </div>
 
-                            <div class="form-group">
-                                <label for="inputEmail3" class="col-sm-3 control-label">Urgensitas</label>
-                                <div class="col-sm-8">
-                                    <select class="form-control select2"
-                                            data-placeholder="Select a State" ">
-                                    <option value="2">Tinggi</option>
-                                    <option value="1">Sedang</option>
-                                    <option value="0">Rendah</option>
+                                    <select class="form-control" name="class_id">
+                                        @foreach($activities as $act)
+                                            <option value="{{ $act->id }}">{{ $act->name .'-'. $act->classes->name }}</option>
+                                        @endforeach
+                                        @if($errors->has('classes'))
+                                            <span class="text-danger">
+                                            <strong>{{ $errors->first('classes') }}</strong>
+                                        </span>
+                                        @endif
                                     </select>
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="inputEmail3" class="col-sm-3 control-label">Kelas</label>
+                                <label for="inputEmail3" class="col-sm-3 control-label">File Nilai </label>
                                 <div class="col-sm-8">
-                                    {{--todo change it into authenticated user--}}
-                                    <input type="text" name="class" class="form-control"
-                                           required>
+                                    <input type="file" name="path_file" id="exampleInputFile">
+                                    <span class="text-warning">
+                                        File excel yang berisi nilai.
+                                    </span>
                                 </div>
                             </div>
 
-                            <div class="form-group">
-                                <label for="inputEmail3" class="col-sm-3 control-label">Durasi</label>
-                                <div class="col-sm-8">
-                                    <input type="number" name="duration" class="form-control" required>
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <label for="inputEmail3" class="col-sm-3 control-label">Tanggal</label>
-                                <div class="col-sm-8">
-                                    <input type="date" name="date" class="form-control" required>
-                                </div>
-                            </div>
 
                             <div class="form-group">
                                 <label for="inputEmail3" class="col-sm-3 control-label">Catatan </label>
