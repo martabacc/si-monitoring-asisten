@@ -12,7 +12,7 @@ class Issue extends Model
     protected $dates = ['deleted_at'];
     
     protected $fillable = [
-        'assistant_id', 'activity_id', 'description', 'urgency', 'solution',
+        'assistant_id', 'activity_id', 'problem', 'urgency', 'solution',
     ];
 
     public function assistant()

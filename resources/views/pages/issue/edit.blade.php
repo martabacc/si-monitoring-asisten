@@ -9,9 +9,9 @@
 
     <section class="content-header">
         <h1>Laporan Kendala</h1>
-        @if(session('issueAdded'))
+        @if(session('issueUpdated'))
             <br>
-            <div class="alert alert-success">Issue added!</div>
+            <div class="alert alert-success">Issue updated!</div>
         @endif
     </section>
     <section class="content">
@@ -20,20 +20,19 @@
                 <!-- Horizontal Form -->
                 <div class="box box-info">
                     <div class="box-header with-border">
-                        <h3 class="box-title">Tambah Laporan Kendala</h3>
+                        <h3 class="box-title">Edit Laporan Kendala</h3>
                     </div><!-- /.box-header -->
-                    <form action="{{ route('issue.store') }}" method="post" class="form-horizontal">
+                    <form action="{{ route('issue.update', $issue->id) }}" method="post" class="form-horizontal">
                         <div class="box-body">
+                            <input type="hidden" name="_method" value="put">
                             {{ csrf_field() }}
-
-                            <input type="hidden" name="assistant_id" value="{{ \Auth::user()->id }}">
-
+                            
                             <div class="form-group">
                                 <label for="inputEmail3" class="col-sm-3 control-label">Aktivitas</label>
                                 <div class="col-sm-8">
                                     <select class="form-control select2" name="activity_id">
                                         @foreach($activities as $activity)
-                                            <option value="{{ $activity->id }}">{{ $activity->name.' '.$activity->classes->subject->name.'-'.$activity->classes->class }}</option>
+                                            <option value="{{ $activity->id }}" {{ $activity->id == $issue->activity_id ? 'selected' : ''}}>{{ $activity->name.' '.$activity->classes->subject->name.'-'.$activity->classes->class }}</option>
                                         @endforeach
                                     </select>
                                     @if($errors->has('activity_id'))
@@ -47,7 +46,7 @@
                             <div class="form-group">
                                 <label for="inputEmail3" class="col-sm-3 control-label">Problem </label>
                                 <div class="col-sm-8">
-                                    <textarea class="form-control" rows="3" name="problem" required>{{ old('problem') }}</textarea>
+                                    <textarea class="form-control" rows="3" name="problem" required>{{ $issue->problem }}</textarea>
                                     @if($errors->has('problem'))
                                         <span class="text-danger">
                                             <strong>{{ $errors->first('problem') }}</strong>
@@ -60,9 +59,9 @@
                                 <label for="inputEmail3" class="col-sm-3 control-label">Urgensitas</label>
                                 <div class="col-sm-8">
                                     <select class="form-control select2" name="urgency">
-                                        <option value="0">Normal</option>
-                                        <option value="1">Penting</option>
-                                        <option value="2">Solved</option>
+                                        <option value="0" {{ $issue->urgency == 0 ? 'selected' : ''}}>Normal</option>
+                                        <option value="1" {{ $issue->urgency == 1 ? 'selected' : ''}}>Penting</option>
+                                        <option value="2" {{ $issue->urgency == 2 ? 'selected' : ''}}>Solved</option>
                                     </select>
                                     @if($errors->has('urgency'))
                                         <span class="text-danger">
@@ -75,7 +74,7 @@
                             <div class="form-group">
                                 <label for="inputEmail3" class="col-sm-3 control-label">Solusi </label>
                                 <div class="col-sm-8">
-                                    <textarea class="form-control" rows="3" name="solution">{{ old('solution') }}</textarea>
+                                    <textarea class="form-control" rows="3" name="solution">{{ $issue->solution }}</textarea>
                                     @if($errors->has('solution'))
                                         <span class="text-danger">
                                             <strong>{{ $errors->first('solution') }}</strong>

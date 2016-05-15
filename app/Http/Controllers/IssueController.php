@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-use App\Http\Requests;
+use App\Http\Requests\Issue\CreateIssueRequest;
+use App\Http\Requests\Issue\UpdateIssueRequest;
 use App\Repositories\IssueRepository;
 use App\Repositories\ActivityRepository;
 
@@ -41,41 +42,40 @@ class IssueController extends Controller
      */
     protected function create()
     {
-        $classes = $this->activityRepository->findAll();
+        $activities = $this->activityRepository->findAll();
 
         $stringView = 'pages.'.$this->modelName.'.create';
 
-        return view($stringView, compact('classes'));
+        return view($stringView, compact('activities'));
     }
 
     /**
-     * Create a new activity instance
+     * Create a new issue instance
      *
-     * @param  CreateActivityRequest  $request
+     * @param  CreateIssueRequest  $request
      */
-    protected function store(CreateActivityRequest $request)
+    protected function store(CreateIssueRequest $request)
     {
         $data = $request->all();
-        $data['assistant_id'] = \Auth::user()->id;
 
         $this->modelRepository->create($data);
 
-        return redirect()->back()->with('activityAdded', 'ok');
+        return redirect()->back()->with('issueAdded', 'ok');
     }
 
     /**
      * Update the specified user instance in database
      * 
-     * @param  UpdateActivityRequest $request
-     * @return view updatedActivity
+     * @param  UpdateIssueRequest $request
+     * @return view updatedIssue
      */
-    protected function update(UpdateActivityRequest $request, $id)
+    protected function update(UpdateIssueRequest $request, $id)
     {
-        $data = $request->only('class_id', 'name', 'date', 'duration', 'notes');
+        $data = $request->only('activity_id', 'problem', 'urgency', 'solution');
 
         $this->modelRepository->update($id, $data);
 
-        return redirect()->back()->with('activityUpdated', 'ok');
+        return redirect()->back()->with('issueUpdated', 'ok');
     }
 
     /**
@@ -100,12 +100,12 @@ class IssueController extends Controller
     {
         $stringView = 'pages.'.$this->modelName.'.edit';
 
-        $classes = $this->classRepository->findAll();
+        $activities = $this->activityRepository->findAll();
 
         $instance = $this->modelRepository->find($id);
         
         return view($stringView)
             ->with($this->modelName, $instance)
-            ->with('classes', $classes);
+            ->with('activities', $activities);
     }
 }

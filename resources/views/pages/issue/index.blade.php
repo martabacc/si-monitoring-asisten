@@ -46,7 +46,7 @@
                                     Urgensitas
                                 </th>
                                 <th class="col-md-2 text-center">
-                                    Dilaporkan Tanggal
+                                    Solusi
                                 </th>
                                 <th class="col-md-2 text-center">
                                     Menu
@@ -72,7 +72,13 @@
                                         <span class="label label-success">Solved</span>
                                     @endif
                                 </td>
-                                <td class="text-center">{{ $issue->solution }}</td>
+                                <td class="text-center">
+                                    @if($issue->solution == null)
+                                        {{ 'Belum ada solusi' }}
+                                    @else
+                                        {{ $issue->solution }}
+                                    @endif
+                                </td>
                                 <td class="text-center">
                                     <a href="{{ route('issue.edit', $issue->id) }}" class="btn btn-primary btn-xs"title="Sunting"><span class="glyphicon glyphicon-pencil"></span></a>
                                     <button type="button" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#delete_issue_{{ $issue->id }}"><span class="glyphicon glyphicon-remove"></span></button>
@@ -88,10 +94,12 @@
                                                     Apakah anda yakin menghapus ?
                                                 </div>
                                                 <div class="modal-footer">
-                                                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-                                                    <a href="">
-                                                        <button type="button" class="btn btn-primary">Ok!!</button>
-                                                    </a>
+                                                    <form action="{{ route('issue.destroy', $issue->id) }}", method="post">
+                                                            <input type="hidden" name="_method" value="delete">
+                                                            {{ csrf_field() }}
+                                                        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                                                        <button type="submit" class="btn btn-primary">Ok!!</button>
+                                                    </form>
                                                 </div>
                                             </div>
                                         </div>
