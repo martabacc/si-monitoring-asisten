@@ -33,5 +33,8 @@ Route::group(['middleware' => ['web']], function() {
         Route::resource('assistant', 'AssistantController');
         Route::resource('subject', 'SubjectController');
         Route::resource('teacher', 'TeacherController');
+
+
+        Route::get('role','RoleController@index');
     });
 });

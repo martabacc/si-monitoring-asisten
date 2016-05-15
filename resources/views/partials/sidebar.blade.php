@@ -8,8 +8,8 @@
                 <img src="{{ url('assets/adminlte/dist/img/user2-160x160.jpg') }}" class="img-circle" alt="User Image">
             </div>
             <div class="pull-left info">
-                <p>Admin</p>
-                <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+                <p>{{ Auth::user()->name }}</p>
+                <p>{{ Auth::user()->privilege->role }}</p>
             </div>
         </div>
         <!-- search form -->
@@ -122,6 +122,18 @@
                     <li><a href="{{ url('user/create') }}"><i class="fa fa-plus"></i> Tambah User</a></li>
                 </ul>
             </li>
+
+
+            <li class="treeview">
+                <a href="#">
+                    <i class="fa fa-users"></i> <span> Role </span> <i class="fa fa-angle-left pull-right"></i>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href="{{ url('role') }}"><i class="fa fa-list"></i> Ubah Role </a></li>
+                </ul>
+            </li>
+
+
         </ul>
     </section>
     <!-- /.sidebar -->
