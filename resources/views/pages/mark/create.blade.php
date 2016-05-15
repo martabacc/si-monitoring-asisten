@@ -1,14 +1,14 @@
 @extends('layouts.boxed')
 
 @section('title')
-    Laporan Kendala
+    Nilai
 @stop
 
 @section('content')
     @include('partials.flash-overlay-modal')
 
     <section class="content-header">
-        <h1>Laporan Kendala</h1>
+        <h1>Nilai</h1>
     </section>
     <section class="content">
         <div class="row">
@@ -16,7 +16,7 @@
                 <!-- Horizontal Form -->
                 <div class="box box-info">
                     <div class="box-header with-border">
-                        <h3 class="box-title">Tambah Laporan Kendala</h3>
+                        <h3 class="box-title">Tambah Laporan Nilai</h3>
                     </div><!-- /.box-header -->
                     {{--todo hanya di tampilan desainer--}}
                             <!-- form start -->
