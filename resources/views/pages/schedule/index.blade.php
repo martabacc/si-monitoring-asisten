@@ -13,6 +13,17 @@
     <section class="content">
         <div class="row">
             <div class="col-md-12">
+                <a href="{{ route('schedule.create') }}" class="btn btn-primary" title="Tambah">
+                    <span class="glyphicon glyphicon-plus"></span>&nbsp;&nbsp;Tambah
+                </a>
+            </div>
+        </div>
+        <br>
+        @if (session('scheduleDeleted'))
+            <div class="alert alert-danger">Schedule deleted!</div>
+        @endif
+        <div class="row">
+            <div class="col-md-12">
                 <!-- Horizontal Form -->
                 <div class="box box-info">
                     <div class="box-header with-border">
@@ -43,32 +54,19 @@
                             </tr>
                             </thead>
                             <tbody>
-                            <?php $i = 1;?>
+                            @foreach($schedules as $schedule)
                             <tr>
-                                <td class="text-center">{{ $i++ }}</td>
-
-                                <td><a href="" class="text-center"
-                                       title="">Sesilab
-                                    </a>
-                                </td>
-
-                                <td class="text-center">
-                                    Struktur Data A
-                                </td>
+                                <td class="text-center">{{ $schedule->id }}</td>
+                                <td>{{ $schedule->name }}</td>
+                                <td class="text-center">{{ $schedule->classes->subject->name.'-'.$schedule->classes->class }}</td>
+                                <td class="text-center">{{ $schedule->day.', '.$schedule->schedule }}</td>
+                                <td class="text-center">{{ $schedule->place }}</td>
 
                                 <td class="text-center">
-                                    Setiap Kamis Jam 19.00
-                                </td>
-
-                                <td class="text-center">
-                                    Laboratorium Pemrograman 2
-                                </td>
-
-                                <td class="text-center">
-                                    <a href="" class="btn btn-primary btn-xs"title="Sunting"><span class="glyphicon glyphicon-pencil"></span></a>
-                                    <button type="button" class="btn btn-danger btn-xs" data-toggle="modal" data-target=""><span class="glyphicon glyphicon-remove"></span></button>
+                                    <a href="{{ route('schedule.edit', $schedule->id) }}" class="btn btn-primary btn-xs"title="Sunting"><span class="glyphicon glyphicon-pencil"></span></a>
+                                    <button type="button" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#delete_schedule_{{ $schedule->id }}"><span class="glyphicon glyphicon-remove"></span></button>
                                     <!-- Modal -->
-                                    <div class="modal fade" id="" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                    <div class="modal fade modal-danger" id="delete_schedule_{{ $schedule->id }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                                         <div class="modal-dialog">
                                             <div class="modal-content">
                                                 <div class="modal-header">
@@ -79,16 +77,19 @@
                                                     Apakah anda yakin menghapus ?
                                                 </div>
                                                 <div class="modal-footer">
-                                                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-                                                    <a href="">
-                                                        <button type="button" class="btn btn-primary">Ok!!</button>
-                                                    </a>
+                                                    <form action="{{ route('schedule.destroy', $schedule->id) }}", method="post">
+                                                        <input type="hidden" name="_method" value="delete">
+                                                        {{ csrf_field() }}
+                                                        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                                                        <button type="submit" class="btn btn-primary">Ok!!</button>
+                                                    </form>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </td>
                             </tr>
+                            @endforeach
                             </tbody>
                         </table>
                     </div>

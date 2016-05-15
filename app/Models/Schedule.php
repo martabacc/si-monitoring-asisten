@@ -17,6 +17,6 @@ class Schedule extends Model
 
     public function classes()
     {
-        return $this->belongsTo('class');
+        return $this->belongsTo('App\Models\Classes', 'class_id', 'id');
     }
 }

@@ -8,10 +8,10 @@
     @include('partials.flash-overlay-modal')
 
     <section class="content-header">
-        <h1>Tambah Jadwal</h1>
-        @if(session('scheduleCreated'))
+        <h1>Edit Jadwal</h1>
+        @if(session('scheduleUpdated'))
             <br>
-            <div class="alert alert-success">Schedule created!</div>
+            <div class="alert alert-success">Schedule updated!</div>
         @endif
     </section>
     <section class="content">
@@ -20,17 +20,18 @@
                 <!-- Horizontal Form -->
                 <div class="box box-info">
                     <div class="box-header with-border">
-                        <h3 class="box-title">Tambah Jadwal</h3>
+                        <h3 class="box-title">Edit Jadwal</h3>
                     </div><!-- /.box-header -->
-                    <form action="{{ route('schedule.store') }}" method="post" class="form-horizontal">
+                    <form action="{{ route('schedule.update', $schedule->id) }}" method="post" class="form-horizontal">
                         <div class="box-body">
+                            <input type="hidden" name="_method" value="put">
                             {{ csrf_field() }}
                             <div class="form-group">
                                 <label for="inputEmail3" class="col-sm-3 control-label">Kelas</label>
                                 <div class="col-sm-8">
                                     <select class="form-control select2" name="class_id" data-placeholder="Masukkan kelas">
                                         @foreach($classes as $kelas)
-                                            <option value="{{ $kelas->id }}">{{ $kelas->subject->name.' - '.$kelas->class  }}</option>
+                                            <option value="{{ $kelas->id }}" {{ $kelas->id == $schedule->class_id ? 'selected' : '' }}>{{ $kelas->subject->name.' - '.$kelas->class }}</option>
                                         @endforeach
                                     </select>
                                     @if($errors->has('class_id'))
@@ -43,7 +44,7 @@
                             <div class="form-group">
                                 <label for="inputEmail3" class="col-sm-3 control-label">Nama</label>
                                 <div class="col-sm-8">
-                                    <input type="text" name="name" class="form-control" value="{{ old('name') }}" required>
+                                    <input type="text" name="name" class="form-control" value="{{ $schedule->name }}" required>
                                     @if($errors->has('name'))
                                         <span class="text-danger">
                                             <strong>{{ $errors->first('name') }}</strong>
@@ -54,7 +55,7 @@
                             <div class="form-group">
                                 <label for="inputEmail3" class="col-sm-3 control-label">Hari</label>
                                 <div class="col-sm-8">
-                                    <input type="text" name="day" class="form-control" value="{{ old('day') }}" required>
+                                    <input type="text" name="day" class="form-control" value="{{ $schedule->day }}" required>
                                     @if($errors->has('day'))
                                         <span class="text-danger">
                                             <strong>{{ $errors->first('day') }}</strong>
@@ -65,7 +66,7 @@
                             <div class="form-group">
                                 <label for="inputEmail3" class="col-sm-3 control-label">Waktu</label>
                                 <div class="col-sm-8">
-                                    <input type="text" name="schedule" class="form-control" value="{{ old('scehdule') }}" required>
+                                    <input type="text" name="schedule" class="form-control" value="{{ $schedule->schedule }}" required>
                                     @if($errors->has('schedule'))
                                         <span class="text-danger">
                                             <strong>{{ $errors->first('schedule') }}</strong>
@@ -76,7 +77,7 @@
                             <div class="form-group">
                                 <label for="inputEmail3" class="col-sm-3 control-label">Tempat</label>
                                 <div class="col-sm-8">
-                                    <input type="text" name="place" class="form-control" value="{{ old('place') }}" required>
+                                    <input type="text" name="place" class="form-control" value="{{ $schedule->place }}" required>
                                     @if($errors->has('place'))
                                         <span class="text-danger">
                                             <strong>{{ $errors->first('place') }}</strong>

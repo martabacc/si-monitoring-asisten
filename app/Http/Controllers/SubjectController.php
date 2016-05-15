@@ -16,11 +16,6 @@ class SubjectController extends Controller
     /**
      * SubjectRepository dependency
      */
-    protected $subjectRepository;
-
-    /**
-     * SubjectRepository dependency
-     */
     protected $modelRepository;
 
     /**
@@ -33,18 +28,6 @@ class SubjectController extends Controller
     {
         $this->modelRepository = $subjectRepository;
     }
-
-    // /**
-    //  * Show form to create a new instance
-    //  */
-    // protected function create()
-    // {
-    //     $subjects = $this->subjectRepository->findAll();
-
-    //     $stringView = 'pages.'.$this->modelName.'.create';
-
-    //     return view($stringView, compact('subjects'));
-    // }
 
     /**
      * Create a new activity instance

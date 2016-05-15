@@ -22,7 +22,7 @@
         </div>
         <br>
         @if (session('subjectDeleted'))
-            <div class="alert alert-danger">User deleted!</div>
+            <div class="alert alert-danger">Subject deleted!</div>
         @endif
         <div class="row">
             <div class="col-md-12">

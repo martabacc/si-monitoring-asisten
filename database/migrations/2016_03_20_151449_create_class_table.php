@@ -38,7 +38,7 @@ class CreateClassTable extends Migration
             $table->string('name');
             $table->string('day');
             $table->string('place');
-            $table->time('schedule');
+            $table->string('schedule');
             $table->timestamps();
             $table->softDeletes();
 
