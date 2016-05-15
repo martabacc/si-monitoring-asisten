@@ -53,7 +53,7 @@
                                     Oleh
                                 </th>
                                 <th class="col-md-2 text-center">
-                                    Tanggal
+                                    Dilaporkan
                                 </th>
                                 <th class="col-md-1 text-center">
                                     Menu

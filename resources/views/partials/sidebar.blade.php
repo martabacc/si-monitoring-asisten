@@ -87,28 +87,28 @@
                 </ul>
             </li>
 
-            <li class="treeview">
-                <a href="#">
-                    <i class="fa fa-users"></i> <span> Laporan Kegiatan </span> <i class="fa fa-angle-left pull-right"></i>
-                </a>
-                <ul class="treeview-menu">
-                    <li><a href="{{ url('report') }}">
-                        <i class="fa fa-list"></i> Lihat Laporan </a>
-                    </li>
-                    <li><a href="{{ url('report/create') }}">
-                        <i class="fa fa-plus"></i> Tambah Laporan </a>
-                    </li>
-                </ul>
-            </li>
-
             
             <li class="treeview">
                 <a href="#">
-                    <i class="fa fa-users"></i> <span> Laporan Kendala </span> <i class="fa fa-angle-left pull-right"></i>
+                    <i class="fa fa-users"></i> <span> Laporan Aktivitas </span> <i class="fa fa-angle-left pull-right"></i>
                 </a>
                 <ul class="treeview-menu">
                     <li><a href="{{ url('activity') }}"><i class="fa fa-list"></i> Lihat Laporan </a></li>
                     <li><a href="{{ url('activity/create') }}"><i class="fa fa-plus"></i> Tambah Laporan</a></li>
+                </ul>
+            </li>
+
+            <li class="treeview">
+                <a href="#">
+                    <i class="fa fa-users"></i> <span> Laporan Masalah </span> <i class="fa fa-angle-left pull-right"></i>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href="{{ url('issue') }}">
+                        <i class="fa fa-list"></i> Lihat Laporan </a>
+                    </li>
+                    <li><a href="{{ url('issue/create') }}">
+                        <i class="fa fa-plus"></i> Tambah Laporan </a>
+                    </li>
                 </ul>
             </li>
 

@@ -25,7 +25,7 @@ class CreateScheduleRequest extends Request
     {
         return [
             'class_id'  => 'required|exists:classes,id',
-            'name'      => 'required|alpha_num',
+            'name'      => 'required|alpha_spaces',
             'day'       => 'required|alpha',
             'schedule'  => 'required',
             'place'     => 'required',
@@ -44,7 +44,7 @@ class CreateScheduleRequest extends Request
             'class_id.exists'   => 'Kelas tidak terdaftar.',
 
             'name.required'     => 'Judul jadwal harus diisi.',
-            'name.alpha_num'    => 'Judul jadwal hanya boleh menggunakan huruf dan angka.',
+            'name.alpha_spaces' => 'Judul jadwal hanya boleh menggunakan huruf dan angka.',
 
             'day.required'      => 'Hari harus diisi.',
             'day.alpha'         => 'Hari tidak valid.',

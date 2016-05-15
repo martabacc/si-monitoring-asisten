@@ -13,6 +13,17 @@
     <section class="content">
         <div class="row">
             <div class="col-md-12">
+                <a href="{{ route('issue.create') }}" class="btn btn-primary" title="Tambah">
+                    <span class="glyphicon glyphicon-plus"></span>&nbsp;&nbsp;Tambah
+                </a>
+            </div>
+        </div>
+        <br>
+        @if (session('issueDeleted'))
+            <div class="alert alert-danger">Issue deleted!</div>
+        @endif
+        <div class="row">
+            <div class="col-md-12">
                 <!-- Horizontal Form -->
                 <div class="box box-info">
                     <div class="box-header with-border">
@@ -25,45 +36,48 @@
                                 <th class="col-md-1 text-center">
                                     #
                                 </th>
-                                <th class="col-md-3 text-center">
+                                <th class="col-md-2 text-center">
                                     Kegiatan
                                 </th>
-                                <th class="col-md-1 text-center">
+                                <th class="col-md-3 text-center">
+                                    Problem
+                                </th>
+                                <th class="col-md-2 text-center">
                                     Urgensitas
                                 </th>
-                                <th class="col-md-1 text-center">
+                                <th class="col-md-2 text-center">
                                     Dilaporkan Tanggal
                                 </th>
-                                <th class="col-md-1 text-center">
+                                <th class="col-md-2 text-center">
                                     Menu
                                 </th>
                             </tr>
                             </thead>
                             <tbody>
-                            <?php $i = 1;?>
+                            @foreach($issues as $issue)
                             <tr>
-                                <td class="text-center">{{ $i++ }}</td>
-
-                                <td><a href="" class="text-center"
-                                       title="">Lala
+                                <td class="text-center">{{ $issue->id }}</td>
+                                <td>
+                                    <a href="{{ route('activity.edit', $issue->activity_id) }}" class="text-center">
+                                        {{ $issue->activity->name.' '.$issue->activity->classes->name.'-'.$issue->activity->classes->class }}
                                     </a>
                                 </td>
-
+                                <td class="text-center">{{ $issue->problem }}</td>
                                 <td class="text-center">
-                                    <span class="label label-warning">Pending</span>
-                                    <span class="label label-danger">Denied</span>
-                                    <span class="label label-success">Approved</span>
+                                    @if($issue->urgency == 0)
+                                        <span class="label label-warning">Normal</span>
+                                    @elseif($issue->urgency == 1)
+                                        <span class="label label-danger">Penting</span>
+                                    @else
+                                        <span class="label label-success">Solved</span>
+                                    @endif
                                 </td>
-
+                                <td class="text-center">{{ $issue->solution }}</td>
                                 <td class="text-center">
-                                    Lala 2
-                                </td>
-
-                                <td class="text-center">
-                                    <a href="" class="btn btn-primary btn-xs"title="Sunting"><span class="glyphicon glyphicon-pencil"></span></a>
-                                    <button type="button" class="btn btn-danger btn-xs" data-toggle="modal" data-target=""><span class="glyphicon glyphicon-remove"></span></button>
+                                    <a href="{{ route('issue.edit', $issue->id) }}" class="btn btn-primary btn-xs"title="Sunting"><span class="glyphicon glyphicon-pencil"></span></a>
+                                    <button type="button" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#delete_issue_{{ $issue->id }}"><span class="glyphicon glyphicon-remove"></span></button>
                                     <!-- Modal -->
-                                    <div class="modal fade" id="" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                    <div class="modal fade modal-danger" id="delete_issue_{{ $issue->id }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                                         <div class="modal-dialog">
                                             <div class="modal-content">
                                                 <div class="modal-header">
@@ -84,6 +98,7 @@
                                     </div>
                                 </td>
                             </tr>
+                            @endforeach
                             </tbody>
                         </table>
                     </div>

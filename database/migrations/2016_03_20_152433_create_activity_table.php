@@ -36,7 +36,7 @@ class CreateActivityTable extends Migration
             $table->increments('id');
             $table->integer('assistant_id')->unsigned();
             $table->integer('activity_id')->unsigned();
-            $table->text('description');
+            $table->text('problem');
             $table->integer('urgency')->unsigned();
             $table->text('solution')->nullable();
             $table->timestamps();
