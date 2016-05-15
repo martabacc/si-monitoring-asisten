@@ -31,9 +31,9 @@ Route::group(['middleware' => ['web']], function() {
         Route::resource('schedule', 'ScheduleController');
         Route::resource('user', 'UserController');
         Route::resource('assistant', 'AssistantController');
-        Route::resource('subject', 'SubjectController');
         Route::resource('teacher', 'TeacherController');
-
+        Route::resource('student', 'StudentController');
+        Route::resource('subject', 'SubjectController');
 
         Route::get('role','RoleController@index');
         Route::get('mark','MarkController@index');

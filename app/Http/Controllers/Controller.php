@@ -43,6 +43,11 @@ abstract class Controller extends BaseController
      */
     protected function create()
     {
+        $stringView = 'pages.'.$this->modelName.'.create';
+
+        $instances = $this->modelRepository->findAll();
+
+        return view($stringView)->with($this->modelName.'s', $instances);
 
     }
 

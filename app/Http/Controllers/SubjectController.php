@@ -30,7 +30,7 @@ class SubjectController extends Controller
     }
 
     /**
-     * Create a new activity instance
+     * Create a new teacher instance
      *
      * @param  CreateSubjectRequest  $request
      */

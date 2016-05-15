@@ -4,13 +4,13 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-use App\Http\Requests\Assistant\CreateAssistantRequest;
-use App\Repositories\AssistantRepository;
+use App\Http\Requests\Student\CreateStudentRequest;
+use App\Repositories\StudentRepository;
 use App\Repositories\UserRepository;
 
-class AssistantController extends Controller
+class StudentController extends Controller
 {
-    public $modelName = 'assistant';
+    public $modelName = 'student';
 
     /**
      * UserRepository dependency
@@ -18,20 +18,20 @@ class AssistantController extends Controller
     protected $userRepository;
 
     /**
-     * AssistantRepository dependency
+     * StudentRepository dependency
      */
     protected $modelRepository;
 
     /**
-     * Create a new Assistant controller instance.
+     * Create a new Student controller instance.
      *
-     * @param   AssistantRepository Repository to access App\Models\Assistant
+     * @param   StudentRepository Repository to access App\Models\Students
      * @param   UserRepository Repository to access App\Models\Users
      * @return  void
      */
-    public function __construct(AssistantRepository $assistantRepository, UserRepository $userRepository)
+    public function __construct(StudentRepository $studentRepository, UserRepository $userRepository)
     {
-        $this->modelRepository = $assistantRepository;
+        $this->modelRepository = $studentRepository;
 
         $this->userRepository = $userRepository;
     }
@@ -51,26 +51,26 @@ class AssistantController extends Controller
     /**
      * Create a new student instance
      *
-     * @param  CreateAssistantRequest  $request
+     * @param  CreateStudentRequest  $request
      */
-    protected function store(CreateAssistantRequest $request)
+    protected function store(CreateStudentRequest $request)
     {
         $data = $request->all();
 
         $this->modelRepository->create($data);
 
-        return redirect()->back()->with('assistantAdded', 'ok');
+        return redirect()->back()->with('studentAdded', 'ok');
     }
 
     /**
      * Delete the spcified user instance from database
      * 
-     * @param  int $id assistant_id
+     * @param  int $id student_id
      */
     protected function destroy($id)
     {
         $this->modelRepository->delete($id);
 
-        return redirect()->back()->with('assistantDeleted', 'ok');
+        return redirect()->back()->with('studentDeleted', 'ok');
     }
 }

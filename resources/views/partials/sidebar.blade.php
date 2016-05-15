@@ -112,7 +112,7 @@
 
             <li class="treeview">
                 <a href="#">
-                    <i class="fa fa-users"></i> <span> User </span> <i class="fa fa-angle-left pull-right"></i>
+                    <i class="fa fa-users"></i> <span> Users </span> <i class="fa fa-angle-left pull-right"></i>
                 </a>
                 <ul class="treeview-menu">
                     <li><a href="{{ url('user') }}"><i class="fa fa-list"></i> Lihat User </a></li>
@@ -120,13 +120,14 @@
                 </ul>
             </li>
 
-
             <li class="treeview">
                 <a href="#">
-                    <i class="fa fa-users"></i> <span> Role </span> <i class="fa fa-angle-left pull-right"></i>
+                    <i class="fa fa-users"></i> <span> Roles </span> <i class="fa fa-angle-left pull-right"></i>
                 </a>
                 <ul class="treeview-menu">
-                    <li><a href="{{ url('role') }}"><i class="fa fa-list"></i> Ubah Role </a></li>
+                    <li><a href="{{ url('teacher') }}"><i class="fa fa-list"></i> Lihat Dosen </a></li>
+                    <li><a href="{{ url('student') }}"><i class="fa fa-list"></i> Lihat Praktikan </a></li>
+                    <li><a href="{{ url('assistant') }}"><i class="fa fa-list"></i> Lihat Asisten </a></li>
                 </ul>
             </li>
 
