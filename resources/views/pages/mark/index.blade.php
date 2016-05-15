@@ -28,7 +28,7 @@
                                 <th class="col-md-3 text-center">
                                     Kegiatan
                                 </th>
-                                <th class="col-md-1 text-center">
+                                <th class="col-md-3 text-center">
                                     File Nilai
                                 </th>
                                 <th class="col-md-1 text-center">

@@ -36,5 +36,6 @@ Route::group(['middleware' => ['web']], function() {
 
 
         Route::get('role','RoleController@index');
+        Route::get('mark','MarkController@index');
     });
 });

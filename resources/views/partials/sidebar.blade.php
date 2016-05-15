@@ -39,11 +39,11 @@
 
             <li class="treeview">
                 <a href="#">
-                    <i class="fa fa-users"></i> <span>Kehadiran & Nilai </span> <i class="fa fa-angle-left pull-right"></i>
+                    <i class="fa fa-users"></i> <span> Nilai </span> <i class="fa fa-angle-left pull-right"></i>
                 </a>
                 <ul class="treeview-menu">
-                    <li><a href="{{ url('presence') }}"><i class="fa fa-list"></i> Lihat Kehadiran </a></li>
-                    <li><a href="{{ url('presence/create') }}"><i class="fa fa-plus"></i> Tambah Data Kehadiran </a></li>
+                    {{--<li><a href="{{ url('presence') }}"><i class="fa fa-list"></i> Lihat Kehadiran </a></li>--}}
+                    {{--<li><a href="{{ url('presence/create') }}"><i class="fa fa-plus"></i> Tambah Data Kehadiran </a></li>--}}
                     <li><a href="{{ url('mark') }}"><i class="fa fa-plus"></i> Lihat Nilai </a></li>
                     <li><a href="{{ url('mark/create') }}"><i class="fa fa-plus"></i> Tambah Data Nilai </a></li>
                 </ul>
