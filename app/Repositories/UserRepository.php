@@ -66,4 +66,11 @@ class UserRepository
 
         $user->update($data);
     }
+
+    public function getIds($usernames)
+    {
+         return DB::table('users')
+            ->whereIn('username', $usernames)
+            ->pluck('id');
+    }
 }

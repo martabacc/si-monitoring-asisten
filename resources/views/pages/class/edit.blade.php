@@ -20,9 +20,10 @@
                 <!-- Horizontal Form -->
                 <div class="box box-info">
                     <div class="box-header with-border">
-                    <h3 class="box-title">Edit Kelas</h3>
-                    <form action="{{ route('class.update', $class->id) }}" method="post" class="form-horizontal">
-                        <div class="box-body">
+                        <h3 class="box-title">Edit Kelas</h3>
+                    </div>
+                    <div class="box-body">
+                        <form action="{{ route('class.update', $class->id) }}" method="post" class="form-horizontal">
                             {{ csrf_field() }}
                             <input type="hidden" name="_method" value="put">
                             <div class="form-group">
@@ -33,7 +34,7 @@
                                             <option value="{{ $subject->id }}" {{ $subject->id == $class->id ? 'selected' : ''}}>{{ $subject->name }}</option>
                                         @endforeach
                                     </select>
-                                    @if($errors->has('name'))
+                                    @if($errors->has('subject_id'))
                                         <span class="text-danger">
                                             <strong>{{ $errors->first('subject_id') }}</strong>
                                         </span>
@@ -51,17 +52,60 @@
                                     @endif
                                 </div>
                             </div>
-                        </div><!-- /.box-body -->
-                        <div class="box-footer">
-                            <div class="col-sm-4">
-                            </div>
-                            <div class="col-sm-7">
-                                <button type="submit" class="btn btn-info pull-right">Submit</button>
-                            </div>
-                        </div><!-- /.box-footer -->
-                    </form>
+                        </form>
+                    </div><!-- /.box-body -->
+                    <div class="box-footer">
+                        <div class="col-sm-4">
+                        </div>
+                        <div class="col-sm-7">
+                            <button type="submit" class="btn btn-info pull-right">Submit</button>
+                        </div>
+                    </div><!-- /.box-footer -->
                 </div><!-- /.box -->
-            </div><!-- /.box -->
+            </div>
+        </div>
+
+        @if(session('studentsAdded'))
+            <br>
+            <div class="alert alert-success">Students added!</div>
+        @endif
+        <div class="row">
+            <div class="col-md-12">
+                <!-- Horizontal Form -->
+                <div class="box box-info">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Tambah Praktikan</h3>
+                        <a href="{{ route('class.student.view', $class->id) }}">
+                            <button type="button" class="btn btn-success pull-right">
+                                <span class="glyphicon glyphicon-list"></span> Lihat Praktikan</button>
+                        </a>
+                    </div>
+                    <div class="box-body">
+                        <form action="{{ route('class.student.add', $class->id) }}" method="post" class="form-horizontal">
+                            {{ csrf_field() }}
+                            <div class="form-group">
+                                <label for="inputEmail3" class="col-sm-3 control-label">Username</label>
+                                <div class="col-sm-8">
+                                    <textarea class="form-control" rows="3" name="username" required></textarea>
+                                    <span class="help-block">Masukkan username, satu username satu baris.</span>
+                                    @if($errors->has('username'))
+                                        <span class="text-danger">
+                                            <strong>{{ $errors->first('username') }}</strong>
+                                        </span>
+                                    @endif
+                                </div>
+                            </div>
+                            <div class="box-footer">
+                                <div class="col-sm-4">
+                                </div>
+                                <div class="col-sm-7">
+                                    <button type="submit" class="btn btn-info pull-right">Submit</button>
+                                </div>
+                            </div><!-- /.box-footer -->
+                        </form>
+                    </div>
+                </div><!-- /.box -->
+            </div>
         </div>
     </section>
 

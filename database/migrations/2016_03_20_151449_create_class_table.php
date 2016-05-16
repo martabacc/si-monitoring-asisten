@@ -46,6 +46,21 @@ class CreateClassTable extends Migration
                 ->references('id')
                 ->on('classes');
         });
+
+        Schema::create('classes_students', function (Blueprint $table) {
+            $table->integer("class_id")->unsigned();
+            $table->integer("student_id")->unsigned();
+            $table->timestamps();
+            $table->softDeletes();
+
+            $table->primary(['class_id', 'student_id']);
+            $table->foreign('class_id')
+                ->references('id')
+                ->on('classes');
+            $table->foreign('student_id')
+                ->references('user_id')
+                ->on('students');
+        });
     }
 
     /**
@@ -55,6 +70,7 @@ class CreateClassTable extends Migration
      */
     public function down()
     {
+        Schema::drop('classes_students');
         Schema::drop('schedules');
         Schema::drop('classes');
         Schema::drop('subjects');

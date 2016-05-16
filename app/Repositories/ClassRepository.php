@@ -58,4 +58,40 @@ class ClassRepository
 
         $class->update($data);
     }
+
+    /**
+     * Get students for the following class
+     * @param  int $id class_id
+     * @return collection students_belongs_to_that_class
+     */
+    public function getStudents($id)
+    {
+        $class = $this->find($id);
+
+        return $class->students;
+    }
+
+    /**
+     * Add students for the following class
+     * @param int $id class_id
+     * @param array $data student_ids
+     */
+    public function addStudents($id, $data)
+    {
+        $class = $this->find($id);
+
+        $class->students()->attach($data);
+    }
+
+    /**
+     * Delete students for the following class
+     * @param  int $class_id   class_id
+     * @param  int $student_id student_id
+     */
+    public function deleteStudents($class_id, $student_id)
+    {
+        $class = $this->find($class_id);
+
+        $class->students()->detach($student_id);
+    }
 }

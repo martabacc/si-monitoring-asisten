@@ -35,6 +35,10 @@ Route::group(['middleware' => ['web']], function() {
         Route::resource('student', 'StudentController');
         Route::resource('subject', 'SubjectController');
 
+        Route::get('/class/{class}/student', ['uses' => 'ClassController@viewStudents', 'as' => 'class.student.view']);
+        Route::post('/class/{class}/student', ['uses' => 'ClassController@addStudents', 'as' => 'class.student.add']);
+        Route::delete('/class/{class}/student/{student}/', ['uses' => 'ClassController@deleteStudents', 'as' => 'class.student.destroy']);
+
         Route::get('role','RoleController@index');
         Route::get('mark','MarkController@index');
         Route::get('mark/create','MarkController@create');

@@ -2,15 +2,24 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\Request;
+
+use App\Http\Requests;
 use App\Http\Requests\Classes\CreateClassRequest;
 use App\Http\Requests\Classes\UpdateClassRequest;
 
 use App\Repositories\ClassRepository;
 use App\Repositories\SubjectRepository;
+use App\Repositories\UserRepository;
 
 class ClassController extends Controller
 {
     public $modelName = 'class';
+
+    /**
+     * UserRepository dependency
+     */
+    protected $userRepository;
 
     /**
      * SubjectRepository dependency
@@ -28,9 +37,11 @@ class ClassController extends Controller
      * @param   ClassRepository Repository to access App\Models\Classes
      * @return  void
      */
-    public function __construct(ClassRepository $classRepository, SubjectRepository $subjectRepository)
+    public function __construct(ClassRepository $classRepository, UserRepository $userRepository, SubjectRepository $subjectRepository)
     {
         $this->modelRepository = $classRepository;
+
+        $this->userRepository = $userRepository;
 
         $this->subjectRepository = $subjectRepository;
     }
@@ -105,5 +116,35 @@ class ClassController extends Controller
         return view($stringView)
             ->with($this->modelName, $instance)
             ->with('subjects', $subjects);
+    }
+
+    protected function addStudents($id, Request $request)
+    {
+        $usernames = preg_split("/\r\n|\n|\r/", $request->all()["username"]);
+
+        $user_ids = $this->userRepository->getIds($usernames);
+
+        $this->modelRepository->addStudents($id, $user_ids);
+
+        return redirect()->back()->with('studentsAdded', 'ok'); 
+    }
+
+    protected function viewStudents($id)
+    {
+        $students = $this->modelRepository->getStudents($id);
+
+        $stringView = 'pages.'.$this->modelName.'.student';
+
+        $instance = $this->modelRepository->find($id);
+
+        return view($stringView, compact('students'))
+            ->with($this->modelName, $instance);
+    }
+
+    protected function deleteStudents($class_id, $student_id)
+    {
+        $class = $this->modelRepository->deleteStudents($class_id, $student_id);
+
+        return redirect()->back()->with('studentDeleted', 'ok');
     }
 }
