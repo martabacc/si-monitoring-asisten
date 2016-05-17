@@ -22,7 +22,7 @@ class Activity extends Model
 
     public function presence()
     {
-        return $this->hasMany('App\Models\Presence');
+        return $this->belongsToMany('App\Models\Presence', 'presences', 'activity_id', 'student_id')->withTimestamps();
     }
 
     public function classes()

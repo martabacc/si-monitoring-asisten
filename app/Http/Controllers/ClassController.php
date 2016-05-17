@@ -118,6 +118,11 @@ class ClassController extends Controller
             ->with('subjects', $subjects);
     }
 
+    /**
+     * Add students to the specified class
+     * @param int  $id      class_id
+     * @param Request $request Illuminate\Http\Request;
+     */
     protected function addStudents($id, Request $request)
     {
         $usernames = preg_split("/\r\n|\n|\r/", $request->all()["username"]);
@@ -129,6 +134,11 @@ class ClassController extends Controller
         return redirect()->back()->with('studentsAdded', 'ok'); 
     }
 
+    /**
+     * View students of the specified class
+     * @param  int $id class_id
+     * @return collection     students
+     */
     protected function viewStudents($id)
     {
         $students = $this->modelRepository->getStudents($id);
@@ -141,6 +151,11 @@ class ClassController extends Controller
             ->with($this->modelName, $instance);
     }
 
+    /**
+     * Delete students from the specified class
+     * @param  int $class_id   class_id
+     * @param  int $student_id student_id
+     */
     protected function deleteStudents($class_id, $student_id)
     {
         $class = $this->modelRepository->deleteStudents($class_id, $student_id);
@@ -148,6 +163,11 @@ class ClassController extends Controller
         return redirect()->back()->with('studentsDeleted', 'ok');
     }
 
+    /**
+     * Add assistants to the specified class
+     * @param int  $id      class_id
+     * @param Request $request Illuminate\Http\Request
+     */
     protected function addAssistants($id, Request $request)
     {
         $usernames = preg_split("/\r\n|\n|\r/", $request->all()["username"]);
@@ -159,6 +179,11 @@ class ClassController extends Controller
         return redirect()->back()->with('assistantsAdded', 'ok'); 
     }
 
+    /**
+     * View assistants of the specified class
+     * @param  int $id class_id
+     * @return collection     teachers
+     */
     protected function viewAssistants($id)
     {
         $assistants = $this->modelRepository->getAssistants($id);
@@ -171,6 +196,11 @@ class ClassController extends Controller
             ->with($this->modelName, $instance);
     }
 
+    /**
+     * Delete assistants from the specified class
+     * @param  int $class_id     class_id
+     * @param  int $assistant_id assistant_id
+     */
     protected function deleteAssistants($class_id, $assistant_id)
     {
         $class = $this->modelRepository->deleteAssistants($class_id, $assistant_id);
@@ -178,6 +208,11 @@ class ClassController extends Controller
         return redirect()->back()->with('assistantsDeleted', 'ok');
     }
 
+    /**
+     * Add teachers to the specified class
+     * @param int  $id      class_id
+     * @param Request $request Illuminate\Http\Request
+     */
     protected function addTeachers($id, Request $request)
     {
         $usernames = preg_split("/\r\n|\n|\r/", $request->all()["username"]);
@@ -189,6 +224,11 @@ class ClassController extends Controller
         return redirect()->back()->with('teachersAdded', 'ok'); 
     }
 
+    /**
+     * View teachers of the specified class
+     * @param  int $id teacher_id
+     * @return collection     teachers
+     */
     protected function viewTeachers($id)
     {
         $teachers = $this->modelRepository->getTeachers($id);
@@ -201,6 +241,11 @@ class ClassController extends Controller
             ->with($this->modelName, $instance);
     }
 
+    /**
+     * Delete teachers from the specified class
+     * @param  int $class_id     class_id
+     * @param  int $assistant_id assistant_id
+     */
     protected function deleteTeachers($class_id, $assistant_id)
     {
         $class = $this->modelRepository->deleteTeachers($class_id, $assistant_id);

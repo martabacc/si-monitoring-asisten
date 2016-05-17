@@ -52,13 +52,13 @@ class CreateActivityTable extends Migration
         });
 
         Schema::create('presences', function (Blueprint $table) {
-            $table->increments('id');
             $table->integer('student_id')->unsigned();
             $table->integer('activity_id')->unsigned();
             $table->string('notes');
             $table->timestamps();
             $table->softDeletes();
 
+            $table->primary(['student_id', 'activity_id']);
             $table->foreign('student_id')
                 ->references('user_id')
                 ->on('students');

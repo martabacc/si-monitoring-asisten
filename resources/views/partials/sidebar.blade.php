@@ -33,7 +33,7 @@
                 </a>
                 <ul class="treeview-menu">
                     <li><a href="{{ url('schedule') }}"><i class="fa fa-list"></i> Lihat Jadwal </a></li>
-                    <li><a href="{{ url('schedule/add') }}"><i class="fa fa-plus"></i> Tambah Jadwal </a></li>
+                    <li><a href="{{ url('schedule/create') }}"><i class="fa fa-plus"></i> Tambah Jadwal </a></li>
                 </ul>
             </li>
 

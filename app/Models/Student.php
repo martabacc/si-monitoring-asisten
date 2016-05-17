@@ -24,7 +24,7 @@ class Student extends Model
 
     public function presence()
     {
-        return $this->hasMany('App\Models\Presence');
+        return $this->belongsToMany('App\Models\Activity', 'presences', 'student_id', 'activity_id')->withTimestamps();
     }
 
     public function answer()
@@ -34,6 +34,6 @@ class Student extends Model
 
     public function classes()
     {
-        return $this->belongsToMany('App\Models\Classes', 'classes_students', 'student_id', 'user_id')->withTimestamps();
+        return $this->belongsToMany('App\Models\Classes', 'classes_students', 'student_id', 'class_id')->withTimestamps();
     }
 }

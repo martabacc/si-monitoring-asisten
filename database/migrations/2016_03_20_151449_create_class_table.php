@@ -100,7 +100,7 @@ class CreateClassTable extends Migration
      */
     public function down()
     {
-        Schema::drop('classes_assitants');
+        Schema::drop('classes_assistants');
         Schema::drop('classes_teachers');
         Schema::drop('classes_students');
         Schema::drop('schedules');
