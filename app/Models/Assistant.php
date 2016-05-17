@@ -29,4 +29,9 @@ class Assistant extends Model
     {
         return $this->hasMany('App\Models\Issue');
     }
+
+    public function classes()
+    {
+        return $this->belongsToMany('App\Models\Classes', 'classes_assistants', 'assistant_id', 'user_id');
+    }
 }

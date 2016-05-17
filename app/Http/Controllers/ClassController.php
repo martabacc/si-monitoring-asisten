@@ -145,6 +145,66 @@ class ClassController extends Controller
     {
         $class = $this->modelRepository->deleteStudents($class_id, $student_id);
 
-        return redirect()->back()->with('studentDeleted', 'ok');
+        return redirect()->back()->with('studentsDeleted', 'ok');
+    }
+
+    protected function addAssistants($id, Request $request)
+    {
+        $usernames = preg_split("/\r\n|\n|\r/", $request->all()["username"]);
+
+        $user_ids = $this->userRepository->getIds($usernames);
+
+        $this->modelRepository->addAssistants($id, $user_ids);
+
+        return redirect()->back()->with('assistantsAdded', 'ok'); 
+    }
+
+    protected function viewAssistants($id)
+    {
+        $assistants = $this->modelRepository->getAssistants($id);
+
+        $stringView = 'pages.'.$this->modelName.'.assistant';
+
+        $instance = $this->modelRepository->find($id);
+
+        return view($stringView, compact('assistants'))
+            ->with($this->modelName, $instance);
+    }
+
+    protected function deleteAssistants($class_id, $assistant_id)
+    {
+        $class = $this->modelRepository->deleteAssistants($class_id, $assistant_id);
+
+        return redirect()->back()->with('assistantsDeleted', 'ok');
+    }
+
+    protected function addTeachers($id, Request $request)
+    {
+        $usernames = preg_split("/\r\n|\n|\r/", $request->all()["username"]);
+
+        $user_ids = $this->userRepository->getIds($usernames);
+
+        $this->modelRepository->addTeachers($id, $user_ids);
+
+        return redirect()->back()->with('teachersAdded', 'ok'); 
+    }
+
+    protected function viewTeachers($id)
+    {
+        $teachers = $this->modelRepository->getTeachers($id);
+
+        $stringView = 'pages.'.$this->modelName.'.teacher';
+
+        $instance = $this->modelRepository->find($id);
+
+        return view($stringView, compact('teachers'))
+            ->with($this->modelName, $instance);
+    }
+
+    protected function deleteTeachers($class_id, $assistant_id)
+    {
+        $class = $this->modelRepository->deleteTeachers($class_id, $assistant_id);
+
+        return redirect()->back()->with('teachersDeleted', 'ok');
     }
 }

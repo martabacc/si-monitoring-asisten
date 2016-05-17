@@ -48,8 +48,8 @@ class CreateClassTable extends Migration
         });
 
         Schema::create('classes_students', function (Blueprint $table) {
-            $table->integer("class_id")->unsigned();
-            $table->integer("student_id")->unsigned();
+            $table->integer('class_id')->unsigned();
+            $table->integer('student_id')->unsigned();
             $table->timestamps();
             $table->softDeletes();
 
@@ -61,6 +61,36 @@ class CreateClassTable extends Migration
                 ->references('user_id')
                 ->on('students');
         });
+
+        Schema::create('classes_teachers', function (Blueprint $table) {
+            $table->integer('class_id')->unsigned();
+            $table->integer('teacher_id')->unsigned();
+            $table->timestamps();
+            $table->softDeletes();
+
+            $table->primary(['class_id', 'teacher_id']);
+            $table->foreign('class_id')
+                ->references('id')
+                ->on('classes');
+            $table->foreign('teacher_id')
+                ->references('user_id')
+                ->on('teachers');
+        });
+
+        Schema::create('classes_assistants', function (Blueprint $table) {
+            $table->integer('class_id')->unsigned();
+            $table->integer('assistant_id')->unsigned();
+            $table->timestamps();
+            $table->softDeletes();
+
+            $table->primary(['class_id', 'assistant_id']);
+            $table->foreign('class_id')
+                ->references('id')
+                ->on('classes');
+            $table->foreign('assistant_id')
+                ->references('user_id')
+                ->on('assistants');
+        });
     }
 
     /**
@@ -70,6 +100,8 @@ class CreateClassTable extends Migration
      */
     public function down()
     {
+        Schema::drop('classes_assitants');
+        Schema::drop('classes_teachers');
         Schema::drop('classes_students');
         Schema::drop('schedules');
         Schema::drop('classes');

@@ -19,4 +19,9 @@ class Teacher extends Model
     {
     	return $this->belongsTo('App\Models\User', 'user_id');
     }
+
+    public function classes()
+    {
+        return $this->belongsTo('App\Models\Classes', 'classes_teachers', 'teacher_id', 'user_id')->withTimestamps();
+    }
 }

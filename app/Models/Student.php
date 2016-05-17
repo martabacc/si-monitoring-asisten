@@ -31,4 +31,9 @@ class Student extends Model
     {
         return $this->hasMany('App\Models\Answer');
     }
+
+    public function classes()
+    {
+        return $this->belongsToMany('App\Models\Classes', 'classes_students', 'student_id', 'user_id')->withTimestamps();
+    }
 }

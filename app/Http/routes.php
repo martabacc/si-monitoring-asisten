@@ -39,6 +39,14 @@ Route::group(['middleware' => ['web']], function() {
         Route::post('/class/{class}/student', ['uses' => 'ClassController@addStudents', 'as' => 'class.student.add']);
         Route::delete('/class/{class}/student/{student}/', ['uses' => 'ClassController@deleteStudents', 'as' => 'class.student.destroy']);
 
+        Route::get('/class/{class}/assistant', ['uses' => 'ClassController@viewAssistants', 'as' => 'class.assistant.view']);
+        Route::post('/class/{class}/assistant', ['uses' => 'ClassController@addAssistants', 'as' => 'class.assistant.add']);
+        Route::delete('/class/{class}/assistant/{assistant}/', ['uses' => 'ClassController@deleteAssistants', 'as' => 'class.assistant.destroy']);
+
+        Route::get('/class/{class}/teacher', ['uses' => 'ClassController@viewTeachers', 'as' => 'class.teacher.view']);
+        Route::post('/class/{class}/teacher', ['uses' => 'ClassController@addTeachers', 'as' => 'class.teacher.add']);
+        Route::delete('/class/{class}/teacher/{teacher}/', ['uses' => 'ClassController@deleteTeachers', 'as' => 'class.teacher.destroy']);
+
         Route::get('role','RoleController@index');
         Route::get('mark','MarkController@index');
         Route::get('mark/create','MarkController@create');

@@ -1,24 +1,24 @@
 @extends('layouts.boxed')
 
 @section('title')
-    Praktikan
+    Asisten
 @stop
 
 @section('content')
 
     @include('partials.flash-overlay-modal')
     <section class="content-header">
-        <h1> Praktikan </h1>
+        <h1> Asisten </h1>
     </section>
     <section class="content">
-        @if (session('studentsDeleted'))
-            <div class="alert alert-danger">Student deleted!</div>
+        @if (session('assistantsDeleted'))
+            <div class="alert alert-danger">Assistant deleted!</div>
         @endif
         <div class="row">
             <div class="col-md-10">
                 <div class="box ">
                     <div class="box-header">
-                        <h3 class="box-title">Daftar Praktikan - {{ $class->subject->name.'-'.$class->class }}</h3>
+                        <h3 class="box-title">Daftar Asisten - {{ $class->subject->name.'-'.$class->class }}</h3>
                     </div>
                         <table class="table table-striped table-hover table-bordered " id="table-event">
                             <thead>
@@ -38,26 +38,26 @@
                             </tr>
                             </thead>
                             <tbody>
-                            @foreach ($students as $student)
+                            @foreach ($assistants as $assistant)
                             <tr>
-                                <td class="text-center">{{ $student->user->id }}</td>
-                                <td class="text-center">{{ $student->user->username }}</td>
-                                <td class="text-center">{{ $student->user->name }}</td>
+                                <td class="text-center">{{ $assistant->user->id }}</td>
+                                <td class="text-center">{{ $assistant->user->username }}</td>
+                                <td class="text-center">{{ $assistant->user->name }}</td>
                                 <td class="text-center">
-                                    <button type="button" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#delete_student_{{ $student->user->id }}"><span class="glyphicon glyphicon-remove"></span></button>
+                                    <button type="button" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#delete_assistant_{{ $assistant->user->id }}"><span class="glyphicon glyphicon-remove"></span></button>
                                     <!-- Modal -->
-                                    <div class="modal fade modal-danger" id="delete_student_{{ $student->user->id }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                    <div class="modal fade modal-danger" id="delete_assistant_{{ $assistant->user->id }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                                         <div class="modal-dialog">
                                             <div class="modal-content">
                                                 <div class="modal-header">
                                                     <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                                                    <h4 class="modal-title" id="myModalLabel">Hapus Praktikan</h4>
+                                                    <h4 class="modal-title" id="myModalLabel">Hapus Asisten</h4>
                                                 </div>
                                                 <div class="modal-body">
                                                     Apakah anda yakin menghapus ?
                                                 </div>
                                                 <div class="modal-footer">
-                                                    <form action="{{ route('class.student.destroy', [$class->id, $student->user->id]) }}", method="post">
+                                                    <form action="{{ route('class.assistant.destroy', [$class->id, $assistant->user->id]) }}", method="post">
                                                         <input type="hidden" name="_method" value="delete">
                                                         {{ csrf_field() }}
                                                         <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>

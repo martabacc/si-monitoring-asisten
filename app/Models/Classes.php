@@ -29,4 +29,14 @@ class Classes extends Model
     {
         return $this->belongsToMany('App\Models\Student', 'classes_students', 'class_id', 'student_id')->withTimestamps();
     }
+
+    public function teachers()
+    {
+        return $this->belongsToMany('App\Models\Teacher', 'classes_teachers', 'class_id', 'teacher_id')->withTimestamps();
+    }
+
+    public function assistants()
+    {
+        return $this->belongsToMany('App\Models\Assistant', 'classes_assistants', 'class_id', 'assistant_id')->withTimestamps();
+    }
 }

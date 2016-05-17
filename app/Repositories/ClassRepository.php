@@ -86,12 +86,84 @@ class ClassRepository
     /**
      * Delete students for the following class
      * @param  int $class_id   class_id
-     * @param  int $student_id student_id
+     * @param  int $student_id assistant_id
      */
-    public function deleteStudents($class_id, $student_id)
+    public function deleteStudents($class_id, $assistant_id)
     {
         $class = $this->find($class_id);
 
-        $class->students()->detach($student_id);
+        $class->assistants()->detach($assistant_id);
+    }
+
+    /**
+     * Get assistants for the following class
+     * @param  int $id class_id
+     * @return collection assistants_belongs_to_that_class
+     */
+    public function getAssistants($id)
+    {
+        $class = $this->find($id);
+
+        return $class->assistants;
+    }
+
+    /**
+     * Add assistants for the following class
+     * @param int $id class_id
+     * @param array $data assistant_ids
+     */
+    public function addAssistants($id, $data)
+    {
+        $class = $this->find($id);
+
+        $class->assistants()->attach($data);
+    }
+
+    /**
+     * Delete assistants for the following class
+     * @param  int $class_id   class_id
+     * @param  int $assistant_id assistant_id
+     */
+    public function deleteAssistants($class_id, $assistant_id)
+    {
+        $class = $this->find($class_id);
+
+        $class->assistants()->detach($assistant_id);
+    }
+
+    /**
+     * Get teachers for the following class
+     * @param  int $id teacher_id
+     * @return collection teachers_belongs_to_that_class
+     */
+    public function getTeachers($id)
+    {
+        $class = $this->find($id);
+
+        return $class->teachers;
+    }
+
+    /**
+     * Add teachers for the following class
+     * @param int $id class_id
+     * @param array $data teachers_id
+     */
+    public function addTeachers($id, $data)
+    {
+        $class = $this->find($id);
+
+        $class->teachers()->attach($data);
+    }
+
+    /**
+     * Delete teachers for the following class
+     * @param  int $class_id   class_id
+     * @param  int $teacher_id teacher_id
+     */
+    public function deleteTeachers($class_id, $teacher_id)
+    {
+        $class = $this->find($class_id);
+
+        $class->teachers()->detach($teacher_id);
     }
 }

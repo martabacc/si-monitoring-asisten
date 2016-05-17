@@ -107,6 +107,92 @@
                 </div><!-- /.box -->
             </div>
         </div>
+
+        @if(session('assistantsAdded'))
+            <br>
+            <div class="alert alert-success">Assistants added!</div>
+        @endif
+        <div class="row">
+            <div class="col-md-12">
+                <!-- Horizontal Form -->
+                <div class="box box-info">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Tambah Asisten</h3>
+                        <a href="{{ route('class.assistant.view', $class->id) }}">
+                            <button type="button" class="btn btn-success pull-right">
+                                <span class="glyphicon glyphicon-list"></span> Lihat Asisten</button>
+                        </a>
+                    </div>
+                    <div class="box-body">
+                        <form action="{{ route('class.assistant.add', $class->id) }}" method="post" class="form-horizontal">
+                            {{ csrf_field() }}
+                            <div class="form-group">
+                                <label for="inputEmail3" class="col-sm-3 control-label">Username</label>
+                                <div class="col-sm-8">
+                                    <textarea class="form-control" rows="3" name="username" required></textarea>
+                                    <span class="help-block">Masukkan username, satu username satu baris.</span>
+                                    @if($errors->has('username'))
+                                        <span class="text-danger">
+                                            <strong>{{ $errors->first('username') }}</strong>
+                                        </span>
+                                    @endif
+                                </div>
+                            </div>
+                            <div class="box-footer">
+                                <div class="col-sm-4">
+                                </div>
+                                <div class="col-sm-7">
+                                    <button type="submit" class="btn btn-info pull-right">Submit</button>
+                                </div>
+                            </div><!-- /.box-footer -->
+                        </form>
+                    </div>
+                </div><!-- /.box -->
+            </div>
+        </div>
+
+        @if(session('teachersAdded'))
+            <br>
+            <div class="alert alert-success">Teachers added!</div>
+        @endif
+        <div class="row">
+            <div class="col-md-12">
+                <!-- Horizontal Form -->
+                <div class="box box-info">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Tambah Dosen</h3>
+                        <a href="{{ route('class.teacher.view', $class->id) }}">
+                            <button type="button" class="btn btn-success pull-right">
+                                <span class="glyphicon glyphicon-list"></span> Lihat Dosen</button>
+                        </a>
+                    </div>
+                    <div class="box-body">
+                        <form action="{{ route('class.teacher.add', $class->id) }}" method="post" class="form-horizontal">
+                            {{ csrf_field() }}
+                            <div class="form-group">
+                                <label for="inputEmail3" class="col-sm-3 control-label">Username</label>
+                                <div class="col-sm-8">
+                                    <textarea class="form-control" rows="3" name="username" required></textarea>
+                                    <span class="help-block">Masukkan username, satu username satu baris.</span>
+                                    @if($errors->has('username'))
+                                        <span class="text-danger">
+                                            <strong>{{ $errors->first('username') }}</strong>
+                                        </span>
+                                    @endif
+                                </div>
+                            </div>
+                            <div class="box-footer">
+                                <div class="col-sm-4">
+                                </div>
+                                <div class="col-sm-7">
+                                    <button type="submit" class="btn btn-info pull-right">Submit</button>
+                                </div>
+                            </div><!-- /.box-footer -->
+                        </form>
+                    </div>
+                </div><!-- /.box -->
+            </div>
+        </div>
     </section>
 
 
