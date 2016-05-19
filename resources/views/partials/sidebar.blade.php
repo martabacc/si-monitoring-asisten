@@ -130,6 +130,11 @@
                     <li><a href="{{ url('assistant') }}"><i class="fa fa-list"></i> Lihat Asisten </a></li>
                 </ul>
             </li>
+            <li class="treeview">
+                <a href="{{ url('logout') }}">
+                    <i class="fa fa-users"></i> <span> Log Out </span>
+                </a>
+            </li>
 
 
         </ul>

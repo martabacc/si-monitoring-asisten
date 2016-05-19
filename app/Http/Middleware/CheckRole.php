@@ -25,7 +25,9 @@ class CheckRole
             {
                 return $next($request);
             }
-            else return redirect('/');
+            else {
+                abort(403);
+            }
         }
         else return $next($request);
 

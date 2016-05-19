@@ -47,16 +47,11 @@ abstract class Controller extends BaseController
 
         $instances = $this->modelRepository->findAll();
 
-        return view($stringView)->with($this->modelName.'s', $instances);
+        return view($stringView)->with($this->modelName, $instances);
 
     }
 
-    /**
-     * Find an intance of the model
-     * 
-     * @param  int  $id model_id
-     * @return view
-     */
+
     protected function show($id)
     {
         $stringView = 'pages.'.$this->modelName.'.detail';
