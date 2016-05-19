@@ -17,6 +17,6 @@ class Subject extends Model
 
     public function classes()
     {
-        return $this->hasMany('App\Models\Classes');
+        return $this->hasMany('App\Models\Classes','subject_id');
     }
 }

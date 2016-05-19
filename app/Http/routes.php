@@ -20,8 +20,12 @@ Route::group(['middleware' => ['web']], function() {
     Route::get('/logout', ['uses' => 'AuthController@getLogout', 'as' => 'logout']);
     Route::post('/login', ['uses' => 'AuthController@postLogin']);
 
-    Route::group(['middleware' => 'auth'], function() {
-    	Route::resource('activity', 'ActivityController');
+    Route::group(['middleware' => ['auth','roles']], function() {
+
+//        Route::group(['roles'=> 2 ], function(){
+            Route::resource('activity', 'ActivityController');
+//        });
+
         Route::resource('class', 'ClassController');
         Route::resource('issue', 'IssueController');
         Route::resource('presence', 'PresenceController');
@@ -48,7 +52,10 @@ Route::group(['middleware' => ['web']], function() {
         Route::delete('/class/{class}/teacher/{teacher}/', ['uses' => 'ClassController@deleteTeachers', 'as' => 'class.teacher.destroy']);
 
         Route::get('role','RoleController@index');
-        Route::get('mark','MarkController@index');
-        Route::get('mark/create','MarkController@create');
+
+        Route::group(['roles'=> 3], function(){
+            Route::get('mark','MarkController@index');
+            Route::get('mark/create','MarkController@create');
+        });
     });
 });
