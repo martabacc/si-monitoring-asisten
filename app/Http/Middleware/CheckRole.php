@@ -11,15 +11,17 @@ use Illuminate\Support\Facades\Auth;
 
 class CheckRole
 {
+    private $roles;
+
     public function handle($request, Closure $next)
     {
-        $role = $this->getRequiredRole($request->route());
+        $this->roles = $this->getRequiredRole($request->route());
         $id = $request->user()->id;
 
-        if( $id && $role ){
-            if( $this->isAssistant( $id , $role ) ||
-                $this->isStudent( $id , $role ) ||
-                $this->isTeacher( $id , $role ) )
+        if( $id && $this->roles ){
+            if( $this->isAssistant( $id ) ||
+                $this->isStudent( $id ) ||
+                $this->isTeacher( $id ) )
             {
                 return $next($request);
             }
@@ -36,27 +38,31 @@ class CheckRole
         return isset($action['roles']) ? $action['roles'] : null;
     }
 
-    private function isTeacher($id, $role){
+    private function isAuthorized($role){
+        return in_array($role, $this->roles);
+    }
+
+    private function isTeacher($id){
         try{
-            return ( Teacher::find($id) && $role == 1 ) ? true : false;
+            return ( Teacher::find($id) ) ? $this->isAuthorized(1) : false;
         }
         catch(Exception $e){
             return false;
         }
     }
 
-    private function isAssistant($id, $role){
+    private function isAssistant($id){
         try{
-            return ( Assistant::find($id) && $role == 2 ) ? true : false;
+            return ( Assistant::find($id) ) ? $this->isAuthorized(2): false;
         }
         catch(Exception $e){
             return false;
         }
     }
 
-    private function isStudent($id, $role){
+    private function isStudent($id){
         try{
-            return ( Student::find($id) && $role == 2 ) ? true : false;
+            return ( Student::find($id) ) ? $this->isAuthorized(3): false;
         }
         catch(Exception $e){
             return false;

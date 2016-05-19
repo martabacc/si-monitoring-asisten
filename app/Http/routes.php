@@ -22,9 +22,9 @@ Route::group(['middleware' => ['web']], function() {
 
     Route::group(['middleware' => ['auth','roles']], function() {
 
-//        Route::group(['roles'=> 2 ], function(){
+        Route::group(['roles'=> [1,2] ], function(){
             Route::resource('activity', 'ActivityController');
-//        });
+        });
 
         Route::resource('class', 'ClassController');
         Route::resource('issue', 'IssueController');
