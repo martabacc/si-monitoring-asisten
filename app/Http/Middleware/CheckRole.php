@@ -6,6 +6,8 @@ use App\Models\Assistant;
 use App\Models\Student;
 use App\Models\Teacher;
 use Closure;
+use Exception;
+use Illuminate\Support\Facades\Auth;
 
 class CheckRole
 {
@@ -14,14 +16,14 @@ class CheckRole
         $role = $this->getRequiredRole($request->route());
         $id = $request->user()->id;
 
-        if($id && $role){
-            if( $this->isAssistant($id,$role) ||
-                $this->isStudent($id,$role) ||
-                $this->isTeacher($id,$role) )
+        if( $id && $role ){
+            if( $this->isAssistant( $id , $role ) ||
+                $this->isStudent( $id , $role ) ||
+                $this->isTeacher( $id , $role ) )
             {
                 return $next($request);
             }
-            else redirect('/');
+            else return redirect('/');
         }
         else return $next($request);
 

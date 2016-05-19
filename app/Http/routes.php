@@ -56,6 +56,7 @@ Route::group(['middleware' => ['web']], function() {
         Route::group(['roles'=> 3], function(){
             Route::get('mark','MarkController@index');
             Route::get('mark/create','MarkController@create');
+            Route::post('mark/create','MarkController@create');
         });
     });
 });

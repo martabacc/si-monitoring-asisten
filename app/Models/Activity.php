@@ -12,7 +12,7 @@ class Activity extends Model
     protected $dates = ['deleted_at'];
     
     protected $fillable = [
-        'assistant_id', 'class_id', 'name', 'date', 'duration', 'notes',
+        'assistant_id', 'class_id', 'name', 'date', 'duration', 'notes','path_file'
     ];
 
     public function assistant()
