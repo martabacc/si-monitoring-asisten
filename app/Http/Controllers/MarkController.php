@@ -24,13 +24,6 @@ class MarkController extends Controller
      */
     protected $modelRepository;
 
-    /**
-     * Create a new Activity controller instance.
-     *
-     * @param   ActivityRepository Repository to access App\Models\Activity
-     * @param   ClassRepository Repository to access App\Models\Classes
-     * @return  void
-     */
     public function __construct(ActivityRepository $activityRepository, ClassRepository $classRepository)
     {
         $this->modelRepository = $activityRepository;

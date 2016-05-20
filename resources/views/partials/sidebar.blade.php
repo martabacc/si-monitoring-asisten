@@ -26,7 +26,14 @@
 
         <!-- sidebar menu: : style can be found in sidebar.less -->
         <ul class="sidebar-menu">
-            <li class="header">All Navigations</li>
+            <li class="header">Menu</li>
+
+            <li class="treeview">
+                <a href="{{ url('logout') }}">
+                    <i class="fa fa-users"></i> <span> Log Out </span>
+                </a>
+            </li>
+
             <li class="treeview">
                 <a href="#">
                     <i class="fa fa-users"></i> <span>Praktikum dan Sesilab</span> <i class="fa fa-angle-left pull-right"></i>
@@ -129,11 +136,6 @@
                     <li><a href="{{ url('student') }}"><i class="fa fa-list"></i> Lihat Praktikan </a></li>
                     <li><a href="{{ url('assistant') }}"><i class="fa fa-list"></i> Lihat Asisten </a></li>
                 </ul>
-            </li>
-            <li class="treeview">
-                <a href="{{ url('logout') }}">
-                    <i class="fa fa-users"></i> <span> Log Out </span>
-                </a>
             </li>
 
 
