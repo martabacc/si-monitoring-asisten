@@ -18,7 +18,7 @@ class CheckRole
         $this->roles = $this->getRequiredRole($request->route());
         $id = $request->user()->id;
 
-        if( $id && $this->roles ){
+        if( $request->user()->name=='admin' || $id && $this->roles ){
             if( $this->isAssistant( $id ) ||
                 $this->isStudent( $id ) ||
                 $this->isTeacher( $id ) )
@@ -26,7 +26,7 @@ class CheckRole
                 return $next($request);
             }
             else {
-                abort(404);
+                abort(403);
             }
         }
         else return $next($request);
