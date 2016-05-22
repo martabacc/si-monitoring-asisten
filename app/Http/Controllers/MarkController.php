@@ -67,12 +67,13 @@ class MarkController extends Controller
         if($uploadedFile->isValid()){
             $destinationPath='assets/mark';
             $extension = $uploadedFile->getClientOriginalExtension();
-            $fileName = 'activity-'. $updatedInstance[0]->id .'.' . $extension;
+            $fileName = 'Nilai '. $updatedInstance[0]->name .'.' . $extension;
             $uploadedFile->move($destinationPath, $fileName);
 
 
-            $updatedInstance->path_file = $fileName;
-            $updatedInstance[0]->save();
+            $this->modelRepository->update($updatedInstance[0]->id, ['path_file'=> $destinationPath.'/'.$fileName ]);
+
+            $updatedInstance[0]->update();
 
             return redirect()->back()->with('markAdded','ok');
         }
@@ -106,9 +107,9 @@ class MarkController extends Controller
      */
     protected function destroy($id)
     {
-        $this->modelRepository->delete($id);
+        $this->modelRepository->update( $updatedInstance[0]->id, ['path_file'=> null]);
 
-        return redirect()->back()->with('activityDeleted', 'ok');
+        return redirect()->back()->with('markDeleted', 'ok');
     }
 
     /**

@@ -57,8 +57,8 @@
                                     </td>
 
                                     <td class="text-center">
-                                        @if($act->path_file == null)
-                                            {{ url(str($act->path_file)) }}
+                                        @if(isset($act->path_file))
+                                            <a href="{{ url('/'.$act->path_file) }}"> Unduh disini </a>
                                         @else
                                             Belum diupload
                                         @endif
@@ -67,7 +67,7 @@
                                     <td class="text-center">
                                         <a href="" class="btn btn-primary btn-xs"title="Sunting"><span class="glyphicon glyphicon-pencil"></span></a>
                                         <button type="button" class="btn btn-danger btn-xs" data-toggle="modal" data-target=""><span class="glyphicon glyphicon-remove"></span></button>
-                                        <!-- Modal -->
+
                                         <div class="modal fade" id="" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                                             <div class="modal-dialog">
                                                 <div class="modal-content">
@@ -80,7 +80,7 @@
                                                     </div>
                                                     <div class="modal-footer">
                                                         <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-                                                        <a href="">
+                                                        <a href="{{ route('mark.destroy', $act->id) }}">
                                                             <button type="button" class="btn btn-primary">Ok!!</button>
                                                         </a>
                                                     </div>
