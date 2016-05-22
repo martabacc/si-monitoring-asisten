@@ -2,7 +2,7 @@
 
 <script src="{{ url('assets/adminlte/plugins/jQuery/jQuery-2.1.4.min.js') }}"></script>
 
-<script type="text/javascript" src="{{ URL::to('assets/js/jquery-ui.min.js') }}"></script>
+<script type="text/javascript" src="{{ url('assets/js/jquery-ui.min.js') }}"></script>
 <!-- Bootstrap 3.3.5 -->
 <script src="{{ url('assets/adminlte/bootstrap/js/bootstrap.min.js') }}"></script>
 <!-- SlimScroll -->
@@ -12,9 +12,15 @@
 <!-- AdminLTE App -->
 <script src="{{ url('assets/adminlte/dist/js/app.min.js') }}"></script>
 
+<!-- Sparkline -->
+<script src="{{ url('assets/adminlte/plugins/sparkline/jquery.sparkline.min.js') }}"></script>
+<!-- jvectormap -->
+<script src="{{ url('assets/adminlte/plugins/jvectormap/jquery-jvectormap-1.2.2.min.js') }}"></script>
+
+
 <script>
 $(function(){
-	// datatable initialization. script load dynamically (foot section) from caller pages
+
     table = $('.datatable').DataTable({
         "paging": true,
         "lengthChange": false,

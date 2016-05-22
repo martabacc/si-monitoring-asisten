@@ -16,8 +16,6 @@
 <link rel="stylesheet" href="{{ URL::to('assets/adminlte/plugins/select2/select2.min.css') }}" type="text/css">
 <link rel="stylesheet" href="{{ URL::to('assets/adminlte/plugins/iCheck/all.css') }}" type="text/css">
 
-<script type="text/javascript" src="{{ URL::to('assets/js/jquery-1.11.2.min.js') }}"></script>
-<script type="text/javascript" src="{{ URL::to('assets/js/jquery-ui.min.js') }}"></script>
 
 <link rel="stylesheet" href="{{ URL::to('assets/css/jquery-ui.css') }}" type="text/css">
 
@@ -25,4 +23,3 @@
 <script>
     $.widget.bridge('uibutton', $.ui.button);
 </script>
-<script type="text/javascript" src="{{ URL::to('assets/adminlte/bootstrap/js/bootstrap.min.js') }}"></script>

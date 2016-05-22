@@ -50,17 +50,15 @@
                                 @foreach($activities as $act)
                                     <td class="text-center">{{ $i++ }}</td>
 
-                                    <td><a href="" class="text-center"
-                                           title="">
+                                    <td>
                                             {{ $act->name }}
-                                        </a>
                                     </td>
 
                                     <td class="text-center">
                                         @if(isset($act->path_file))
-                                            <a href="{{ url('/'.$act->path_file) }}"> Unduh disini </a>
+                                             <a href="{{ url('/'.$act->path_file) }}"> <span class="label label-success">Sudah Diupload, klik untuk unduh</span> </a>
                                         @else
-                                            Belum diupload
+                                            <span class="label label-danger">Belum Diupload</span>
                                         @endif
                                     </td>
 
@@ -88,8 +86,8 @@
                                             </div>
                                         </div>
                                     </td>
-                                    @endforeach
                             </tr>
+                            @endforeach
                             </tbody>
                         </table>
                     </div>

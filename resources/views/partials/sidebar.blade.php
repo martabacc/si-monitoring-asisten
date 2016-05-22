@@ -13,19 +13,29 @@
             </div>
         </div>
 
+        @if(count(session('arrayOfRole'))>1))
+            <ul class="sidebar-menu btn-default">
+                <li class="treeview">
+                    <a href="#">
+                        <span class='text-info'><strong> Ubah Role </strong></span> <i class="fa fa-angle-left pull-right"></i>
+                    </a>
+                    <ul class="treeview-menu">
+                        @foreach(session('arrayOfRole') as $role)
+                            <li><a href="{{ url('session/switch/'.$role ) }}">
+                                    <i class="fa fa-list"></i>
+                                    @if($role==0) Ganti jadi Administrator
+                                    @elseif($role==1) Ganti jadi Dosen
+                                    @elseif($role==2) Ganti jadi Asisten
+                                    @elseif($role==3) Ganti jadi Praktikan
+                                    @endif
+                                </a>
+                            </li>
 
-
-        <form action="#" method="get" class="sidebar-form">
-            <div class="input-group">
-                <input type="text" name="q" class="form-control" placeholder="Search...">
-                <span class="input-group-btn">
-                    <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i></button>
-                </span>
-            </div>
-        </form>
-        <!-- /.search form -->
-
-
+                            @endforeach
+                    </ul>
+                </li>
+            </ul>
+        @endif
 
         <ul class="sidebar-menu">
             <li class="header">Menu</li>
@@ -317,6 +327,7 @@
             @endif
 
         </ul>
+
     </section>
     <!-- /.sidebar -->
 </aside>
