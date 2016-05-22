@@ -14,14 +14,14 @@
         </div>
 
         @if(count(session('arrayOfRole'))>1))
-            <ul class="sidebar-menu btn-default">
+            <ul class="sidebar-menu">
                 <li class="treeview">
                     <a href="#">
                         <span class='text-info'><strong> Ubah Role </strong></span> <i class="fa fa-angle-left pull-right"></i>
                     </a>
                     <ul class="treeview-menu">
                         @foreach(session('arrayOfRole') as $role)
-                            <li><a href="{{ url('session/switch/'.$role ) }}">
+                            <li><a href="{{ url('role/switch/'.$role ) }}">
                                     <i class="fa fa-list"></i>
                                     @if($role==0) Ganti jadi Administrator
                                     @elseif($role==1) Ganti jadi Dosen

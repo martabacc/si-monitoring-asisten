@@ -44,6 +44,8 @@ Route::group(['middleware' => ['web']], function() {
             Route::resource('schedule', 'ScheduleController', ['only'=> 'index']);
 
             Route::resource('questionnaire', 'QuestionnaireController', ['only' => 'index']);
+
+            Route::get('/role/switch/{role}', 'ClassController@change');
         });
 
         Route::group(['roles' => [0,1,2] ], function(){
@@ -92,7 +94,6 @@ Route::group(['middleware' => ['web']], function() {
         Route::group(['roles'=> [0,3]], function(){
             Route::resource('mark','MarkController', ['only'=>'index']);
         });
-
 
         Route::group(['roles'=> [0,1,2]], function(){
             Route::resource('mark','MarkController');

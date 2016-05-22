@@ -51,6 +51,17 @@ class AuthController extends Controller
     {
         $this->userRepository = $userRepository;
 
-        $this->middleware('guest', ['except' => 'getLogout']);
+        $this->middleware('guest', ['except' => ['getLogout','change']]);
+    }
+
+
+    public function change($role){
+        $arrayOfRole = session('arrayOfRole');
+        if( in_array($role, $arrayOfRole) ){
+            session()->forget('role');
+//            session()->set('role', $role);
+            return redirect()->back();
+        }
+        else abort(403);
     }
 }

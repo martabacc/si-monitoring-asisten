@@ -42,10 +42,6 @@
                 <li>
                     <a href="{{ url('logout') }}" class=" dropdown-toggle btn btn-info small">Log Out</a>
                 </li>
-                <!-- Control Sidebar Toggle Button -->
-                <li>
-                    <a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i>  Lihat Website Sebagai</a>
-                </li>
             </ul>
         </div>
     </nav>

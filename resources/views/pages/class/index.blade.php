@@ -8,6 +8,9 @@
 
     @include('partials.flash-overlay-modal')
     <section class="content-header">
+        @if(!session('role'))
+            lala
+        @endif
         <h1> Kelas </h1>
     </section>
     <section class="content">

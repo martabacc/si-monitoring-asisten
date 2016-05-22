@@ -19,7 +19,8 @@ class Authenticate
         if(Auth::check()){
             $id = $request->user()->id;
             $arrayOfRole = [];
-            
+        )
+            session()-?set()
             if( $id ){
                 if($this->isAssistant( $id )){
                     array_push($arrayOfRole, '2' );

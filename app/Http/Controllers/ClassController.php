@@ -252,4 +252,11 @@ class ClassController extends Controller
 
         return redirect()->back()->with('teachersDeleted', 'ok');
     }
+
+    public function change($role){
+//        return 'asdfadsfadsf';
+        session()->set('role', 'bicis');
+//        dd(session('role'));
+    }
+
 }
