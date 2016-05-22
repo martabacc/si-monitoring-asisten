@@ -22,13 +22,13 @@ Route::group(['middleware' => ['web']], function() {
 
     Route::group(['middleware' => ['auth','roles']], function() {
 
-        Route::group(['roles'=> [0,2] ], function(){
+        Route::group(['roles'=> [ '0' , '2' ] ], function(){
             Route::resource('activity', 'ActivityController',
-                    ['except'=>['index','detail']]);
+                    ['except'=> ['index','detail'] ] );
             Route::resource('issue', 'IssueController',
-                    ['except'=>['index','detail']]);
+                    ['except'=>['index','detail'] ] );
             Route::resource('presence', 'PresenceController',
-                    ['except'=>['index','detail']]);
+                    ['except'=>['index','detail'] ] );
             Route::resource('schedule', 'ScheduleController');
 
             Route::resource('schedule', 'ScheduleController', ['except'=> 'index']);
@@ -37,7 +37,7 @@ Route::group(['middleware' => ['web']], function() {
             Route::resource('privilege', 'PrivilegeController');
         });
 
-        Route::group(['roles' =>[0,1,2,3] ], function(){
+        Route::group(['roles' =>[ 0,1,2,3] ], function(){
             Route::resource('class', 'ClassController' , ['only' => 'index']);
             Route::resource('schedule', 'ScheduleController', ['only'=> 'index']);
         });

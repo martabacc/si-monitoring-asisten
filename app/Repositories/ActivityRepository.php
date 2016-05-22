@@ -29,7 +29,7 @@ class ActivityRepository
 
     public function unsubmittedMark()
     {
-        return Activity::where('path_files','=',null);
+        return Activity::where('path_file',null)->get();
     }
 
     /**

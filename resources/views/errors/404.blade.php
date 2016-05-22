@@ -18,7 +18,7 @@
                 <h3><i class="fa fa-warning text-yellow"></i> Oops! Page not found.</h3>
 
                 <p>
-                    Haalaman yang anda cari tidak dapat ditemukan
+                    Haalaman yang anda cari tidak dapat ditemukan.
                 </p>
             </div>
             <!-- /.error-content -->

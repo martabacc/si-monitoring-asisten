@@ -24,12 +24,11 @@ class Authenticate
                 if($this->isAssistant( $id )){
                     array_push($arrayOfRole, '2' );
                     session()->set('role','2');
-
                 }
-                if($this->isTeacher( $id ))
-                    array_push($arrayOfRole, '1' );
-                    session()->set('role','1');
-
+                if($this->isTeacher( $id )) {
+                    array_push($arrayOfRole, '1');
+                    session()->set('role', '1');
+                }
                 if($this->isStudent( $id )){
                     array_push($arrayOfRole, '3' );
                     session()->set('role','3');
@@ -40,7 +39,7 @@ class Authenticate
                 }
             }
 
-            session()->set('roleArray', $arrayOfRole);
+            session()->set('arrayOfRole', $arrayOfRole);
         }
 
         if (Auth::guard($guard)->guest()) {
