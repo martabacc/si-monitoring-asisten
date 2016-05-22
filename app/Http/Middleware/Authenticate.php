@@ -18,22 +18,29 @@ class Authenticate
     {
         if(Auth::check()){
             $id = $request->user()->id;
-
+            $arrayOfRole = [];
             
             if( $id ){
-                if( $request->user()->id =='admin'){
-                    session()->set('role','0');
-                }
-                elseif($this->isAssistant( $id )){
+                if($this->isAssistant( $id )){
+                    array_push($arrayOfRole, '2' );
                     session()->set('role','2');
 
                 }
-                elseif($this->isStudent( $id )){
+                if($this->isTeacher( $id ))
+                    array_push($arrayOfRole, '1' );
+                    session()->set('role','1');
+
+                if($this->isStudent( $id )){
+                    array_push($arrayOfRole, '3' );
                     session()->set('role','3');
                 }
-                elseif($this->isTeacher( $id ))
-                    session()->set('role','1');
+                if( $request->user()->id ==1){
+                    array_push($arrayOfRole, '0' );
+                    session()->set('role','0');
+                }
             }
+
+            session()->set('roleArray', $arrayOfRole);
         }
 
         if (Auth::guard($guard)->guest()) {

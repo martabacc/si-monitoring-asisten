@@ -8,7 +8,7 @@
                 <img src="{{ url('assets/adminlte/dist/img/user2-160x160.jpg') }}" class="img-circle" alt="User Image">
             </div>
             <div class="pull-left info">
-                <p>{{ Auth::user()->name }}</p>
+                <p>{{ Auth::user()->name }}  {{ session('role') }}</p>
                 <p>{{ Auth::user()->privilege->role }}</p>
             </div>
         </div>
@@ -24,6 +24,7 @@
             </div>
         </form>
         <!-- /.search form -->
+
 
 
         <ul class="sidebar-menu">
@@ -192,7 +193,7 @@
             @elseif( session('role')==2 )
                 <li class="treeview">
                     <a href="#">
-                        <i class="fa fa-users"></i> <span>Praktikum dan Sesilab</span> <i class="fa fa-angle-left pull-right"></i>
+                        <i class="fa fa-users"></i> <span>Jadwal</span> <i class="fa fa-angle-left pull-right"></i>
                     </a>
                     <ul class="treeview-menu">
                         <li><a href="{{ url('schedule') }}"><i class="fa fa-list"></i> Lihat Jadwal </a></li>

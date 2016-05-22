@@ -22,19 +22,27 @@ Route::group(['middleware' => ['web']], function() {
 
     Route::group(['middleware' => ['auth','roles']], function() {
 
-        Route::group(['roles'=> [2] ], function(){
+        Route::group(['roles'=> [0,2] ], function(){
             Route::resource('activity', 'ActivityController',
                     ['except'=>['index','detail']]);
             Route::resource('issue', 'IssueController',
                     ['except'=>['index','detail']]);
             Route::resource('presence', 'PresenceController',
                     ['except'=>['index','detail']]);
+            Route::resource('schedule', 'ScheduleController');
 
+            Route::resource('schedule', 'ScheduleController', ['except'=> 'index']);
 
 //          unused routes?
             Route::resource('privilege', 'PrivilegeController');
         });
-        Route::group(['roles'=> [1,2] ], function(){
+
+        Route::group(['roles' =>[0,1,2,3] ], function(){
+            Route::resource('class', 'ClassController' , ['only' => 'index']);
+            Route::resource('schedule', 'ScheduleController', ['only'=> 'index']);
+        });
+
+        Route::group(['roles'=> [0,1,2] ], function(){
             Route::resource('activity', 'ActivityController',
                     ['only'=>['index','detail']]);
             Route::resource('issue', 'IssueController',
@@ -43,9 +51,22 @@ Route::group(['middleware' => ['web']], function() {
                     ['only'=>['index','detail']]);
 
 
-            Route::resource('class', 'ClassController');
+            Route::resource('class', 'ClassController' , ['except' => 'index']);
 
-//            User Account Management
+
+            Route::resource('question', 'QuestionController');
+            Route::resource('questionnaire', 'QuestionnaireController');
+            Route::resource('schedule', 'ScheduleController');
+
+            Route::resource('assistant', 'AssistantController');
+            Route::resource('teacher', 'TeacherController');
+            Route::resource('student', 'StudentController');
+            Route::resource('subject', 'SubjectController');
+
+        });
+
+        Route::group(['roles'=>[0]], function(){
+//            user account management
             Route::get('/class/{class}/student', ['uses' => 'ClassController@viewStudents', 'as' => 'class.student.view']);
             Route::post('/class/{class}/student', ['uses' => 'ClassController@addStudents', 'as' => 'class.student.add']);
             Route::delete('/class/{class}/student/{student}/', ['uses' => 'ClassController@deleteStudents', 'as' => 'class.student.destroy']);
@@ -58,27 +79,18 @@ Route::group(['middleware' => ['web']], function() {
             Route::post('/class/{class}/teacher', ['uses' => 'ClassController@addTeachers', 'as' => 'class.teacher.add']);
             Route::delete('/class/{class}/teacher/{teacher}/', ['uses' => 'ClassController@deleteTeachers', 'as' => 'class.teacher.destroy']);
 
-
             Route::resource('user', 'UserController');
-            Route::resource('assistant', 'AssistantController');
-            Route::resource('teacher', 'TeacherController');
-            Route::resource('student', 'StudentController');
-            Route::resource('subject', 'SubjectController');
+            Route::get('role','RoleController@index');
 
         });
 
-        Route::resource('question', 'QuestionController');
-        Route::resource('questionnaire', 'QuestionnaireController');
-        Route::resource('schedule', 'ScheduleController');
 
-        Route::group(['roles'=> 3], function(){
-            Route::resource('schedule', 'ScheduleController');
+        Route::group(['roles'=> [0,3]], function(){
+            Route::resource('mark','MarkController', ['only'=>'index']);
         });
 
 
-        Route::get('role','RoleController@index');
-
-        Route::group(['roles'=> 3], function(){
+        Route::group(['roles'=> [0,1,2]], function(){
             Route::resource('mark','MarkController');
         });
     });

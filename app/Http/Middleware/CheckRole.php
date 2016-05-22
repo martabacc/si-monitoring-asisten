@@ -36,12 +36,13 @@ class CheckRole
     private function getRequiredRole($route)
     {
         $action = $route->getAction();
-
         return isset($action['roles']) ? $action['roles'] : null;
     }
 
     private function isAuthorized($role){
-        return in_array($role, $this->roles);
+        if(is_array($this->roles))
+            return in_array($role, $this->roles);
+        else return $this->roles == $role;
     }
 
 

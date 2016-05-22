@@ -1,30 +1,40 @@
+@extends('layouts.boxed')
 
-<!DOCTYPE html>
-<html>
-<head>
-    <meta http-equiv="content-style-type" content="text/css" />
-    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
-    <title>Oh, Crap! </title>
-    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
-    <link rel="stylesheet" type="text/css" href="{{ url('css/errorscreen.css') }}" media="screen" />
-    <link rel="stylesheet" type="text/css" href="{{ url('css/errorprint.css') }}" media="print" />
-    <!--[if lt IE 7]>
-    <link rel="stylesheet" media="screen" href="/styles/ielt7.css" type="text/css"/>
-    <![endif]-->
-    <script type="text/javascript" src="/javascript/scripts.js"></script>
-</head>
-<body id="e404">
+@section('title')
+    Praktikan
+@stop
 
-<div id="root">
-    <div id="content">
-        <div class="outer">
-            <div id="error" style="background:url( {{ url('shinobi.png') }} ) no-repeat">
-                <h1 class="a">Error 403 Unauthorized </h1>
-                <p>Our shinobi could not authorize your request. <br> You may </span> <a href=" "> turn back </a> or head straight to our <a href="{{ url('/') }}">home page</a></p>
+@section('content')
+    @include('partials.flash-overlay-modal')
+
+    <section class="content">
+        <div class="error-page">
+            <h2 class="headline text-yellow"> 403</h2>
+
+            <div class="error-content">
+                <br>
+                <br>
+                <h3><i class="fa fa-warning text-yellow"></i> Oops! You're not Authorized.</h3>
+
+                <p>
+                    I'm sorry but you're not authorized to this page
+                </p>
+
             </div>
+            <!-- /.error-content -->
         </div>
-    </div>
-</div>
+        <!-- /.error-page -->
+    </section>
 
-</body>
-</html>
+@stop
+@section('custom_foot')
+    <script src="{{ url('plugins/datatables/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ url('plugins/datatables/dataTables.bootstrap.min.js') }}"></script>
+    <script src="{{ url('plugins/select2/select2.full.min.js') }}"></script>
+    <script type="text/javascript">
+        $(function(){
+
+            $(".select2").select2();
+        });
+    </script>
+@stop
