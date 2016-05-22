@@ -51,7 +51,7 @@ class SubjectController extends Controller
      */
     protected function update(UpdateSubjectRequest $request, $id)
     {
-        $data = $request->only('subject_id', 'class');
+        $data = $request->only('name', 'description');
 
         $this->modelRepository->update($id, $data);
 

@@ -24,7 +24,7 @@ class UpdateUserRequest extends Request
     public function rules()
     {
         return [
-            'name'      => 'required|min:6',
+            'name'      => 'required|min:6|alpha_spaces',
             'password'  => 'required|min:6'
         ];
     }
@@ -37,8 +37,9 @@ class UpdateUserRequest extends Request
     public function messages()
     {
         return [
-            'name.required'     => 'Name harus diisi.',
-            'name.alphanum'     => 'Name hanya boleh menggunakan huruf dan angka.',
+            'name.required'     => 'Nama harus diisi.',
+            'name.min'          => 'Nama minimal :min karakter.'
+            'name.alpha_spaces' => 'Nama hanya boleh menggunakan huruf dan angka.',
 
             'password.required' => 'Password harus diisi.',
             'password.min'      => 'Password minimal menggunakan :min karakter.',
