@@ -24,7 +24,7 @@ class UpdateActivityRequest extends Request
     public function rules()
     {
         return [
-            'name'      => 'required|alpha_num',
+            'name'      => 'required|alpha_spaces',
             'class_id'  => 'required|exists:classes,id',
             'date'      => 'required|date',
             'duration'  => 'required|numeric',
@@ -41,7 +41,7 @@ class UpdateActivityRequest extends Request
     {
         return [
             'name.required'     => 'Judul laporan harus diisi.',
-            'name.alpha_num'    => 'Judul laporan hanya boleh menggunakan huruf dan angka.',
+            'name.alpha_spaces' => 'Judul laporan hanya boleh menggunakan huruf dan angka.',
 
             'class_id.required' => 'Kelas harus diisi.',
             'class_id.exists'   => 'Kelas tidak terdaftar.',

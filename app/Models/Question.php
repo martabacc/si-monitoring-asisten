@@ -12,7 +12,7 @@ class Question extends Model
     protected $dates = ['deleted_at'];
     
     protected $fillable = [
-        'question';
+        'question',
     ];
 
     public function answer()

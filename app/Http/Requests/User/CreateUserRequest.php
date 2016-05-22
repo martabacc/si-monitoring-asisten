@@ -24,7 +24,7 @@ class CreateUserRequest extends Request
     public function rules()
     {
         return [
-            'username'  => 'required|min:6|alphanum|unique:users,username',
+            'username'  => 'required|min:6|alpha_spaces|unique:users,username',
             'name'      => 'required|alphanum',
             'password'  => 'required|min:6'
         ];
@@ -38,16 +38,16 @@ class CreateUserRequest extends Request
     public function messages()
     {
         return [
-            'username.required' => 'Username harus diisi.',
-            'username.unique'   => 'Username sudah terpakai.',
-            'username.alphanum' => 'Username hanya boleh menggunakan huruf dan angka.',
-            'username.min'      => 'Username minimal menggunakan :min karakter.',
+            'username.required'     => 'Username harus diisi.',
+            'username.unique'       => 'Username sudah terpakai.',
+            'username.alpha_spaces' => 'Username hanya boleh menggunakan huruf, angka, dan spasi.',
+            'username.min'          => 'Username minimal menggunakan :min karakter.',
 
-            'name.required'     => 'Name harus diisi.',
-            'name.alphanum'     => 'Name hanya boleh menggunakan huruf dan angka.',
+            'name.required'         => 'Name harus diisi.',
+            'name.alphanum'         => 'Name hanya boleh menggunakan huruf dan angka.',
 
-            'password.required' => 'Password harus diisi.',
-            'password.min'      => 'Password minimal menggunakan :min karakter.',
+            'password.required'     => 'Password harus diisi.',
+            'password.min'          => 'Password minimal menggunakan :min karakter.',
         ];
     }
 }
