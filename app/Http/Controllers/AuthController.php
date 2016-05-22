@@ -31,16 +31,14 @@ class AuthController extends Controller
     /**
      * Set custom redirection after login success
      */
-    protected $redirectTo = 'activity';
+    protected $redirectTo = 'class';
 
     /**
      * Set custom redirection after logout
      */
     protected $redirectAfterLogout = '/login';
 
-    /**
-     * UserRepository dependency
-     */
+
     protected $userRepository;
 
     /**

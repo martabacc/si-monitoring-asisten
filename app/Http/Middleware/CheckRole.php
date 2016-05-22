@@ -2,31 +2,25 @@
 
 namespace App\Http\Middleware;
 
-use App\Models\Assistant;
-use App\Models\Student;
-use App\Models\Teacher;
 use Closure;
-use Exception;
-use Illuminate\Support\Facades\Auth;
-
 class CheckRole
 {
-    private $roles;
+    private $requiredRoles;
 
     public function handle($request, Closure $next)
     {
-        $this->roles = $this->getRequiredRole($request->route());
-        $id = $request->user()->id;
+        if(session('role')){
+            $this->requiredRoles = $this->getRequiredRole($request->route());
+            $userRole = session('role');
 
-        if( $id && $this->roles ){
-            if( $request->user()->name=='admin'|| $this->isAssistant( $id ) ||
-                $this->isStudent( $id ) ||
-                $this->isTeacher( $id ) )
-            {
-                return $next($request);
-            }
-            else {
-                abort(403);
+            if( $this->requiredRoles ){
+                if( $userRole==0 || $this->isAuthorized( $userRole ))
+                {
+                    return $next($request);
+                }
+                else {
+                    abort(403);
+                }
             }
         }
         else return $next($request);
@@ -36,40 +30,15 @@ class CheckRole
     private function getRequiredRole($route)
     {
         $action = $route->getAction();
-//         1 dosen, 2 asisten , 3 praktikan
         return isset($action['roles']) ? $action['roles'] : null;
     }
 
     private function isAuthorized($role){
-        return in_array($role, $this->roles);
+        if(is_array($this->requiredRoles))
+            return in_array($role, $this->requiredRoles);
+        else return $this->requiredRoles == $role;
     }
 
-    private function isTeacher($id){
-        try{
-            return ( Teacher::find($id) ) ? $this->isAuthorized(1) : false;
-        }
-        catch(Exception $e){
-            return false;
-        }
-    }
-
-    private function isAssistant($id){
-        try{
-            return ( Assistant::find($id) ) ? $this->isAuthorized(2): false;
-        }
-        catch(Exception $e){
-            return false;
-        }
-    }
-
-    private function isStudent($id){
-        try{
-            return ( Student::find($id) ) ? $this->isAuthorized(3): false;
-        }
-        catch(Exception $e){
-            return false;
-        }
-    }
 
 
 }

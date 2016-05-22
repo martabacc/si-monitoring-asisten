@@ -1,7 +1,7 @@
 @extends('layouts.boxed')
 
 @section('title')
-
+    Nilai
 @stop
 
 @section('content')
@@ -47,47 +47,48 @@
                             <tbody>
                             <?php $i = 1;?>
                             <tr>
-                                <td class="text-center">{{ $i++ }}</td>
+                                @foreach($activities as $act)
+                                    <td class="text-center">{{ $i++ }}</td>
 
-                                <td><a href="" class="text-center"
-                                       title="">Lala
-                                    </a>
-                                </td>
+                                    <td><a href="" class="text-center"
+                                           title="">
+                                            {{ $act->name }}
+                                        </a>
+                                    </td>
 
-                                <td class="text-center">
-                                    <span class="label label-warning">Pending</span>
-                                    <span class="label label-danger">Denied</span>
-                                    <span class="label label-success">Approved</span>
-                                </td>
+                                    <td class="text-center">
+                                        @if(isset($act->path_file))
+                                            <a href="{{ url('/'.$act->path_file) }}"> Unduh disini </a>
+                                        @else
+                                            Belum diupload
+                                        @endif
+                                    </td>
 
-                                <td class="text-center">
-                                    Lala 2
-                                </td>
+                                    <td class="text-center">
+                                        <a href="" class="btn btn-primary btn-xs"title="Sunting"><span class="glyphicon glyphicon-pencil"></span></a>
+                                        <button type="button" class="btn btn-danger btn-xs" data-toggle="modal" data-target=""><span class="glyphicon glyphicon-remove"></span></button>
 
-                                <td class="text-center">
-                                    <a href="" class="btn btn-primary btn-xs"title="Sunting"><span class="glyphicon glyphicon-pencil"></span></a>
-                                    <button type="button" class="btn btn-danger btn-xs" data-toggle="modal" data-target=""><span class="glyphicon glyphicon-remove"></span></button>
-                                    <!-- Modal -->
-                                    <div class="modal fade" id="" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                                        <div class="modal-dialog">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-                                                    <h4 class="modal-title" id="myModalLabel">Hapus Nilai</h4>
-                                                </div>
-                                                <div class="modal-body">
-                                                    Apakah anda yakin menghapus ?
-                                                </div>
-                                                <div class="modal-footer">
-                                                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-                                                    <a href="">
-                                                        <button type="button" class="btn btn-primary">Ok!!</button>
-                                                    </a>
+                                        <div class="modal fade" id="" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                                                        <h4 class="modal-title" id="myModalLabel">Hapus Nilai</h4>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        Apakah anda yakin menghapus ?
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                                                        <a href="{{ route('mark.destroy', $act->id) }}">
+                                                            <button type="button" class="btn btn-primary">Ok!!</button>
+                                                        </a>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                </td>
+                                    </td>
+                                    @endforeach
                             </tr>
                             </tbody>
                         </table>

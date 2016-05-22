@@ -31,16 +31,26 @@ class MarkController extends Controller
         $this->classRepository = $classRepository;
     }
 
+    protected function index()
+    {
+        $stringView = 'pages.'.$this->modelName.'.index';
+
+        $data['activities'] = $this->modelRepository->findAll();
+
+        return view($stringView, $data);
+    }
+
+
     /**
      * Show form to create a new instance
      */
     protected function create()
     {
-        $activities = $this->modelRepository->unsubmittedMark();
+        $data['activities'] = $this->modelRepository->unsubmittedMark();
 
         $stringView = 'pages.'.$this->modelName.'.create';
 
-        return view($stringView, compact('activities'));
+        return view($stringView, $data);
     }
 
     /**
@@ -48,14 +58,31 @@ class MarkController extends Controller
      *
      * @param  CreateActivityRequest  $request
      */
-    protected function store(CreateActivityRequest $request)
+    protected function store(Request $request)
     {
-        $data = $request->all();
-        $data['assistant_id'] = \Auth::user()->id;
+        $uploadedFile = $request->file('path_file');
+//        dd($uploadedFile);
+        $updatedInstance =$this->modelRepository->find($request->only('activity'));
+            
+        if($uploadedFile->isValid()){
+            $destinationPath='assets/mark';
+            $extension = $uploadedFile->getClientOriginalExtension();
+            $fileName = 'Nilai '. $updatedInstance[0]->name .'.' . $extension;
+            $uploadedFile->move($destinationPath, $fileName);
 
-        $this->modelRepository->create($data);
 
-        return redirect()->back()->with('activityAdded', 'ok');
+            $this->modelRepository->update($updatedInstance[0]->id, ['path_file'=> $destinationPath.'/'.$fileName ]);
+
+            $updatedInstance[0]->update();
+
+            return redirect()->back()->with('markAdded','ok');
+        }
+        else{
+
+            return redirect()->back()->with('markAdded', 'nope');
+        }
+
+
     }
 
     /**
@@ -64,7 +91,7 @@ class MarkController extends Controller
      * @param  UpdateActivityRequest $request
      * @return view updatedActivity
      */
-    protected function update(UpdateActivityRequest $request, $id)
+    protected function update(Request $request)
     {
         $data = $request->only('class_id', 'name', 'date', 'duration', 'notes');
 
@@ -80,9 +107,9 @@ class MarkController extends Controller
      */
     protected function destroy($id)
     {
-        $this->modelRepository->delete($id);
+        $this->modelRepository->update( $updatedInstance[0]->id, ['path_file'=> null]);
 
-        return redirect()->back()->with('activityDeleted', 'ok');
+        return redirect()->back()->with('markDeleted', 'ok');
     }
 
     /**
@@ -98,7 +125,6 @@ class MarkController extends Controller
         $classes = $this->classRepository->findAll();
 
         $instance = $this->modelRepository->find($id);
-
         return view($stringView)
             ->with($this->modelName, $instance)
             ->with('classes', $classes);

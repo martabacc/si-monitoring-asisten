@@ -17,18 +17,21 @@
                 <div class="box box-info">
                     <div class="box-header with-border">
                         <h3 class="box-title">Tambah Laporan Nilai</h3>
-                    </div><!-- /.box-header -->
-                    {{--todo hanya di tampilan desainer--}}
-                            <!-- form start -->
-                    {{--Note : Assistant ID dapat dari authentikasi--}}
-                    <form action="" method="post" class="form-horizontal">
+                    </div>
+
+
+                    @if (session('markAdded'))
+                        <div class="alert alert-success">Mark Added!</div>
+                    @endif
+
+                    <form action="{{ route('mark.store') }}" method="post" class="form-horizontal" enctype="multipart/form-data">
                         <div class="box-body">
                             {{ csrf_field() }}
                             <div class="form-group">
                                 <label for="inputEmail3" class="col-sm-3 control-label">Aktivitas</label>
                                 <div class="col-sm-8">
 
-                                    <select class="form-control" name="class_id">
+                                    <select class="form-control" name="activity">
                                         @foreach($activities as $act)
                                             <option value="{{ $act->id }}">{{ $act->name .'-'. $act->classes->name }}</option>
                                         @endforeach
@@ -47,14 +50,6 @@
                                     <span class="text-warning">
                                         File excel yang berisi nilai.
                                     </span>
-                                </div>
-                            </div>
-
-
-                            <div class="form-group">
-                                <label for="inputEmail3" class="col-sm-3 control-label">Catatan </label>
-                                <div class="col-sm-8">
-                                    <textarea class="form-control" rows="3" name="notes" required></textarea>
                                 </div>
                             </div>
 

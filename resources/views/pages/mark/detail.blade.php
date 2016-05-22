@@ -17,11 +17,7 @@
                 <div class="box box-info">
                     <div class="box-header with-border">
                         <h3 class="box-title">Detail Nilai</h3>
-                    </div><!-- /.box-header -->
-                    {{--todo hanya di tampilan desainer--}}
-                            <!-- form start -->
-                    {{--Note : Assistant ID dapat dari authentikasi--}}
-
+                    </div>
                     <div class="box-body">
                         <table class="table table-striped">
                             <tbody>

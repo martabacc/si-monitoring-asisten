@@ -24,7 +24,7 @@ class UpdateActivityRequest extends Request
     public function rules()
     {
         return [
-            'name'      => 'required|alpha_spaces',
+            'name'      => 'required',
             'class_id'  => 'required|exists:classes,id',
             'date'      => 'required|date',
             'duration'  => 'required|numeric',
