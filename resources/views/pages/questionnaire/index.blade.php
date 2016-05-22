@@ -43,7 +43,7 @@
                                 <th class=" text-center">
                                     Deskripsi 
                                 </th>
-                                <th class="col-md-1 text-center">
+                                <th class="col-md-2 text-center">
                                     Menu
                                 </th>
                             </tr>
@@ -57,6 +57,7 @@
                                 <td class="text-center">{{ $questionnaire->description }}</td>
                                 <td class="text-center">
                                     <a href="{{ route('questionnaire.edit', $questionnaire->id) }}" class="btn btn-primary btn-xs"title="Sunting"><span class="glyphicon glyphicon-pencil"></span></a>
+                                    <a href="{{ route('questionnaire.result', $questionnaire->id) }}" class="btn btn-success btn-xs"title="Hasil"><span class="glyphicon glyphicon-list"></span></a>
                                     <button type="button" class="btn btn-danger btn-xs" data-toggle="modal" data-target="#delete_questionnaire_{{ $questionnaire->id }}"><span class="glyphicon glyphicon-remove"></span></button>
                                     <!-- Modal -->
                                     <div class="modal fade modal-danger" id="delete_question_{{ $questionnaire->id }}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">

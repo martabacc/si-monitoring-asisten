@@ -8,7 +8,7 @@
 
     @include('partials.flash-overlay-modal')
     <section class="content-header">
-        <h1> Kuisioner - {{ $questionnaire->title }}</h1>
+        <h1>Jawab Kuisioner - {{ $questionnaire->title }}</h1>
         @if(session('questionnaireAnswered'))
             <br>
             <div class="alert alert-success">Questionnaire answered!</div>

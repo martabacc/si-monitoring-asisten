@@ -134,4 +134,16 @@ class QuestionnaireController extends Controller
 
         return redirect()->back()->with('questionnaireAnswered', 'ok');
     }
+
+    protected function viewQuestionnaireResult($id)
+    {
+        $results = $this->modelRepository->getResult($id);
+
+        $instance = $this->modelRepository->find($id);
+
+        $questions = $this->modelRepository->getQuestions($id);
+
+        return view('pages.questionnaire.result', compact('questions', 'results'))
+            ->with($this->modelName, $instance);
+    }
 }

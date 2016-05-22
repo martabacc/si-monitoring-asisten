@@ -110,4 +110,31 @@ class QuestionnaireRepository
         }
         return 'ok';
     }
+
+    public function getResult($id)
+    {
+        $results = DB::table('answers')
+            ->select(DB::raw('count(*) as user_count, question_id, option_id'))
+            ->groupBy(['questionnaire_id', 'question_id', 'option_id'])
+            ->get();
+
+        $total = 0;
+        foreach($results as $result) {
+            $total += $result->user_count;
+        }
+
+        $stats = [];
+        $questionnaire = $this->find($id);
+        foreach($questionnaire->question as $question) {
+            foreach($question->option as $option){
+                $stats[$question->id][$option->id] = 0;
+            }
+        }
+
+        foreach($results as $result) {
+            $stats[$result->question_id][$result->option_id] = $result->user_count / $total * 100;
+        }
+
+        return $stats;
+    }
 }
