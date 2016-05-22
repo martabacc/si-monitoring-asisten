@@ -24,4 +24,9 @@ class Questionnaire extends Model
     {
         return $this->hasMany('App\Models\Answer');
     }
+
+    public function question()
+    {
+        return $this->belongsToMany('App\Models\Question', 'questionnaire_question', 'questionnaire_id', 'question_id')->withTimestamps();
+    }
 }

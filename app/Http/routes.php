@@ -29,11 +29,10 @@ Route::group(['middleware' => ['web']], function() {
                     ['except'=>['index','detail']]);
             Route::resource('presence', 'PresenceController',
                     ['except'=>['index','detail']]);
-
-
 //          unused routes?
             Route::resource('privilege', 'PrivilegeController');
         });
+
         Route::group(['roles'=> [1,2] ], function(){
             Route::resource('activity', 'ActivityController',
                     ['only'=>['index','detail']]);
@@ -41,7 +40,6 @@ Route::group(['middleware' => ['web']], function() {
                     ['only'=>['index','detail']]);
             Route::resource('presence', 'PresenceController',
                     ['only'=>['index','detail']]);
-
 
             Route::resource('class', 'ClassController');
 
@@ -71,6 +69,15 @@ Route::group(['middleware' => ['web']], function() {
         Route::resource('questionnaire', 'QuestionnaireController');
         Route::resource('schedule', 'ScheduleController');
 
+        Route::post('/question/{question}/option', ['uses' => 'QuestionController@addOption', 'as' => 'question.option.add']);
+        Route::delete('/question/{question}/option', ['uses' => 'QuestionController@deleteOption', 'as' => 'question.option.destroy']);
+
+        Route::get('/questionnaire/{questionnaire}/question', ['uses' => 'QuestionnaireController@viewQuestionnaire', 'as' => 'questionnaire.question.view']);
+        Route::post('/questionnaire/{questionnaire}/question', ['uses' => 'QuestionnaireController@addQuestion', 'as' => 'questionnaire.question.add']);
+        Route::delete('/questionnaire/{questionnaire}/question/{question}/', ['uses' => 'QuestionnaireController@deleteQuestion', 'as' => 'questionnaire.question.destroy']);
+
+        Route::post('/questionnaire/{quetionnaire}/answer', ['uses' => 'QuestionnaireController@answerQuestionnaire', 'as' => 'questionnaire.answer']);
+ 
         Route::group(['roles'=> 3], function(){
             Route::resource('schedule', 'ScheduleController');
         });

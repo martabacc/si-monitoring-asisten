@@ -3,18 +3,18 @@
 namespace App\Repositories;
 
 use DB;
-use App\Models\Question;
+use App\Models\Option;
 
-class QuestionRepository
+class OptionRepository
 {
     /**
      * Create new instance for given input
      * @param  array $input
-     * @return Question
+     * @return Option
      */
     public function create($input)
     {
-        return Question::create($input);
+        return Option::create($input);
     }
 
     /**
@@ -23,46 +23,39 @@ class QuestionRepository
      */
     public function findAll()
     {
-        return Question::all();
+        return Option::all();
     }
 
     /**
      * Find the specified instance
-     * @param  int $id question_id
-     * @return Questions
+     * @param  int $id option_id
+     * @return Options
      */
     public function find($id)
     {
-        return Question::findorfail($id);
+        return Option::findorfail($id);
     }
 
     /**
      * Delete the specified instance
-     * @param  int $id question_id
+     * @param  int $id option_id
      */
     public function delete($id)
     {
-        $question = $this->find($id);
+        $option = $this->find($id);
         
-        $question->delete();
+        $option->delete();
     }
     
     /**
      * Update the specified instance
-     * @param  int $id question_id
+     * @param  int $id option_id
      * @param  array $data update_data
      */
     public function update($id, $data)
     {
-        $question = $this->find($id);
+        $option = $this->find($id);
 
-        $question->update($data);
-    }
-
-    public function getOptions($id)
-    {
-        $question = $this->find($id);
-
-        return $question->option;
+        $option->update($data);
     }
 }
