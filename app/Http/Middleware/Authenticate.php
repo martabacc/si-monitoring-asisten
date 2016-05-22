@@ -19,7 +19,7 @@ class Authenticate
         if(Auth::check()){
             $id = $request->user()->id;
 
-
+            
             if( $id ){
                 if( $request->user()->id =='admin'){
                     session()->set('role','0');
