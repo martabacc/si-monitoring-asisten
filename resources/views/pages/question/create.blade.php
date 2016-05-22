@@ -9,6 +9,10 @@
 
     <section class="content-header">
         <h1>Pertanyaan</h1>
+        @if(session('questionAdded'))
+            <br>
+            <div class="alert alert-success">Question created!</div>
+        @endif
     </section>
     <section class="content">
         <div class="row">
@@ -18,21 +22,20 @@
                     <div class="box-header with-border">
                         <h3 class="box-title">Tambah Pertanyaan</h3>
                     </div><!-- /.box-header -->
-                    {{--todo hanya di tampilan desainer--}}
-                            <!-- form start -->
-                    {{--Note : Assistant ID dapat dari authentikasi--}}
-                    <form action="" method="post" class="form-horizontal">
+                    <form action="{{ route('question.store') }}" method="post" class="form-horizontal">
                         <div class="box-body">
                             {{ csrf_field() }}
                             <div class="form-group">
                                 <label for="inputEmail3" class="col-sm-3 control-label">Pertanyaan</label>
                                 <div class="col-sm-8">
-                                    {{--todo change it into authenticated user--}}
-                                    <input type="text" name="name" class="form-control"
-                                           required>
+                                    <input type="text" name="question" class="form-control" value="{{ old('question') }}" required>
+                                    @if($errors->has('question'))
+                                        <span class="text-danger">
+                                            <strong>{{ $errors->first('question') }}</strong>
+                                        </span>
+                                    @endif
                                 </div>
                             </div>
-
                         </div><!-- /.box-body -->
                         <div class="box-footer">
                             <div class="col-sm-4">

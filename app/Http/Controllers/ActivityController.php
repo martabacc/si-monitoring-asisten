@@ -43,6 +43,7 @@ class ActivityController extends Controller
      */
     protected function create()
     {
+        session()->put('activity', 'create');
         $classes = $this->classRepository->findAll();
 
         $stringView = 'pages.'.$this->modelName.'.create';

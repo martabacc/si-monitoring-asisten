@@ -44,6 +44,21 @@ class CreateQuestionerTables extends Migration
                 ->on('assistants');
         });
 
+        Schema::create('questionnaire_question', function (Blueprint $table) {
+            $table->integer('questionnaire_id')->unsigned();
+            $table->integer('question_id')->unsigned();
+            $table->timestamps();
+            $table->softDeletes();
+
+            $table->primary(['questionnaire_id', 'question_id']);
+            $table->foreign('questionnaire_id')
+                ->references('id')
+                ->on('questionnaires');
+            $table->foreign('question_id')
+                ->references('id')
+                ->on('questions');
+        });
+
         Schema::create('answers', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('questionnaire_id')->unsigned();
@@ -76,6 +91,7 @@ class CreateQuestionerTables extends Migration
     public function down()
     {
         Schema::drop('answers');
+        Schema::drop('questionnaire_question');
         Schema::drop('questionnaires');
         Schema::drop('options');
         Schema::drop('questions');

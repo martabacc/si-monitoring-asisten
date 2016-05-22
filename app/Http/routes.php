@@ -24,45 +24,49 @@ Route::group(['middleware' => ['web']], function() {
 
         Route::group(['roles'=> [ '0' , '2' ] ], function(){
             Route::resource('activity', 'ActivityController',
-                    ['except'=> ['index','detail'] ] );
+                ['except'=> ['index','detail'] ] );
             Route::resource('issue', 'IssueController',
-                    ['except'=>['index','detail'] ] );
+                ['except'=>['index','detail'] ] );
             Route::resource('presence', 'PresenceController',
-                    ['except'=>['index','detail'] ] );
+                ['except'=>['index','detail'] ] );
             Route::resource('schedule', 'ScheduleController');
-
             Route::resource('schedule', 'ScheduleController', ['except'=> 'index']);
 
 //          unused routes?
             Route::resource('privilege', 'PrivilegeController');
         });
 
-        Route::group(['roles' =>[ 0,1,2,3] ], function(){
+        Route::group(['roles' => [0,1,2,3] ], function(){
+            Route::get('/questionnaire/{quetionnaire}/answer', ['uses' => 'QuestionnaireController@viewQuestionnaire', 'as' => 'questionnaire.answer.view']);
+            Route::post('/questionnaire/{quetionnaire}/answer', ['uses' => 'QuestionnaireController@answerQuestionnaire', 'as' => 'questionnaire.answer']);
+
             Route::resource('class', 'ClassController' , ['only' => 'index']);
             Route::resource('schedule', 'ScheduleController', ['only'=> 'index']);
+
+            Route::resource('questionnaire', 'QuestionnaireController', ['only' => 'index']);
         });
 
-        Route::group(['roles'=> [0,1,2] ], function(){
-            Route::resource('activity', 'ActivityController',
-                    ['only'=>['index','detail']]);
-            Route::resource('issue', 'IssueController',
-                    ['only'=>['index','detail']]);
-            Route::resource('presence', 'PresenceController',
-                    ['only'=>['index','detail']]);
+        Route::group(['roles' => [0,1,2] ], function(){
+            Route::post('/question/{question}/option', ['uses' => 'QuestionController@addOption', 'as' => 'question.option.add']);
+            Route::delete('/question/{question}/option', ['uses' => 'QuestionController@deleteOption', 'as' => 'question.option.destroy']);
 
+            Route::get('/questionnaire/{questionnaire}/question', ['uses' => 'QuestionnaireController@viewQuestionnaire', 'as' => 'questionnaire.question.view']);
+            Route::post('/questionnaire/{questionnaire}/question', ['uses' => 'QuestionnaireController@addQuestion', 'as' => 'questionnaire.question.add']);
+            Route::delete('/questionnaire/{questionnaire}/question/{question}/', ['uses' => 'QuestionnaireController@deleteQuestion', 'as' => 'questionnaire.question.destroy']);
 
+            Route::get('/questionnaire/{questionnaire}/result', ['uses' => 'QuestionnaireController@viewQuestionnaireResult', 'as' => 'questionnaire.result']);
+
+            Route::resource('activity', 'ActivityController', ['only'=>['index','detail']]);
+            Route::resource('issue', 'IssueController', ['only'=>['index','detail']]);
+            Route::resource('presence', 'PresenceController', ['only'=>['index','detail']]);
             Route::resource('class', 'ClassController' , ['except' => 'index']);
-
-
             Route::resource('question', 'QuestionController');
-            Route::resource('questionnaire', 'QuestionnaireController');
+            Route::resource('questionnaire', 'QuestionnaireController', ['except' => 'index']);
             Route::resource('schedule', 'ScheduleController');
-
             Route::resource('assistant', 'AssistantController');
             Route::resource('teacher', 'TeacherController');
             Route::resource('student', 'StudentController');
             Route::resource('subject', 'SubjectController');
-
         });
 
         Route::group(['roles'=>[0]], function(){

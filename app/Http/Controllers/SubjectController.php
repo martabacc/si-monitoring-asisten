@@ -30,7 +30,7 @@ class SubjectController extends Controller
     }
 
     /**
-     * Create a new teacher instance
+     * Create a new subject instance
      *
      * @param  CreateSubjectRequest  $request
      */

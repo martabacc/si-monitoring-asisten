@@ -1,14 +1,18 @@
 @extends('layouts.boxed')
 
 @section('title')
-    Laporan Kendala
+    Kuisioner
 @stop
 
 @section('content')
     @include('partials.flash-overlay-modal')
 
     <section class="content-header">
-        <h1>Laporan Kendala</h1>
+        <h1>Kuisioner</h1>
+        @if(session('questionnaireAdded'))
+            <br>
+            <div class="alert alert-success">Questionnaire created!</div>
+        @endif
     </section>
     <section class="content">
         <div class="row">
@@ -16,68 +20,33 @@
                 <!-- Horizontal Form -->
                 <div class="box box-info">
                     <div class="box-header with-border">
-                        <h3 class="box-title">Tambah Laporan Kendala</h3>
+                        <h3 class="box-title">Tambah Kuisioner</h3>
                     </div><!-- /.box-header -->
-                    {{--todo hanya di tampilan desainer--}}
-                            <!-- form start -->
-                    {{--Note : Assistant ID dapat dari authentikasi--}}
-                    <form action="" method="post" class="form-horizontal">
+                    <form action="{{ route('questionnaire.store') }}" method="post" class="form-horizontal">
                         <div class="box-body">
                             {{ csrf_field() }}
                             <div class="form-group">
-                                <label for="inputEmail3" class="col-sm-3 control-label">Aktivitas</label>
+                                <label for="inputEmail3" class="col-sm-3 control-label">Judul kuisoner</label>
                                 <div class="col-sm-8">
-                                    <select class="form-control select2"
-                                            data-placeholder="Select a State">
-                                        <option>Alabama</option>
-                                        <option>Alaska</option>
-                                        <option>California</option>
-                                        <option>Washington</option>
-                                    </select>
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <label for="inputEmail3" class="col-sm-3 control-label">Urgensitas</label>
-                                <div class="col-sm-8">
-                                    <select class="form-control select2"
-                                            data-placeholder="Select a State">
-                                    <option value="2">Tinggi</option>
-                                    <option value="1">Sedang</option>
-                                    <option value="0">Rendah</option>
-                                    </select>
+                                    <input type="text" name="title" class="form-control" value="{{ old('title') }}" required>
+                                    @if($errors->has('title'))
+                                        <span class="text-danger">
+                                            <strong>{{ $errors->first('title') }}</strong>
+                                        </span>
+                                    @endif
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="inputEmail3" class="col-sm-3 control-label">Kelas</label>
+                                <label for="inputEmail3" class="col-sm-3 control-label">Deskripsi</label>
                                 <div class="col-sm-8">
-                                    {{--todo change it into authenticated user--}}
-                                    <input type="text" name="class" class="form-control"
-                                           required>
+                                    <input type="text" name="description" class="form-control" value="{{ old('description') }}" required>
+                                    @if($errors->has('description'))
+                                        <span class="text-danger">
+                                            <strong>{{ $errors->first('description') }}</strong>
+                                        </span>
+                                    @endif
                                 </div>
                             </div>
-
-                            <div class="form-group">
-                                <label for="inputEmail3" class="col-sm-3 control-label">Durasi</label>
-                                <div class="col-sm-8">
-                                    <input type="number" name="duration" class="form-control" required>
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <label for="inputEmail3" class="col-sm-3 control-label">Tanggal</label>
-                                <div class="col-sm-8">
-                                    <input type="date" name="date" class="form-control" required>
-                                </div>
-                            </div>
-
-                            <div class="form-group">
-                                <label for="inputEmail3" class="col-sm-3 control-label">Catatan </label>
-                                <div class="col-sm-8">
-                                    <textarea class="form-control" rows="3" name="notes" required></textarea>
-                                </div>
-                            </div>
-
                         </div><!-- /.box-body -->
                         <div class="box-footer">
                             <div class="col-sm-4">
@@ -95,13 +64,8 @@
 
 @stop
 @section('custom_foot')
-    <script src="{{ url('plugins/datatables/jquery.dataTables.min.js') }}"></script>
-    <script src="{{ url('plugins/datatables/dataTables.bootstrap.min.js') }}"></script>
-    <script src="{{ url('plugins/select2/select2.full.min.js') }}"></script>
     <script type="text/javascript">
         $(function(){
-
-            $(".select2").select2();
         });
     </script>
 @stop
