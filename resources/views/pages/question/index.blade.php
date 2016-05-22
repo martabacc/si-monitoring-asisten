@@ -38,13 +38,10 @@
                             </tr>
                             </thead>
                             <tbody>
-                            <?php $i = 1;?>
+                            @foreach($questions as $question)
                             <tr>
-                                <td class="text-center">{{ $i++ }}</td>
-
-                                <td class="text-center">
-                                    Apakah kamu sehat?
-                                </td>
+                                <td class="text-center">{{ $question->id }}</td>
+                                <td class="text-center">{{ $question->question }}</td>
 
                                 <td class="text-center">
                                     Januari 1900
