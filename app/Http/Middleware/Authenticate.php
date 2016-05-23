@@ -12,15 +12,13 @@ use App\Models\Student;
 
 class Authenticate
 {
-
-
     public function handle($request, Closure $next, $guard = null)
     {
         if(Auth::check()){
             $id = $request->user()->id;
             $arrayOfRole = [];
         
-            if( $id ){
+            if( $id && !session('role') ){
                 if($this->isAssistant( $id )){
                     array_push($arrayOfRole, '2' );
                     session()->set('role','2');
@@ -37,9 +35,8 @@ class Authenticate
                     array_push($arrayOfRole, '0' );
                     session()->set('role','0');
                 }
+                session()->set('arrayOfRole', $arrayOfRole);
             }
-
-            session()->set('arrayOfRole', $arrayOfRole);
         }
 
         if (Auth::guard($guard)->guest()) {

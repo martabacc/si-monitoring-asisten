@@ -58,8 +58,8 @@ class AuthController extends Controller
     public function change($role){
         $arrayOfRole = session('arrayOfRole');
         if( in_array($role, $arrayOfRole) ){
-            session()->forget('role');
-//            session()->set('role', $role);
+            // session()->forget('role');
+            session()->set('role', $role);
             return redirect()->back();
         }
         else abort(403);

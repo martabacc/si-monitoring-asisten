@@ -45,7 +45,7 @@ Route::group(['middleware' => ['web']], function() {
 
             Route::resource('questionnaire', 'QuestionnaireController', ['only' => 'index']);
 
-            Route::get('/role/switch/{role}', 'ClassController@change');
+            Route::get('/role/switch/{role}', 'AuthController@change');
         });
 
         Route::group(['roles' => [0,1,2] ], function(){
