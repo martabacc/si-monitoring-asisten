@@ -75,7 +75,6 @@
                         <li><a href="{{ url('question') }}"><i class="fa fa-list"></i> Lihat Pertanyaan </a></li>
                         <li><a href="{{ url('question/create') }}"><i class="fa fa-list"></i> Tambah Pertanyaan </a></li>
                         <li><a href="{{ url('questionnaire') }}"><i class="fa fa-list"></i> Lihat Kuisioner </a></li>
-                        <li><a href="{{ url('questionnaire/result') }}"><i class="fa fa-list"></i> Hasil Kuisioner </a></li>
                         <li><a href="{{ url('questionnaire/create') }}"><i class="fa fa-plus"></i> Tambah Kuisioner </a></li>
                     </ul>
                 </li>

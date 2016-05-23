@@ -114,7 +114,8 @@ class QuestionnaireRepository
     public function getResult($id)
     {
         $results = DB::table('answers')
-            ->select(DB::raw('count(*) as user_count, question_id, option_id'))
+            ->select(DB::raw('count(*) as user_count, questionnaire_id, question_id, option_id'))
+            ->where('questionnaire_id', $id)
             ->groupBy(['questionnaire_id', 'question_id', 'option_id'])
             ->get();
 

@@ -9,7 +9,7 @@
 
     <section class="content-header">
         <h1>Tambah Jadwal</h1>
-        @if(session('scheduleCreated'))
+        @if(session('scheduleAdded'))
             <br>
             <div class="alert alert-success">Schedule created!</div>
         @endif
